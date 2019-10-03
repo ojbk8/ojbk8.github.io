@@ -7,4 +7,5 @@ permalink: /404
 **抱歉**
 *您访问的页面不存在或已经删除*
 
-[Go Home](/)
+
+<div>{% button /,首页,home fa-fw,首页%}</div>
