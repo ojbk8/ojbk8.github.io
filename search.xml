@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[test]]></title>
+    <url>%2Ftest.html</url>
+    <content type="text"><![CDATA[8899 test]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Oneindex程序安装失败解决办法]]></title>
     <url>%2Foneindex-installation-failed.html</url>
     <content type="text"><![CDATA[项目地址： https://github.com/donwa/oneindex 功能： 不占用服务器空间，不走服务器流量； 直接列出 OneDrive 目录，文件直链下载。 源码安装运行需求： PHP空间，PHP 5.6+ 需打开curl支持 OneDrive 账号 (个人、企业版或教育版/工作或学校帐户) OneIndex 程序 Oneindex程序安装失败解决办法打开这个网址https://apps.dev.microsoft.com/#/appList 里面会列出oneindex的应用，点击进去后，会看到你的应用ID（client_ID）。 找到【应用程序机密】，点击【生成新密码】，就会生成一个新的client_secret，然后重新安装时候填这个新的client_secret就可以了]]></content>
@@ -176,10 +184,10 @@
     <url>%2FV2ray-config-shadowsocks-WebSocket-TLS%2BWebCloudflare_CDN.html</url>
     <content type="text"><![CDATA[https://v2ray.com/ https://github.com/v2ray/v2ray-core https://toutyrater.github.io/ https://guide.v2fly.org/ https://github.com/veekxt/v2ray-template 本篇主要针对websocket+tls+web三件套的使用方法 准备工作 拥有公网IP且80 443端口可用的墙外VPS，NAT鸡一般不会给这2个端口使用权。 注册并拥有域名 域名绑定使用Cloudflare 家的NS解析服务。 Cloudflare Nameservers分配给我的2个免费NS服务器。 12lynn.ns.cloudflare.comtara.ns.cloudflare.com 把域名原有的NS删除并填上Cloudflare Nameservers分配给我的2个免费NS服务器。 假设我想 a.yourdomain.com 用作直连 b.yourdomain.com 套Cloudflare_CDN 在Cloudflare里添加A记录值Name分别为a和b到VPS的公网IP的2条解析，确保解析生效后才能使用。 V2Ray安装日常更新及安装curl Debian &amp; Ubuntu 12apt-get updateapt-get install wget curl -y CentOS 12yum updateyum install wget curl -y 安装V2Ray 1bash &lt;(curl -L -s https://install.direct/go.sh) 如果上面的官方链接失效了可以使用下面的 1bash &lt;(curl -L -s https://raw.githubusercontent.com/ojbk8/v2ray-core/master/go.sh) V2ray配置文件备份重命名默认生成的原始V2ray配置文件 1mv /etc/v2ray/config.json /etc/v2ray/config_Backup.json 按需要改动下面/etc/v2ray/config.json里面的port 和 id和 password等值，建议改成/etc/v2ray/config_Backup.json默认随机生成的值，当然也可以照抄不改直接复制使用。 编辑文件/etc/v2ray/config.json 1vi /etc/v2ray/config.json 加入下面的代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#123; "inbounds": [&#123; "port": 22782, "protocol": "vmess", "settings": &#123; "clients": [ &#123; "id": "4e0f9136-5ea8-462c-bce9-7dd75376d378", "alterId": 64 &#125; ] &#125;, "streamSettings": &#123; "network": "ws", "security": "none", "wsSettings": &#123; "path": "/ray" &#125; &#125;, "listen": "127.0.0.1" &#125;], "inboundDetour": [ &#123; "protocol": "shadowsocks", "port": 1008, "settings": &#123; "method": "chacha20-ietf-poly1305", "password": "yourpassword", "udp": true &#125; &#125;, &#123; "protocol": "shadowsocks", "port": 1009, "settings": &#123; "method": "aes-128-gcm", "password": "youpassword", "udp": true &#125; &#125; ], "outbounds": [ &#123; "protocol": "freedom", "settings": &#123;&#125; &#125; ]&#125; 此文件配置可同时兼顾使用 shadowsocks WebSocket+TLS+Web WebSocket+TLS+Web+Cloudflare_CDN 管理V2Ray进程1service v2ray start ubuntu 16.10+ 使用 1234systemctl start v2ray.servicesystemctl status v2ray.servicesystemctl stop v2ray.servicesystemctl restart v2ray.service 此脚本会自动安装以下文件： /usr/bin/v2ray/v2ray：V2Ray 程序； /usr/bin/v2ray/v2ctl：V2Ray 工具； /etc/v2ray/config.json：配置文件； /usr/bin/v2ray/geoip.dat：IP 数据文件 /usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。 运行脚本位于系统的以下位置： /etc/systemd/system/v2ray.service: Systemd /etc/init.d/v2ray: SysV 脚本运行完成后，你需要： 编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式； 运行 service v2ray start 来启动 V2Ray 进程； 之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。 更新停止v2ray覆盖重新安装一次再启动它 123service v2ray stopbash &lt;(curl -L -s https://install.direct/go.sh)service v2ray start 配置WEB服务器WebSocket的规则在配置文件中添加v2ray的WebSocket的规则，然后重启在WEB服务器生效。 Caddy1234proxy /ray localhost:22782 &#123; websocket header_upstream -Origin&#125; 点击查看caddy安装教程 Nginx123456789location /ray &#123; proxy_redirect off; proxy_pass http://127.0.0.1:22782; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection "upgrade"; proxy_set_header Host $http_host; proxy_read_timeout 300s; &#125; Apache把以下配置加到VirtualHost值 123456&lt;Location "/ray/"&gt; ProxyPass ws://127.0.0.1:22782/ray/ upgrade=WebSocket ProxyAddHeaders Off ProxyPreserveHost On RequestHeader append X-Forwarded-For %&#123;REMOTE_ADDR&#125;s&lt;/Location&gt; Cloudflare设置CDN注意：开启Cloudflare的CDN前，确保灰色云朵(用作直连)是没有点亮的，websocket+tls+web祼连可用。 a.yourdomain.com 灰色云朵(用作直连) b.yourdomain.com 彩色云朵(套Cloudflare_CDN) 只要把a设置成灰色云朵，b设置成彩色云朵。如下图 使用Cloudflare的SSL证书 进入Cloudflare的Crypto把SSL选项设置成Full证书生效后是 1Universal SSL Status - Active Certificate 注意 Cloudflare的Crypto里面的Minimum TLS Version选择强制TLS1.3需要V2ray服务端和客户端同时使用4.19.1+版本才能用 此时 ping a.yourdomain.com 是VPS的IP ping b.yourdomain.com 是Cloudflare的IP 客户端连接使用1234567891011121314151617181920212223242526272829303132333435363738394041424344&#123; "inbounds": [ &#123; "port": 1080, "listen": "127.0.0.1", "protocol": "socks", "sniffing": &#123; "enabled": true, "destOverride": ["http", "tls"] &#125;, "settings": &#123; "auth": "noauth", "udp": false &#125; &#125; ], "outbounds": [ &#123; "protocol": "vmess", "settings": &#123; "vnext": [ &#123; "address": "a.yourdomain.com", "port": 443, "users": [ &#123; "id": "4e0f9136-5ea8-462c-bce9-7dd75376d378", "alterId": 64 &#125; ] &#125; ] &#125;, "streamSettings": &#123; "network": "ws", "security": "tls", "security": "none", "wsSettings": &#123; "path": "/ray" &#125; &#125; &#125; ]&#125; 地址(address):a.yourdomain.com 端口(port):443 用户ID:4e0f9136-5ea8-462c-bce9-7dd75376d378 额外ID(alterId):0 #只要≤服务端的值即可，值越少越不占内存 加密方式(security):none 传输协议(network):ws 伪装类型(type):none 伪装域名(host):留空不填 路径(path): /ray 底层传输安全: tls 把域名换成b.yourdomain.com即套用Cloudflare的CDN]]></content>
       <tags>
-        <tag>Caddy</tag>
         <tag>V2ray</tag>
         <tag>shadowsocks</tag>
         <tag>WebSocket</tag>
+        <tag>Caddy</tag>
         <tag>Cloudflare</tag>
       </tags>
   </entry>
@@ -211,9 +219,9 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>PHP</tag>
         <tag>Debian</tag>
         <tag>Ubuntu</tag>
+        <tag>PHP</tag>
         <tag>Apache2</tag>
       </tags>
   </entry>
@@ -294,8 +302,8 @@
     <url>%2FDebian-Ubuntu-install-MySQL-uninstall.html</url>
     <content type="text"><![CDATA[Debian 9上安装最新的MySQL 在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。 安装MySQL首先添加MySQL软件库 MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软件存储库。一旦设置了存储库，我们就可以使用Ubuntu的标准apt命令来安装该软件。我们将使用wget下载此.deb文件，然后使用该dpkg命令进行安装。 首先，在Web浏览器中加载MySQL下载页面。找到右下角的“ 下载”按钮，然后单击下一页。此页面将提示您登录或注册Oracle Web帐户。我们可以跳过这一点，而是寻找说不用的链接，只需启动我的下载。右键单击该链接并选择“ 复制链接地址”（此选项的措辞可能不同，具体取决于您的浏览器）。 现在我们要下载文件了。在您的服务器上，移动到您可以写入的目录。使用wget下载文件，记住粘贴刚刚复制的地址代替下面突出显示的部分： 12cd /tmpwget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb 该文件现在应该下载到我们当前的目录中ls列出文件以确保： 您应该看到列出的文件名： 1mysql-apt-config_0.8.13-1_all.deb 现在我们准备安装： 1dpkg -i mysql-apt-config* dpkg将会被用于安装，删除和检查.deb软件包。该-i标志表示我们要从指定的文件安装。 在安装过程中，您将看到一个配置屏幕，您可以在其中指定您喜欢的MySQL版本，以及为其他MySQL相关工具安装存储库的选项。默认值将添加最新稳定版MySQL的存储库信息，而不是其他任何内容。这就是我们想要的，所以使用向下箭头导航到Ok菜单选项并点击ENTER。 该包现在将完成添加存储库。刷新apt包缓存以使新软件包可用： 12dpkg-reconfigure mysql-apt-configapt-get update 添加了存储库并使用我们的软件包缓存进行了新近更新 安装MySQL 我们现在可以使用apt安装最新的MySQL服务器软件包： 1apt install mysql-server 状态查询 1systemctl status mysql 修改MYSQL的初使密码1mysql -u root -p 用安装时设置的密码登陆 1use mysql 开始修改密码 1update user set authentication_string=password('yournewpassword') where user='root'; 退出 1exit 经过我们修改MYSQL的初使密码后，方可以顺利登陆phpMyAdmin管理 用SET PASSWORD命令 12mysql -u rootmysql&gt; SET PASSWORD FOR 'root'@'localhost' = PASSWORD('yournewpassword'); 最后重启一下MySQL 1systemctl restart mysql 卸载清理MYSQL首先你可以通过 1dpkg --get-selections | grep mysql 命令罗列出你电脑上安装的和MySQL相关的软件，然后purge卸载 123456apt-get --purge remove mysql-serverapt-get --purge remove mysql-clientapt-get --purge remove mysql-commonapt-get --purge remove mysql-apt-configapt-get --purge remove mysql-community-clientapt-get --purge remove mysql-community-server 上面列出的安装MYSQL组件列表会不一样，请根据自己的实际操作。 最后再通过下面的命令清理残余： 1234apt-get autoremoveapt-get autocleanrm /etc/mysql/ -Rrm /var/lib/mysql/ -R 至此卸载清理工作全部完成]]></content>
       <tags>
-        <tag>Debian</tag>
         <tag>MySQL</tag>
+        <tag>Debian</tag>
         <tag>Ubuntu</tag>
       </tags>
   </entry>

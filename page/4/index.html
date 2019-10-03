@@ -251,6 +251,143 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Debian-Ubuntu-install-MySQL-uninstall.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/Debian-Ubuntu-install-MySQL-uninstall.html" class="post-title-link" itemprop="url">Debian和Ubuntu安装最新的MySQL修改密码卸载清理</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-25 01:35:31" itemprop="dateCreated datePublished" datetime="2018-07-25T01:35:31+03:00">2018-07-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Debian 9上安装最新的MySQL</p>
+<p>在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。</p>
+<h1 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h1><p>首先添加MySQL软件库</p>
+<p>MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软件存储库。一旦设置了存储库，我们就可以使用Ubuntu的标准apt命令来安装该软件。我们将使用wget下载此.deb文件，然后使用该dpkg命令进行安装。</p>
+<p>首先，在Web浏览器中加载<a href="https://dev.mysql.com/downloads/repo/apt/" target="_blank" rel="noopener">MySQL下载页面</a>。找到右下角的“ 下载”按钮，然后单击下一页。此页面将提示您登录或注册Oracle Web帐户。我们可以跳过这一点，而是寻找说不用的链接，只需启动我的下载。右键单击该链接并选择“ 复制链接地址”（此选项的措辞可能不同，具体取决于您的浏览器）。</p>
+<p>现在我们要下载文件了。在您的服务器上，移动到您可以写入的目录。使用wget下载文件，记住粘贴刚刚复制的地址代替下面突出显示的部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p>该文件现在应该下载到我们当前的目录中<code>ls</code>列出文件以确保：</p>
+<p>您应该看到列出的文件名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql-apt-config_0.8.13-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p>现在我们准备安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i mysql-apt-config*</span><br></pre></td></tr></table></figure>
+
+<p>dpkg将会被用于安装，删除和检查.deb软件包。该-i标志表示我们要从指定的文件安装。</p>
+<p>在安装过程中，您将看到一个配置屏幕，您可以在其中指定您喜欢的MySQL版本，以及为其他MySQL相关工具安装存储库的选项。默认值将添加最新稳定版MySQL的存储库信息，而不是其他任何内容。这就是我们想要的，所以使用向下箭头导航到Ok菜单选项并点击ENTER。</p>
+<p>该包现在将完成添加存储库。刷新apt包缓存以使新软件包可用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dpkg-reconfigure mysql-apt-config</span><br><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>添加了存储库并使用我们的软件包缓存进行了新近更新</p>
+<p>安装MySQL</p>
+<p>我们现在可以使用apt安装最新的MySQL服务器软件包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>状态查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改MYSQL的初使密码"><a href="#修改MYSQL的初使密码" class="headerlink" title="修改MYSQL的初使密码"></a>修改MYSQL的初使密码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>用安装时设置的密码登陆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+
+<p>开始修改密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'yournewpassword'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>经过我们修改MYSQL的初使密码后，方可以顺利登陆phpMyAdmin管理</p>
+<p>用SET PASSWORD命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">mysql&gt; SET PASSWORD FOR <span class="string">'root'</span>@<span class="string">'localhost'</span> = PASSWORD(<span class="string">'yournewpassword'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>最后重启一下MySQL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="卸载清理MYSQL"><a href="#卸载清理MYSQL" class="headerlink" title="卸载清理MYSQL"></a>卸载清理MYSQL</h1><p>首先你可以通过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections | grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>命令罗列出你电脑上安装的和MySQL相关的软件，然后purge卸载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get --purge remove mysql-server</span><br><span class="line">apt-get --purge remove mysql-client</span><br><span class="line">apt-get --purge remove mysql-common</span><br><span class="line">apt-get --purge remove mysql-apt-config</span><br><span class="line">apt-get --purge remove mysql-community-client</span><br><span class="line">apt-get --purge remove mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p>上面列出的安装MYSQL组件列表会不一样，请根据自己的实际操作。</p>
+<p>最后再通过下面的命令清理残余：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get autoremove</span><br><span class="line">apt-get autoclean</span><br><span class="line">rm /etc/mysql/ -R</span><br><span class="line">rm /var/lib/mysql/ -R</span><br></pre></td></tr></table></figure>
+
+<p>至此卸载清理工作全部完成</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/hexo-edit-Markdown.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1305,117 +1442,11 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/frps-service-install.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/frps-service-install.html" class="post-title-link" itemprop="url">搭建配置frps内网穿透服务端开机自启</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-14 16:00:00" itemprop="dateCreated datePublished" datetime="2018-05-14T16:00:00+03:00">2018-05-14</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在debian ubuntu x64上测试通过 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">其它系统frp下载</a></p>
-<p>假设你的IPV4地址为11.22.33.44 假设是以ROOT用户登陆并在root用户默认目录下</p>
-<h3 id="下载安装frp"><a href="#下载安装frp" class="headerlink" title="下载安装frp"></a>下载安装frp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -N -O frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.23.1/frp_0.23.1_linux_amd64.tar.gz</span><br><span class="line">tar -zxvf frp.tar.gz</span><br><span class="line">mv frp_0.23.1_linux_amd64 frp</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置frps服务端"><a href="#配置frps服务端" class="headerlink" title="配置frps服务端"></a>配置frps服务端</h3><p>修改文件frp/frps.ini服务端配置文件,按需要添加删减,示范如下</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/frps-service-install.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1459,7 +1490,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
