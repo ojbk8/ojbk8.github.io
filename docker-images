@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="更多容器可以访问docker的Docker Hub 操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本 1uname -r  安装docker1wget -qO- get.docker.com | bash  安装完成后，运行下面的命令，验证是否安装成功。 1docker version">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker创建删除使用容器或镜像">
+<meta property="og:url" content="https://ojbk8.github.io/docker-images">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="更多容器可以访问docker的Docker Hub 操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本 1uname -r  安装docker1wget -qO- get.docker.com | bash  安装完成后，运行下面的命令，验证是否安装成功。 1docker version">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker创建删除使用容器或镜像">
+<meta name="twitter:description" content="更多容器可以访问docker的Docker Hub 操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本 1uname -r  安装docker1wget -qO- get.docker.com | bash  安装完成后，运行下面的命令，验证是否安装成功。 1docker version">
+  <link rel="canonical" href="https://ojbk8.github.io/docker-images">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>docker创建删除使用容器或镜像 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/docker-images">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">docker创建删除使用容器或镜像
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-24 16:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T16:00:00+03:00">2018-07-24</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>更多容器可以访问<a href="https://www.docker.com/" target="_blank" rel="noopener">docker</a>的<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></em></p>
+<p>操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- get.docker.com | bash</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行下面的命令，验证是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>启动 Docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>查看 Docker 启动状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<p>允许 Docker 开机自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<p>解决<code>docker-compose: command not found</code>的方法</p>
+<p>您还需要安装Docker Compose。见 <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">手册</a>。以下是您需要执行的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` &gt; ./docker-compose</span><br><span class="line">sudo mv ./docker-compose /usr/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<h3 id="Docker-清理命令"><a href="#Docker-清理命令" class="headerlink" title="Docker 清理命令"></a>Docker 清理命令</h3><p>杀死所有正在运行的容器.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dockerkill=<span class="string">'docker kill $(docker ps -a -q)'</span></span><br></pre></td></tr></table></figure>
+
+<p>删除所有已经停止的容器.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dockercleanc=<span class="string">'docker rm $(docker ps -a -q)'</span></span><br></pre></td></tr></table></figure>
+
+<p>删除所有未打标签的镜像.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dockercleani=<span class="string">'docker rmi $(docker images -q -f dangling=true)'</span></span><br></pre></td></tr></table></figure>
+
+<p>删除所有已经停止的容器和未打标签的镜像.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dockerclean=<span class="string">'dockercleanc || true &amp;&amp; dockercleani'</span></span><br></pre></td></tr></table></figure>
+
+<p>删除所有未运行 Docker 容器<br>docker rm $(docker ps -a -q)<br>删除所有 Docker 镜像<br>删除所有未打 tag 的镜像</p>
+<p>docker rmi $(docker images -q | awk ‘/^<none>/ { print $3 }’)<br>删除所有镜像</none></p>
+<p>docker rmi $(docker images -q)<br>根据格式删除所有镜像</p>
+<p>docker rm $(docker ps -qf status=exited)</p>
+<p>docker images<br>docker tag IMAGE_ID  <hub-user>/<repo-name>[:<tag>]<br>docker login<br>#docker push 镜像到docker hub 的仓库<br>docker push <hub-user>/<repo-name>:<tag><br>docker images<br>镜像的保存<br>docker save IMAGE_ID &gt; newname.tar<br>镜像的导入<br>docker load &lt; tnewname.tar</tag></repo-name></hub-user></tag></repo-name></hub-user></p>
+<p>保存对容器的修改，示范<br>docker commit cb439fb2c714 mxnet/python:gpu</p>
+<p>停用全部运行中的容器:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q)</span><br></pre></td></tr></table></figure>
+
+<p>删除全部容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+
+<p>一条命令实现停用并删除容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -y</span><br><span class="line">docker image prune --force --all -y</span><br></pre></td></tr></table></figure>
+
+<p>更新docker 1.13 中增加了 <code>docker system prune</code>的命令，针对container、image可以使用<code>docker container prune</code>、<code>docker image prune</code>命令。</p>
+<ul>
+<li><code>docker image prune --force --all</code>或者<code>docker image prune -f -a</code> : 删除所有不使用的镜像</li>
+<li><code>docker container prune -f</code>: 删除所有停止的容器</li>
+</ul>
+<p>docker中如何删除image（镜像）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p>查看docker的帮助会发现有两个与删除有关的命令rm和rmi</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm Remove one or more containers</span><br><span class="line">rmi Remove one or more images</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi ID</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br><span class="line">docker run -t -i ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
+<li>nginx</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br><span class="line">docker run --name some-nginx -d -p 8080:80 some-content-nginx</span><br></pre></td></tr></table></figure>
+
+<p>Then you can hit <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> or <a href="http://host-ip:8080" target="_blank" rel="noopener">http://host-ip:8080</a> in your browser.</p>
+<ol start="2">
+<li>shadowsocks-libev-teddysun</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull teddysun/shadowsocks-libev:alpine</span><br></pre></td></tr></table></figure>
+
+<p>在宿主机上创建配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"&#123;</span></span><br><span class="line"><span class="string">    "</span>server<span class="string">":"</span>0.0.0.0<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>server_port<span class="string">":9000,</span></span><br><span class="line"><span class="string">    "</span>password<span class="string">":"</span>password0<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>timeout<span class="string">":300,</span></span><br><span class="line"><span class="string">    "</span>method<span class="string">":"</span>aes-256-gcm<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>fast_open<span class="string">":true,</span></span><br><span class="line"><span class="string">    "</span>nameserver<span class="string">":"</span>8.8.8.8<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>mode<span class="string">":"</span>tcp_and_udp<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>plugin<span class="string">":"</span>obfs-server<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>plugin_opts<span class="string">":"</span>obfs=tls<span class="string">"</span></span><br><span class="line"><span class="string">&#125; "</span> &gt; /etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
+
+<p>启动容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9000:9000 -p 9000:9000/udp --name ss-libev -v /etc/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<p>介绍</p>
+<ul>
+<li>docker run：开始运行一个容器。</li>
+<li>-d 参数：容器以后台运行并输出容器 ID。</li>
+<li>-p 参数：容器的 9000 端口映射到本机的 9000 端口。默认是映射 TCP，当需要映射 UDP 时，那就再追加一次 UDP 的映射。冒号后面是容器端口，冒号前面是宿主机端口，可以写成一致，也可以不一致。</li>
+<li>–name 参数：给容器分配一个识别符，方便将来的启动，停止，删除等操作。</li>
+<li>-v 参数：挂载卷(volume)，冒号后面是容器的路径，冒号前面是宿主机的路径，可以写成一致，也可以不一致。</li>
+<li>teddysun/shadowsocks-libev：这是拉取回来的镜像路径。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/Debian-Ubuntu-install-php7.2" rel="next" title="Debian和Ubuntu安装php7.2">
+                  <i class="fa fa-chevron-left"></i> Debian和Ubuntu安装php7.2
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/hexo-edit-Markdown" rel="prev" title="hexo文章编辑模版示范">
+                  hexo文章编辑模版示范 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker"><span class="nav-number">1.</span> <span class="nav-text">安装docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-清理命令"><span class="nav-number">2.</span> <span class="nav-text">Docker 清理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用示例"><span class="nav-number">3.</span> <span class="nav-text">使用示例</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
