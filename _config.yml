@@ -85,6 +85,4 @@ deploy:
 # Local Search
 search:
   path: search.xml
-  field: post
-  format: html
-  limit: 10000
+  field: all
