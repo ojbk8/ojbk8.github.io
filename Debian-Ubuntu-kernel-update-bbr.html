@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="查看内核版本 1uname -r  BBR要求内核为kernel4.9以上版本。 如果大于或等于4.9的可以直接开启BBR,开启步骤如下 配置文件 12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.co">
+  <meta name="description" content="查看内核版本1uname -rBBR要求内核为kernel4.9以上版本。如果大于或等于4.9的可以直接开启BBR,开启步骤如下配置文件12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.conf">
 <meta name="keywords" content="Debian,Ubuntu,bbr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Debian&#x2F;Ubuntu系统手动更新内核并启用TCP BBR拥塞控制算法">
 <meta property="og:url" content="https://ojbk8.github.io/Debian-Ubuntu-kernel-update-bbr.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="查看内核版本 1uname -r  BBR要求内核为kernel4.9以上版本。 如果大于或等于4.9的可以直接开启BBR,开启步骤如下 配置文件 12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.co">
+<meta property="og:description" content="查看内核版本1uname -rBBR要求内核为kernel4.9以上版本。如果大于或等于4.9的可以直接开启BBR,开启步骤如下配置文件12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.conf">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Debian&#x2F;Ubuntu系统手动更新内核并启用TCP BBR拥塞控制算法">
-<meta name="twitter:description" content="查看内核版本 1uname -r  BBR要求内核为kernel4.9以上版本。 如果大于或等于4.9的可以直接开启BBR,开启步骤如下 配置文件 12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.co">
+<meta name="twitter:description" content="查看内核版本1uname -rBBR要求内核为kernel4.9以上版本。如果大于或等于4.9的可以直接开启BBR,开启步骤如下配置文件12echo &quot;net.core.default_qdisc=fq&quot; &amp;gt;&amp;gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &amp;gt;&amp;gt; /etc/sysctl.conf">
   <link rel="canonical" href="https://ojbk8.github.io/Debian-Ubuntu-kernel-update-bbr">
 
 
@@ -300,13 +300,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>查看内核版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+        <p>查看内核版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>BBR要求内核为kernel4.9以上版本。</p><p>如果大于或等于4.9的可以直接开启BBR,开启步骤如下</p><p>配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure><a id="more"></a>
 
-<p>BBR要求内核为kernel4.9以上版本。</p>
-<p>如果大于或等于4.9的可以直接开启BBR,开启步骤如下</p>
-<p>配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
 <p>加载配置到内核参数中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>

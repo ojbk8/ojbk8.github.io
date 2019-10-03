@@ -55,17 +55,17 @@
   };
 </script>
 
-  <meta name="description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd ubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。  systemd is now used for user sessions. System sessions had">
+  <meta name="description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemdubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。 systemd is now used for user sessions. System sessions had a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu-18.04设置systemctl开机启动脚本rc.local">
 <meta property="og:url" content="https://ojbk8.github.io/ubuntu-1804-rc-local-systemctl.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd ubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。  systemd is now used for user sessions. System sessions had">
+<meta property="og:description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemdubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。 systemd is now used for user sessions. System sessions had a">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu-18.04设置systemctl开机启动脚本rc.local">
-<meta name="twitter:description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd ubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。  systemd is now used for user sessions. System sessions had">
+<meta name="twitter:description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemdubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。 systemd is now used for user sessions. System sessions had a">
   <link rel="canonical" href="https://ojbk8.github.io/ubuntu-1804-rc-local-systemctl">
 
 
@@ -312,11 +312,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>使用<code>update-rc.d</code>以及<code>rc.local</code>等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd</p>
-<p>ubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。</p>
-<blockquote>
+        <p>使用<code>update-rc.d</code>以及<code>rc.local</code>等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd</p><p>ubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。</p><blockquote>
 <p>systemd is now used for user sessions. System sessions had already been provided by systemd in previous Ubuntu releases.</p>
-</blockquote>
+</blockquote><a id="more"></a>
+
+
 <p>比如以前启动 mysql 服务用:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure>
 

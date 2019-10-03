@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本； 一、添加Nginx源新建一个nginx.list文件 1vi /etc/apt/sources.list.d/nginx.list  加入以下内容： 12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http:/">
+  <meta name="description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；一、添加Nginx源新建一个nginx.list文件1vi /etc/apt/sources.list.d/nginx.list加入以下内容：12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http://ngin">
 <meta name="keywords" content="Debian,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Debian9安装最新版Nginx">
 <meta property="og:url" content="https://ojbk8.github.io/Debian-Ubuntu-install-New-Nginx.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本； 一、添加Nginx源新建一个nginx.list文件 1vi /etc/apt/sources.list.d/nginx.list  加入以下内容： 12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http:/">
+<meta property="og:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；一、添加Nginx源新建一个nginx.list文件1vi /etc/apt/sources.list.d/nginx.list加入以下内容：12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http://ngin">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Debian9安装最新版Nginx">
-<meta name="twitter:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本； 一、添加Nginx源新建一个nginx.list文件 1vi /etc/apt/sources.list.d/nginx.list  加入以下内容： 12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http:/">
+<meta name="twitter:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；一、添加Nginx源新建一个nginx.list文件1vi /etc/apt/sources.list.d/nginx.list加入以下内容：12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http://ngin">
   <link rel="canonical" href="https://ojbk8.github.io/Debian-Ubuntu-install-New-Nginx">
 
 
@@ -300,12 +300,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；</p>
-<p>一、添加Nginx源<br>新建一个nginx.list文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure>
+        <p>apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；</p><p>一、添加Nginx源<br>新建一个nginx.list文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure><p>加入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/mainline/debian/ stretch nginx</span><br><span class="line">deb-src http://nginx.org/packages/mainline/debian/ stretch nginx</span><br></pre></td></tr></table></figure><a id="more"></a>
 
-<p>加入以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/mainline/debian/ stretch nginx</span><br><span class="line">deb-src http://nginx.org/packages/mainline/debian/ stretch nginx</span><br></pre></td></tr></table></figure>
+
+
+
+
 
 <p>下面这个我也不晓得干什么的，反正老外是这样写的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -</span><br></pre></td></tr></table></figure>

@@ -606,22 +606,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<ul>
+          <h3 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><ul>
 <li><code>id_rsa</code>为私钥文件(保存在client)</li>
 <li><code>id_rsa.pub</code>为公钥(用于追加到server的用户目录<code>/.ssh/authorized_keys</code>文件中)</li>
-</ul>
-<h3 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/id_rsa -r root@server_ip:/var/www/ /var/www/</span><br></pre></td></tr></table></figure>
-
-<h3 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/id_rsa -r /var/www/ root@server_ip:/var/www/</span><br></pre></td></tr></table></figure>
-
-<h3 id="ssh登录"><a href="#ssh登录" class="headerlink" title="ssh登录"></a>ssh登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@host</span><br></pre></td></tr></table></figure>
-
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>ssh使用RSA密钥对登录也是同理，service名称为sshd,配置文件为<code>/etc/ssh/sshd_config</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 700 ~/.ssh/ </span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### 指定端口</span></span><br><span class="line"></span><br><span class="line">`-P`: 大写的P, 指定端口号 </span><br><span class="line"></span><br><span class="line">``` bash </span><br><span class="line">scp -P 788 -i ~/.ssh/id_rsa -r /var/www/ root@server_ip:/var/www/</span><br></pre></td></tr></table></figure>
-
-
+</ul><h3 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/id_rsa -r root@server_ip:/var/www/ /var/www/</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/linux_ssh_scp_id_rsa.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -702,54 +699,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="crond简介"><a href="#crond简介" class="headerlink" title="crond简介"></a>crond简介</h2><p>crond是linux定时执行计划任务</p>
-<p>Linux下的任务调度分为两类，系统任务调度和用户任务调度。</p>
-<h3 id="系统任务"><a href="#系统任务" class="headerlink" title="系统任务"></a>系统任务</h3><p>配置文件<code>/etc/crontab</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/crontab</span><br></pre></td></tr></table></figure>
-
-<h3 id="用户任务"><a href="#用户任务" class="headerlink" title="用户任务"></a>用户任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
-
-<h2 id="crontab文件的含义"><a href="#crontab文件的含义" class="headerlink" title="crontab文件的含义"></a>crontab文件的含义</h2><p>用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下：</p>
-<p>minute   hour   day   month   week   command</p>
-<p><img src="/images/crontab.png" alt></p>
-<p>其中：</p>
-<ul>
-<li>minute： 表示分钟，可以是从0到59之间的任何整数。</li>
-<li>hour：表示小时，可以是从0到23之间的任何整数。</li>
-<li>day：表示日期，可以是从1到31之间的任何整数。</li>
-<li>month：表示月份，可以是从1到12之间的任何整数。</li>
-<li>week：表示星期几，可以是从0到7之间的任何整数，这里的0或7代表星期日。</li>
-<li>command：要执行的命令，可以是系统命令，也可以是自己编写的脚本文件。</li>
-</ul>
-<p>在以上各个字段中，还可以使用以下特殊字符：</p>
-<ul>
-<li>星号（*）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</li>
-<li>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</li>
-<li>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</li>
-<li>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如*/10，如果用在minute字段，表示每十分钟执行一次。</li>
-</ul>
-<h2 id="管理crontab进程"><a href="#管理crontab进程" class="headerlink" title="管理crontab进程"></a>管理crontab进程</h2><p>重启</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/cron restart</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart cron</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart cron.service</span><br></pre></td></tr></table></figure>
-
-<p>状态查询</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service cron status</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status cron</span><br></pre></td></tr></table></figure>
-
-<p>列出crontab文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
-
-<p>删除crontab文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -r</span><br></pre></td></tr></table></figure>
-
-
+          <h2 id="crond简介"><a href="#crond简介" class="headerlink" title="crond简介"></a>crond简介</h2><p>crond是linux定时执行计划任务</p><p>Linux下的任务调度分为两类，系统任务调度和用户任务调度。</p><h3 id="系统任务"><a href="#系统任务" class="headerlink" title="系统任务"></a>系统任务</h3><p>配置文件<code>/etc/crontab</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/crontab</span><br></pre></td></tr></table></figure><h3 id="用户任务"><a href="#用户任务" class="headerlink" title="用户任务"></a>用户任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure><h2 id="crontab文件的含义"><a href="#crontab文件的含义" class="headerlink" title="crontab文件的含义"></a>crontab文件的含义</h2><p>用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下：</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/crontab.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -817,51 +776,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>查看内核版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
-
-<p>BBR要求内核为kernel4.9以上版本。</p>
-<p>如果大于或等于4.9的可以直接开启BBR,开启步骤如下</p>
-<p>配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-
-<p>加载配置到内核参数中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-
-<p>顺利的话下面的命令就能看到bbr模块了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-
-<p>返回值一般为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = bbr cubic reno</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_congestion_control</span><br></pre></td></tr></table></figure>
-
-<p>返回值一般为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.core.default_qdisc</span><br></pre></td></tr></table></figure>
-
-<p>返回值一般为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.core.default_qdisc = fq</span><br></pre></td></tr></table></figure>
-
-<p>如果内核版本低于4.9的需要手动升级到4.9或以上才能开启</p>
-<p>去这里<a href="https://kernel.ubuntu.com/~kernel-ppa/mainline/" target="_blank" rel="noopener">下载最新版的内核 deb 安装包</a></p>
-<ol>
-<li>如果系统是 64 位，则下载 amd64 的 linux-image 中含有 generic 这个 deb 包；</li>
-<li>如果系统是 32 位，则下载 i386 的 linux-image 中含有 generic 这个 deb 包；</li>
-</ol>
-<p>安装的命令如下（以最新版的 64 位 4.12.4 举例而已，请替换为下载好的 deb 包）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.12.4/linux-image-4.12.4-041204-generic_4.12.4-041204.201707271932_amd64.deb</span><br><span class="line">dpkg -i linux-image-4.12.4-041204-generic_4.12.4-041204.201707271932_amd64.deb</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，再执行命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/update-grub</span><br></pre></td></tr></table></figure>
-
-<p>最后，重启 VPS 即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-
+          <p>查看内核版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>BBR要求内核为kernel4.9以上版本。</p><p>如果大于或等于4.9的可以直接开启BBR,开启步骤如下</p><p>配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Debian-Ubuntu-kernel-update-bbr.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -942,11 +866,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="tar压缩"><a href="#tar压缩" class="headerlink" title="tar压缩"></a>tar压缩</h3><p>压缩多个文件或者文件夹的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf a.tar.gz(想压缩文件名) 源文件名1 源文件名2 源文件夹1 源文件夹2</span><br></pre></td></tr></table></figure>
-
-<p>参数：</p>
-<ul>
+          <h3 id="tar压缩"><a href="#tar压缩" class="headerlink" title="tar压缩"></a>tar压缩</h3><p>压缩多个文件或者文件夹的命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf a.tar.gz(想压缩文件名) 源文件名1 源文件名2 源文件夹1 源文件夹2</span><br></pre></td></tr></table></figure><p>参数：</p><ul>
 <li><code>c</code>创建一个压缩文件，如果只使用这个参数，不使用 z 参数，那么只会打包，不会压缩</li>
 <li><code>x</code>解开一个压缩文件</li>
 <li><code>z</code>是否使用 gzip 压缩或解压</li>
@@ -954,132 +874,15 @@
 <li><code>v</code>显示详细信息</li>
 <li><code>f</code>指定压缩后的文件名，后面要直接跟文件名，所以将 f 参数放到最后</li>
 </ul>
-<p>举几个例子：</p>
-<p>将a文件夹打包成a.tar但是不压缩</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cvf a.tar arg</span><br></pre></td></tr></table></figure>
-
-<p>将a文件夹打包成a.tar.gz并使用 gzip 压缩</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czvf a.tar.gz arg</span><br></pre></td></tr></table></figure>
-
-<p>将a文件夹打包成a.tar.gz并使用bzip2压缩</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cjvf a.tar.bz2 arg</span><br></pre></td></tr></table></figure>
-
-<h3 id="tar解压"><a href="#tar解压" class="headerlink" title="tar解压"></a>tar解压</h3><p>Linux下常见的压缩包格式有5种:zip tar.gz tar.bz2 tar.xz tar.Z</p>
-<p>其中tar是种打包格式,gz和bz2等后缀才是指代压缩方式:gzip和bzip2</p>
-<p>filename.zip的解压:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip filename.zip</span><br></pre></td></tr></table></figure>
-
-<p>filename.tar.gz的解压:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf filename.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>其中zxvf含义分别如下</p>
-<ul>
-<li><code>z</code>gzip压缩格式</li>
-<li><code>x</code>extract解压</li>
-<li><code>v</code>verbose详细信息</li>
-<li><code>f</code>file(file=archieve)文件</li>
-</ul>
-<p>filename.tar.bz2的解压:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxvf filename.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p><code>j</code>指bzip2压缩格式</p>
-<p>其它选项和tar.gz解压含义相同</p>
-<p>filename.tar.xz的解压: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -Jxvf filename.tar.xz</span><br></pre></td></tr></table></figure>
-
-<p>注意<code>J</code>大写</p>
-<p>filename.tar.Z的解压: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -Zxvf filename.tar.Z</span><br></pre></td></tr></table></figure>
-
-<p>注意<code>Z</code>大写</p>
-<p>关于tar的详细命令可以</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<p>事实上, 从1.15版本开始tar就可以自动识别压缩的格式,故不需人为区分压缩格式就能正确解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br><span class="line">tar -xvf filename.tar.bz2</span><br><span class="line">tar -xvf filename.tar.xz</span><br><span class="line">tar -xvf filename.tar.Z</span><br></pre></td></tr></table></figure>
-
-<h3 id="压缩zip解压unzip缩命令"><a href="#压缩zip解压unzip缩命令" class="headerlink" title="压缩zip解压unzip缩命令"></a>压缩zip解压unzip缩命令</h3><p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unzip</span><br></pre></td></tr></table></figure>
-
-<p>zip命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -r myfile.zip ./*</span><br></pre></td></tr></table></figure>
-
-<p>将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,－r表示递归压缩子目录下所有文件.</p>
-<p>unzip命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip -o -d /home/sunny myfile.zip</span><br></pre></td></tr></table></figure>
-
-<p>把myfile.zip文件解压到 /home/sunny/</p>
-<ul>
-<li><code>o</code>不提示的情况下覆盖文件；</li>
-<li><code>d</code> -d /home/sunny 指明将文件解压缩到/home/sunny目录下；</li>
-</ul>
-<p>其他</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -d myfile.zip smart.txt</span><br></pre></td></tr></table></figure>
-
-<p>删除压缩文件中smart.txt文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -m myfile.zip ./rpm_info.txt</span><br></pre></td></tr></table></figure>
-
-<p>向压缩文件中myfile.zip中添加rpm_info.txt文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -r filename.zip file1 file2 file3 /usr/work/school</span><br></pre></td></tr></table></figure>
-
-<p>上面的命令把 file1、file2、 file3、以及 /usr/work/school 目录的内容（假设这个目录存在）压缩起来，然后放入 filename.zip 文件中。</p>
-<p>解压unzip缩命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip filename.zip</span><br></pre></td></tr></table></figure>
-
-<h3 id="7Z"><a href="#7Z" class="headerlink" title="7Z"></a>7Z</h3><p>linux安装7z命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install p7zip-full</span><br></pre></td></tr></table></figure>
-
-<p>带密码压缩</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z -p a test.7z test.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>-p</code>添加密码</p>
-<p>解压：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z x test.7z</span><br></pre></td></tr></table></figure>
-
-<p>解压缩7z文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z x phpMyAdmin-3.3.8.1-all-languages.7z -r -o./</span><br></pre></td></tr></table></figure>
-
-<p>最新命令为7zr</p>
-<p>参数含义：</p>
-<ol>
-<li><code>x</code>代表解压缩文件，并且是按原始目录树解压（还有个参数 e 也是解压缩文件，但其会将所有文件都解压到根下，而不是自己原有的文件夹下）</li>
-<li><code>r</code> 表示递归解压缩所有的子文件夹</li>
-<li><code>o</code>是指定解压到的目录，-o后是没有空格的，直接接目录。这一点需要注意。</li>
-</ol>
-<p>压缩文件/文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z a -r test.7z ./*</span><br></pre></td></tr></table></figure>
-
-<p>参数含义：</p>
-<ol>
-<li><code>a</code>代表添加文件／文件夹到压缩包</li>
-<li><code>t</code>是指定压缩类型，这里定为7z，可不指定，因为7za默认压缩类型就是7z。</li>
-<li><code>r</code>表示递归所有的子文件夹</li>
-<li><code>Mytest.7z</code>是压缩好后的压缩包名</li>
-<li><code>/opt/phpMyAdmin-3.3.8.1-all-languages/*</code>是压缩目标。</li>
-</ol>
-<p>注意：7za不仅仅支持.7z压缩格式，还支持.tar.bz2等压缩类型的。如上所述，用-t指定即可。</p>
-<h3 id="unrar"><a href="#unrar" class="headerlink" title="unrar"></a>unrar</h3><p><a href="http://www.rarsoft.com/download.htm" target="_blank" rel="noopener">RAR下载地址</a> 64系统</p>
-<p>安装unrar,rar</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.rarlab.com/rar/rarlinux-x64-5.8.b2.tar.gz</span><br><span class="line">tar xvf rarlinux-x64-5.8.b2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rar</span><br><span class="line">cp rar /usr/<span class="built_in">local</span>/rar</span><br><span class="line">cp unrar /usr/<span class="built_in">local</span>/unrar</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/rar /usr/<span class="built_in">local</span>/bin/rar</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/unrar /usr/<span class="built_in">local</span>/bin/unrar</span><br></pre></td></tr></table></figure>
-
-<p>安装完毕后就有了RAR和UNRAR这两个程序</p>
-<p>解压有密码的rar压缩包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e -p filename.rar</span><br></pre></td></tr></table></figure>
-
-<p>输入密码后解压一个名为filename.rar的带密码压缩包</p>
-<ol>
-<li>unrar v test.rar    #查看压缩文件中的文件</li>
-<li>unrar x test.rar /tmp   #解压到指定文件夹</li>
-<li>unrar e test.rar   #解压到当前文件夹</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar -p a test.rar test.txt</span><br></pre></td></tr></table></figure>
-
-<p>带密码压缩会提示输入两次密码。</p>
-<p>解压：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar x test.rar</span><br></pre></td></tr></table></figure>
-
-<p>会提示输入密码。</p>
-
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/linux-tar-unzip-p7zip-unrar-password.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1160,71 +963,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>SSH安全登陆三步曲</p>
-<ol>
+          <p>SSH安全登陆三步曲</p><ol>
 <li>修改默认端口22为其它</li>
 <li>改用SSH-keys登陆</li>
 <li>禁止密码登陆</li>
-</ol>
-<ul>
+</ol><ul>
 <li>路径: ~/.ssh/</li>
 <li>私钥: ~/.ssh/id_rsa</li>
 <li>公钥: ~/.ssh/id_rsa.pub</li>
-</ul>
-<h1 id="使用Xshell生成密钥公钥"><a href="#使用Xshell生成密钥公钥" class="headerlink" title="使用Xshell生成密钥公钥"></a>使用Xshell生成密钥公钥</h1><p>依次点击菜单栏中的【工具】【新建用户密钥生成向导】<br>【密钥类型】选择<code>RSA</code>【长度】<code>2048</code>可以自定义<br>然后一路【下一步】【保存为文件】</p>
-<p>生成私钥<br>工具 -&gt; 用户秘钥管理者<br>选中秘钥类型 -&gt; 导出<br>至此，生成了一对 公钥-私钥 对。<br>id_rsa_2048.pub #公钥<br>id_rsa_2048 #私钥</p>
-<h1 id="配置Xshell使用密钥登陆"><a href="#配置Xshell使用密钥登陆" class="headerlink" title="配置Xshell使用密钥登陆"></a>配置Xshell使用密钥登陆</h1><p>创建目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir .ssh</span><br><span class="line">chmod 700 .ssh</span><br></pre></td></tr></table></figure>
-
-<p>创建文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line">touch authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p>写入公钥内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p>把<code>id_rsa_2048.pub</code>中的文本内容全部复制到<code>/.ssh/authorized_keys</code></p>
-<p>修改SSH配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-
-<p>启用密钥验证</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">AuthorsizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p><code>AuthorsizedKeysFile .ssh/authorized_keys</code>是指定公钥数据库文件</p>
-<p>重启SSH服务生效</p>
-<p>RHEL/CentOS系统</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
-
-<p>ubuntu系统</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-
-<p>debian系统</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
-
-<p>切换到使用密钥登陆，如果成功了就可以禁止密码登陆了</p>
-<p>PasswordAuthentication no</p>
-<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><p>PermitRootLogin yes</p>
-<p><code>yes</code>允许用户root登陆<code>no</code>禁用</p>
-<p>Port 22</p>
-<p>默认22端口，可自定义修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
-
-<p>切换到root用户权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
-
-<p>设置root用户的密码</p>
-<p>关于putty的登陆设置，由于putty与ssh2的key文件不同，所以要用puttygen.exe转换一下。</p>
-<p>运行puttygen.exe，选择Conversions-&gt;Import key，选择privateKey文件，</p>
-<p>注意这里要选privatekey文件，而不是前面用的publickey文件，<br>最后选择”save private key”将密钥保存为.ppk文件，这个就是putty需要的key文件。</p>
-<p>运行putty，填写完session信息后，到connection-&gt;ssh-&gt;auth中指定好privatekey文件即可，<br>当然也可以在connection-&gt;data中设置上auto-login username</p>
-<p><code>PermitRootLogin yes</code>使用root登陆提示如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">login as: root</span><br><span class="line">Authenticating with public key <span class="string">"imported-openssh-key"</span></span><br><span class="line">Please login as the user <span class="string">"ubuntu"</span> rather than the user <span class="string">"root"</span>.</span><br></pre></td></tr></table></figure>
-
-<p>需要在authorized_keys中有一个命令，如下所示。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /root/.ssh/authorized_keys </span><br><span class="line">no-port-forwarding,no-agent-forwarding,no-X11-forwarding,<span class="built_in">command</span>=<span class="string">"echo 'Please login as the user \"ubuntu\" rather than the user \"root\".';echo;sleep 10"</span></span><br></pre></td></tr></table></figure>
-
-<p>删除此行，并保留它后面的ssh-rsa和密钥。</p>
-<p>保存文件，然后重试。</p>
-
+</ul><h1 id="使用Xshell生成密钥公钥"><a href="#使用Xshell生成密钥公钥" class="headerlink" title="使用Xshell生成密钥公钥"></a>使用Xshell生成密钥公钥</h1><p>依次点击菜单栏中的【工具】【新建用户密钥生成向导】<br>【密钥类型】选择<code>RSA</code>【长度】<code>2048</code>可以自定义<br>然后一路【下一步】【保存为文件】</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/SSH-Xshell-password-keys.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1305,19 +1061,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>将 OneDrive 映射为本地网络驱动器<br>登录到 <a href="https://onedrive.live.com/" target="_blank" rel="noopener">OneDrive</a> 在浏览器地址栏即可获取账户 ID。类似：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://onedrive.live.com/?id=root&amp;cid=xxxxxxxxxxx</span><br></pre></td></tr></table></figure>
-
-<p>其中xxxxxxxxxxx为Onedrive账户ID</p>
-<p><img src="/images/onedriveid.png" alt></p>
-<p>打开<code>此电脑</code> <code>计算机</code> <code>映射网络驱动器</code></p>
-<p><img src="/images/windows-map-a-network-drive.png" alt></p>
-<p><code>映射网络驱动器</code>在<code>文件夹</code>输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://d.docs.live.net/xxxxxxxxxxx</span><br></pre></td></tr></table></figure>
-
-<p>按提示输入账号密码即能完成映射网络驱动器</p>
-<p><img src="/images/windows-map-a-network-drive1.png" alt></p>
-
+          <p>将 OneDrive 映射为本地网络驱动器<br>登录到 <a href="https://onedrive.live.com/" target="_blank" rel="noopener">OneDrive</a> 在浏览器地址栏即可获取账户 ID。类似：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://onedrive.live.com/?id=root&amp;cid=xxxxxxxxxxx</span><br></pre></td></tr></table></figure><p>其中xxxxxxxxxxx为Onedrive账户ID</p><p><img src="/images/onedriveid.png" alt></p><p>打开<code>此电脑</code> <code>计算机</code> <code>映射网络驱动器</code></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Windows-Map-a-network-drive.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1385,45 +1138,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在刚接触Linux时最怕的就是SSH远程登录Linux VPS编译安装程序时（比如安装lnmp）网络突然断开，或者其他情况导致不得不与远程SSH服务器链接断开，远程执行的命令也被迫停止，只能重新连接，重新运行。</p>
-<p>一、screen命令是什么？</p>
-<p>Screen是一个可以在多个进程之间多路复用一个物理终端的全屏窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
-<p>二、如何安装screen命令？</p>
-<p>除部分精简的系统或者定制的系统大部分都安装了screen命令，如果没有安装，<br>CentOS系统可以执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install screen</span><br></pre></td></tr></table></figure>
-
-<p>Debian/Ubuntu系统执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install screen</span><br></pre></td></tr></table></figure>
-
-<p>三、screen命令使用方法？</p>
-<p>1、常用的使用方法</p>
-<p>用来解决文章开始我们遇到的问题，比如在安装lnmp时。</p>
-<p>1.1 创建screen会话</p>
-<p>可以先执行：screen -S lnmp ，screen就会创建一个名字为lnmp的会话。 VPS侦探 <a href="https://www.vpser.net/" target="_blank" rel="noopener">https://www.vpser.net/</a></p>
-<p>1.2 暂时离开，保留screen会话中的任务或程序</p>
-<p>当需要临时离开时（会话中的程序不会关闭，仍在运行）可以用快捷键Ctrl+a d(即按住Ctrl，依次再按a,d)</p>
-<p>1.3 恢复screen会话</p>
-<p>当回来时可以再执行执行：<code>screen -r lnmp</code> 即可恢复到离开前创建的lnmp会话的工作界面。如果忘记了，或者当时没有指定会话名，可以执行：screen -ls screen会列出当前存在的会话列表，如下图：</p>
-<p>11791.lnmp即为刚才的screen创建的lnmp会话，目前已经暂时退出了lnmp会话，所以状态为Detached，当使用<code>screen -r lnmp</code>后状态就会变为Attached，11791是这个screen的会话的进程ID，恢复会话时也可以使用：screen -r 11791</p>
-<p>1.4 关闭screen的会话</p>
-<p>执行：<code>exit</code> 会提示：[screen is terminating]，表示已经成功退出screen会话。VPS侦探 <a href="https://www.vpser.net/" target="_blank" rel="noopener">https://www.vpser.net/</a></p>
-<p>2、远程演示<br>首先演示者先在服务器上执行 screen -S test 创建一个screen会话，观众可以链接到远程服务器上执行screen -x test 观众屏幕上就会出现和演示者同步。</p>
-<p>3、常用快捷键</p>
-<ul>
-<li><code>Ctrl+a c</code> ：在当前screen会话中创建窗口</li>
-<li><code>Ctrl+a w</code> ：窗口列表</li>
-<li>`Ctrl+a n ：下一个窗口</li>
-<li><code>Ctrl+a p</code> ：上一个窗口</li>
-<li><code>Ctrl+a 0-9</code> ：在第0个窗口和第9个窗口之间切换</li>
-</ul>
-<p>执行：<code>screen -S lnmp</code> 创建screen会话。</p>
-<ul>
-<li>如果网络掉线，可以重新连接SSH，再执行 <code>screen -r lnmp</code> 就会看到你的lnmp安装进程。</li>
-<li>有时候screen异常退出可能会提示状态为Attached，可以执行：<code>screen -D -r lnmp</code> 进行恢复。</li>
-<li>有时候可能会创建了多个同名的screen会话，可以执行：<code>screen -ls</code> 查看对应会话的session id，然后使用<code>screen -D -r sessionid</code> 进行恢复。</li>
-</ul>
-<p>转载自： <a href="https://www.vpser.net/manage/screen.html" target="_blank" rel="noopener">https://www.vpser.net/manage/screen.html</a></p>
-
+          <p>在刚接触Linux时最怕的就是SSH远程登录Linux VPS编译安装程序时（比如安装lnmp）网络突然断开，或者其他情况导致不得不与远程SSH服务器链接断开，远程执行的命令也被迫停止，只能重新连接，重新运行。</p><p>一、screen命令是什么？</p><p>Screen是一个可以在多个进程之间多路复用一个物理终端的全屏窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/screen.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

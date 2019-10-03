@@ -309,24 +309,15 @@
 
       
           <p><code>Node.js</code>是一个基于Chrome V8 JavaScript引擎构建的平台.Nodejs可用于轻松构建快速，可扩展的网络应用程序。最新版本node.js ppa由其官方网站维护。我们可以将这个PPA添加到Debian 9（Stretch） Debian 8（Jessie）和Debian 7（Wheezy）系统中。这篇我抄来的文章可以帮助你在Debian 9/8/7系统上安装最新的Nodejs和NPM。</p>
-<h1 id="添加Node-js-PPA"><a href="#添加Node-js-PPA" class="headerlink" title="添加Node.js PPA"></a>添加Node.js PPA</h1><p>首先，您需要在我们的系统中由Nodejs官方网站提供node.js PPA。如果尚未安装，我们还需要安装python-software-properties软件包。您可以选择安装最新的Node.js版本或LTS版本。</p>
-<p>最新版安装命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_9.x | sudo bash</span><br></pre></td></tr></table></figure>
-
-<p>安装LTS长期维护版：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install curl python-software-properties</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_8.x |  bash</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装Node-js和NPM"><a href="#安装Node-js和NPM" class="headerlink" title="安装Node.js和NPM"></a>安装Node.js和NPM</h1><p>添加所需的PPA文件后，可以安装Nodejs包。NPM也将与node.js一起安装。该命令还会在您的系统上安装许多其他相关软件包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install nodejs</span><br></pre></td></tr></table></figure>
-
-<h1 id="检查Node-js和NPM版本"><a href="#检查Node-js和NPM版本" class="headerlink" title="检查Node.js和NPM版本"></a>检查Node.js和NPM版本</h1><p>安装node.js后，验证并检查安装的版本。你可以在node.js 官方网站上找到关于当前版本的更多细节。</p>
-<p>检查Node.js版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p>检查npm版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Debian-Nodejs-NPM.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -396,323 +387,16 @@
       
           <blockquote>
 <p>BaiduPCS-Go项目地址(<a href="https://github.com/iikira/BaiduPCS-Go" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go</a>)</p>
-</blockquote>
-<h3 id="Android运行BaiduPCS-Go"><a href="#Android运行BaiduPCS-Go" class="headerlink" title="Android运行BaiduPCS-Go"></a><a href="https://github.com/iikira/BaiduPCS-Go/wiki/Android-%E8%BF%90%E8%A1%8C%E6%9C%AC%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E5%8F%82%E8%80%83%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">Android运行BaiduPCS-Go</a></h3><p><a href="https://termux.com/" target="_blank" rel="noopener">下载Termux</a> 安装并运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
-
-<p>始终允许Termux获取存储权限</p>
-<h4 id="安装方式一-通过软件源安装"><a href="#安装方式一-通过软件源安装" class="headerlink" title="安装方式一: 通过软件源安装"></a>安装方式一: 通过软件源安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb [trusted=yes] http://termux.iikira.com stable main"</span> &gt;&gt; /data/data/com.termux/files/usr/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p>添加更新软件源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
-
-<p>安装程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install baidupcs-go</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装方式二-手动安装"><a href="#安装方式二-手动安装" class="headerlink" title="安装方式二: 手动安装"></a>安装方式二: 手动安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade -y</span><br><span class="line">wget -O 1.zip https://github.com/iikira/BaiduPCS-Go/releases/download/v3.3.3/BaiduPCS-Go-v3.3.3-android-21-arm64.zip</span><br><span class="line">unzip 1.zip &amp;&amp; rm 1.zip</span><br><span class="line">mv BaiduPCS-Go-v3.3.3-android-21-arm64 BaiduPCS-Go</span><br><span class="line"><span class="built_in">cd</span> ~/BaiduPCS-Go &amp;&amp; ./BaiduPCS-Go</span><br></pre></td></tr></table></figure>
-
-<p>按提示完成登陆</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go login</span><br></pre></td></tr></table></figure>
-
-<p>配置文件所在的目录为家目录的情况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config <span class="built_in">set</span> -max_parallel 500</span><br></pre></td></tr></table></figure>
-
-<p>下载最大并发量建议值: 50~500, 太低下载速度提升不明显甚至速度会变为0, 太高可能会导致程序出错被操作系统结束掉</p>
-<p>更新程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install baidupcs-go</span><br></pre></td></tr></table></figure>
-
-<p>卸载程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt remove baidupcs-go</span><br></pre></td></tr></table></figure>
-
-<h1 id="BaiduPCS-Go-百度网盘客户端"><a href="#BaiduPCS-Go-百度网盘客户端" class="headerlink" title="BaiduPCS-Go 百度网盘客户端"></a>BaiduPCS-Go 百度网盘客户端</h1><p>仿 Linux shell 文件处理命令的百度网盘命令行客户端.</p>
-<p>This project was largely inspired by <a href="https://github.com/GangZhuo/BaiduPCS" target="_blank" rel="noopener">GangZhuo/BaiduPCS</a></p>
-<h2 id="解决错误代码4-No-permission-to-do-this-operation"><a href="#解决错误代码4-No-permission-to-do-this-operation" class="headerlink" title="解决错误代码4, No permission to do this operation"></a>解决错误代码4, No permission to do this operation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -appid 266719</span><br></pre></td></tr></table></figure>
-
-<p>详见讨论 <a href="https://github.com/iikira/BaiduPCS-Go/issues/387" target="_blank" rel="noopener">#387</a></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>此文档只针对于最新的commit, 可能不适用于已发布的最新版本.</p>
-<h1 id="特色"><a href="#特色" class="headerlink" title="特色"></a>特色</h1><p>多平台支持, 支持 Windows, macOS, linux, 移动设备等.</p>
-<p>百度帐号多用户支持;</p>
-<p>通配符匹配网盘路径和 Tab 自动补齐命令和路径, <a href="https://baike.baidu.com/item/通配符" target="_blank" rel="noopener">通配符_百度百科</a>;</p>
-<p><a href="#下载文件目录">下载</a>网盘内文件, 支持多个文件或目录下载, 支持断点续传和单文件并行下载;</p>
-<p><a href="#上传文件目录">上传</a>本地文件, 支持上传大文件(&gt;2GB), 支持多个文件或目录上传;</p>
-<p><a href="#离线下载">离线下载</a>, 支持http/https/ftp/电驴/磁力链协议.</p>
-<h1 id="编译-交叉编译-说明"><a href="#编译-交叉编译-说明" class="headerlink" title="编译/交叉编译 说明"></a>编译/交叉编译 说明</h1><p>参见 <a href="https://github.com/iikira/BaiduPCS-Go/wiki/编译-交叉编译帮助" target="_blank" rel="noopener">编译/交叉编译帮助</a></p>
-<h1 id="下载-运行-说明"><a href="#下载-运行-说明" class="headerlink" title="下载/运行 说明"></a>下载/运行 说明</h1><p>Go语言程序, 可直接在<a href="https://github.com/iikira/BaiduPCS-Go/releases" target="_blank" rel="noopener">发布页</a>下载使用.</p>
-<p>如果程序运行时输出乱码, 请检查下终端的编码方式是否为 <code>UTF-8</code>.</p>
-<p>使用本程序之前, 建议学习一些 linux 基础知识 和 基础命令.</p>
-<p>如果未带任何参数运行程序, 程序将会进入仿Linux shell系统用户界面的cli交互模式, 可直接运行相关命令.</p>
-<p>cli交互模式下, 光标所在行的前缀应为 <code>BaiduPCS-Go &gt;</code>, 如果登录了百度帐号则格式为 <code>BaiduPCS-Go:&lt;工作目录&gt; &lt;百度ID&gt;$</code></p>
-<p>程序会提供相关命令的使用说明.</p>
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>程序应在 命令提示符 (Command Prompt) 或 PowerShell 中运行, 在 mintty (例如: GitBash) 可能会有显示问题.</p>
-<p>也可直接双击程序运行, 具体使用方法请参见 <a href="#命令列表及说明">命令列表及说明</a> 和 <a href="#初级使用教程">初级使用教程</a>.</p>
-<h2 id="Linux-macOS"><a href="#Linux-macOS" class="headerlink" title="Linux / macOS"></a>Linux / macOS</h2><p>程序应在 终端 (Terminal) 运行.</p>
-<p>具体使用方法请参见 <a href="#命令列表及说明">命令列表及说明</a> 和 <a href="#初级使用教程">初级使用教程</a>.</p>
-<h2 id="Android-iOS"><a href="#Android-iOS" class="headerlink" title="Android / iOS"></a>Android / iOS</h2><blockquote>
-<p>Android / iOS 移动设备操作比较麻烦, 不建议在移动设备上使用本程序.</p>
-</blockquote>
-<p>安卓, 建议使用 <a href="https://termux.com" target="_blank" rel="noopener">Termux</a> 或 <a href="https://github.com/NeoTerm/NeoTerm" target="_blank" rel="noopener">NeoTerm</a> 或 终端模拟器, 以提供终端环境.</p>
-<p>示例: <a href="https://github.com/iikira/BaiduPCS-Go/wiki/Android-运行本项目程序参考示例" target="_blank" rel="noopener">Android 运行本项目程序参考示例</a>, 有兴趣的可以参考一下.</p>
-<p>苹果iOS, 需要越狱, 在 Cydia 搜索下载并安装 MobileTerminal, 或者其他提供终端环境的软件.</p>
-<p>示例: <a href="https://github.com/iikira/BaiduPCS-Go/wiki/iOS-运行本项目程序参考示例" target="_blank" rel="noopener">iOS 运行本项目程序参考示例</a>, 有兴趣的可以参考一下.</p>
-<p>具体使用方法请参见 <a href="#命令列表及说明">命令列表及说明</a> 和 <a href="#初级使用教程">初级使用教程</a>.</p>
-<h1 id="命令列表及说明"><a href="#命令列表及说明" class="headerlink" title="命令列表及说明"></a>命令列表及说明</h1><h2 id="注意-1"><a href="#注意-1" class="headerlink" title="注意 ! ! !"></a>注意 ! ! !</h2><p>命令的前缀 <code>BaiduPCS-Go</code> 为指向程序运行的全路径名 (ARGv 的第一个参数)</p>
-<p>直接运行程序时, 未带任何其他参数, 则程序进入cli交互模式, 运行以下命令时, 要把命令的前缀 <code>BaiduPCS-Go</code> 去掉!</p>
-<p>cli交互模式已支持按tab键自动补全命令和路径.</p>
-<h2 id="检测程序更新"><a href="#检测程序更新" class="headerlink" title="检测程序更新"></a>检测程序更新</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go update</span><br></pre></td></tr></table></figure>
-
-<h2 id="登录百度帐号"><a href="#登录百度帐号" class="headerlink" title="登录百度帐号"></a>登录百度帐号</h2><h3 id="常规登录百度帐号"><a href="#常规登录百度帐号" class="headerlink" title="常规登录百度帐号"></a>常规登录百度帐号</h3><p>支持在线验证绑定的手机号或邮箱,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go login</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用百度-BDUSS-来登录百度帐号"><a href="#使用百度-BDUSS-来登录百度帐号" class="headerlink" title="使用百度 BDUSS 来登录百度帐号"></a>使用百度 BDUSS 来登录百度帐号</h3><p><a href="https://github.com/iikira/BaiduPCS-Go/wiki/关于-获取百度-BDUSS" target="_blank" rel="noopener">关于 获取百度 BDUSS</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go login -bduss=&lt;BDUSS&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go login -bduss=1234567</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go login</span><br><span class="line">请输入百度用户名(手机号/邮箱/用户名), 回车键提交 &gt; 1234567</span><br></pre></td></tr></table></figure>
-
-<h2 id="列出帐号列表"><a href="#列出帐号列表" class="headerlink" title="列出帐号列表"></a>列出帐号列表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go loglist</span><br></pre></td></tr></table></figure>
-
-<p>列出所有已登录的百度帐号</p>
-<h2 id="获取当前帐号"><a href="#获取当前帐号" class="headerlink" title="获取当前帐号"></a>获取当前帐号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go who</span><br></pre></td></tr></table></figure>
-
-<h2 id="切换百度帐号"><a href="#切换百度帐号" class="headerlink" title="切换百度帐号"></a>切换百度帐号</h2><p>切换已登录的百度帐号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go su &lt;uid&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go su</span><br><span class="line"></span><br><span class="line">请输入要切换帐号的 <span class="comment"># 值 &gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="退出百度帐号"><a href="#退出百度帐号" class="headerlink" title="退出百度帐号"></a>退出百度帐号</h2><p>退出当前登录的百度帐号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go <span class="built_in">logout</span></span><br></pre></td></tr></table></figure>
-
-<p>程序会进一步确认退出帐号, 防止误操作.</p>
-<h2 id="获取网盘配额"><a href="#获取网盘配额" class="headerlink" title="获取网盘配额"></a>获取网盘配额</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go quota</span><br></pre></td></tr></table></figure>
-
-<p>获取网盘的总储存空间, 和已使用的储存空间</p>
-<h2 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go <span class="built_in">cd</span> &lt;目录&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="切换工作目录后自动列出工作目录下的文件和目录"><a href="#切换工作目录后自动列出工作目录下的文件和目录" class="headerlink" title="切换工作目录后自动列出工作目录下的文件和目录"></a>切换工作目录后自动列出工作目录下的文件和目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go <span class="built_in">cd</span> -l &lt;目录&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换 /我的资源 工作目录</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">cd</span> /我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换 上级目录</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换 根目录</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">cd</span> /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换 /我的资源 工作目录, 并自动列出 /我的资源 下的文件和目录</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">cd</span> -l 我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用通配符</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">cd</span> /我的*</span><br></pre></td></tr></table></figure>
-
-<h2 id="输出工作目录"><a href="#输出工作目录" class="headerlink" title="输出工作目录"></a>输出工作目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="列出目录"><a href="#列出目录" class="headerlink" title="列出目录"></a>列出目录</h2><p>列出当前工作目录的文件和目录或指定目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go ls</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go ls &lt;目录&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-asc: 升序排序</span><br><span class="line">-desc: 降序排序</span><br><span class="line">-time: 根据时间排序</span><br><span class="line">-name: 根据文件名排序</span><br><span class="line">-size: 根据大小排序</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出 我的资源 内的文件和目录</span></span><br><span class="line">BaiduPCS-Go ls 我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绝对路径</span></span><br><span class="line">BaiduPCS-Go ls /我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 降序排序</span></span><br><span class="line">BaiduPCS-Go ls -desc 我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按文件大小降序排序</span></span><br><span class="line">BaiduPCS-Go ls -size -desc 我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用通配符</span></span><br><span class="line">BaiduPCS-Go ls /我的*</span><br></pre></td></tr></table></figure>
-
-<h2 id="列出目录树形图"><a href="#列出目录树形图" class="headerlink" title="列出目录树形图"></a>列出目录树形图</h2><p>列出当前工作目录的文件和目录或指定目录的树形图</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go tree &lt;目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认获取工作目录元信息</span></span><br><span class="line">BaiduPCS-Go tree</span><br></pre></td></tr></table></figure>
-
-<h2 id="获取文件-目录的元信息"><a href="#获取文件-目录的元信息" class="headerlink" title="获取文件/目录的元信息"></a>获取文件/目录的元信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go meta &lt;文件/目录1&gt; &lt;文件/目录2&gt; &lt;文件/目录3&gt; ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认获取工作目录元信息</span></span><br><span class="line">BaiduPCS-Go meta</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go meta 我的资源</span><br><span class="line">BaiduPCS-Go meta /</span><br></pre></td></tr></table></figure>
-
-<h2 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h2><p>按文件名搜索文件（不支持查找目录）。</p>
-<p>默认在当前工作目录搜索.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go search [-path=&lt;需要检索的目录&gt;] [-r] &lt;关键字&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-4"><a href="#例子-4" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索根目录的文件</span></span><br><span class="line">BaiduPCS-Go search -path=/ 关键字</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索当前工作目录的文件</span></span><br><span class="line">BaiduPCS-Go search 关键字</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归搜索当前工作目录的文件</span></span><br><span class="line">BaiduPCS-Go search -r 关键字</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载文件-目录"><a href="#下载文件-目录" class="headerlink" title="下载文件/目录"></a>下载文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go download &lt;网盘文件或目录的路径1&gt; &lt;文件或目录2&gt; &lt;文件或目录3&gt; ...</span><br><span class="line">BaiduPCS-Go d &lt;网盘文件或目录的路径1&gt; &lt;文件或目录2&gt; &lt;文件或目录3&gt; ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="可选参数-1"><a href="#可选参数-1" class="headerlink" title="可选参数"></a>可选参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--<span class="built_in">test</span>          测试下载, 此操作不会保存文件到本地</span><br><span class="line">--ow            overwrite, 覆盖已存在的文件</span><br><span class="line">--status        输出所有线程的工作状态</span><br><span class="line">--save          将下载的文件直接保存到当前工作目录</span><br><span class="line">--saveto value  将下载的文件直接保存到指定的目录</span><br><span class="line">-x              为文件加上执行权限, (windows系统无效)</span><br><span class="line">--share         以分享文件的方式获取下载链接来下载</span><br><span class="line">--locate        以获取直链的方式来下载</span><br><span class="line">-p value        指定下载线程数</span><br></pre></td></tr></table></figure>
-
-<p>支持多个文件或目录的下载.</p>
-<p>下载的文件默认保存到 <strong>程序所在目录</strong> 的 download/ 目录, 支持设置指定目录, 重名的文件会自动跳过!</p>
-<p><a href="https://github.com/iikira/BaiduPCS-Go/wiki/%E5%85%B3%E4%BA%8E%E4%B8%8B%E8%BD%BD%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">关于下载的简单说明</a></p>
-<h4 id="例子-5"><a href="#例子-5" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置保存目录, 保存到 D:\Downloads</span></span><br><span class="line"><span class="comment"># 注意区别反斜杠 "\" 和 斜杠 "/" !!!</span></span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -savedir D:/Downloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载 /我的资源/1.mp4</span></span><br><span class="line">BaiduPCS-Go d /我的资源/1.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载 /我的资源 整个目录!!</span></span><br><span class="line">BaiduPCS-Go d /我的资源</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载网盘内的全部文件!!</span></span><br><span class="line">BaiduPCS-Go d /</span><br><span class="line">BaiduPCS-Go d *</span><br></pre></td></tr></table></figure>
-
-<h2 id="上传文件-目录"><a href="#上传文件-目录" class="headerlink" title="上传文件/目录"></a>上传文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go upload &lt;本地文件/目录的路径1&gt; &lt;文件/目录2&gt; &lt;文件/目录3&gt; ... &lt;目标目录&gt;</span><br><span class="line">BaiduPCS-Go u &lt;本地文件/目录的路径1&gt; &lt;文件/目录2&gt; &lt;文件/目录3&gt; ... &lt;目标目录&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>上传默认采用分片上传的方式, 上传的文件将会保存到, &lt;目标目录&gt;.</p>
-</li>
-<li><p>遇到同名文件将会自动覆盖!!</p>
-</li>
-<li><p>当上传的文件名和网盘的目录名称相同时, 不会覆盖目录, 防止丢失数据.</p>
-</li>
-</ul>
-<h4 id="注意-2"><a href="#注意-2" class="headerlink" title="注意:"></a>注意:</h4><ul>
-<li>分片上传之后, 服务器可能会记录到错误的文件md5, 可使用 fixmd5 命令尝试修复文件的MD5值, 修复md5不一定能成功, 但文件的完整性是没问题的.</li>
-</ul>
-<p>fixmd5 命令使用方法:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go fixmd5 -h</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>禁用分片上传可以保证服务器记录到正确的md5.</p>
-</li>
-<li><p>禁用分片上传时只能使用单线程上传, 指定的单个文件上传最大线程数将会无效.</p>
-</li>
-</ul>
-<h4 id="例子-6"><a href="#例子-6" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地的 C:\Users\Administrator\Desktop\1.mp4 上传到网盘 /视频 目录</span></span><br><span class="line"><span class="comment"># 注意区别反斜杠 "\" 和 斜杠 "/" !!!</span></span><br><span class="line">BaiduPCS-Go upload C:/Users/Administrator/Desktop/1.mp4 /视频</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地的 C:\Users\Administrator\Desktop\1.mp4 和 C:\Users\Administrator\Desktop\2.mp4 上传到网盘 /视频 目录</span></span><br><span class="line">BaiduPCS-Go upload C:/Users/Administrator/Desktop/1.mp4 C:/Users/Administrator/Desktop/2.mp4 /视频</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地的 C:\Users\Administrator\Desktop 整个目录上传到网盘 /视频 目录</span></span><br><span class="line">BaiduPCS-Go upload C:/Users/Administrator/Desktop /视频</span><br></pre></td></tr></table></figure>
-
-<h2 id="获取下载直链"><a href="#获取下载直链" class="headerlink" title="获取下载直链"></a>获取下载直链</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go locate &lt;文件1&gt; &lt;文件2&gt; ...</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意-3"><a href="#注意-3" class="headerlink" title="注意"></a>注意</h4><p>若该功能无法正常使用, 提示<code>user is not authorized, hitcode:101</code>, 尝试更换 User-Agent 为 <code>netdisk;8.3.1;android-android</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -user_agent <span class="string">"netdisk;8.3.1;android-android"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="手动秒传文件"><a href="#手动秒传文件" class="headerlink" title="手动秒传文件"></a>手动秒传文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go rapidupload -length=&lt;文件的大小&gt; -md5=&lt;文件的md5值&gt; -slicemd5=&lt;文件前256KB切片的md5值(可选)&gt; -crc32=&lt;文件的crc32值(可选)&gt; &lt;保存的网盘路径, 需包含文件名&gt;</span><br><span class="line">BaiduPCS-Go ru -length=&lt;文件的大小&gt; -md5=&lt;文件的md5值&gt; -slicemd5=&lt;文件前256KB切片的md5值(可选)&gt; -crc32=&lt;文件的crc32值(可选)&gt; &lt;保存的网盘路径, 需包含文件名&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意: 使用此功能秒传文件, 前提是知道文件的大小, md5, 前256KB切片的 md5 (可选), crc32 (可选), 且百度网盘中存在一模一样的文件.</p>
-<p>上传的文件将会保存到网盘的目标目录.</p>
-<p>遇到同名文件将会自动覆盖! </p>
-<p>可能无法秒传 20GB 以上的文件!!</p>
-<h4 id="例子-7"><a href="#例子-7" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果秒传成功, 则保存到网盘路径 /test</span></span><br><span class="line">BaiduPCS-Go rapidupload -length=56276137 -md5=fbe082d80e90f90f0fb1f94adbbcfa7f -slicemd5=38c6a75b0ec4499271d4ea38a667ab61 -crc32=314332359 /<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="修复文件MD5"><a href="#修复文件MD5" class="headerlink" title="修复文件MD5"></a>修复文件MD5</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go fixmd5 &lt;文件1&gt; &lt;文件2&gt; &lt;文件3&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>尝试修复文件的MD5值, 以便于校验文件的完整性和导出文件.</p>
-<p>使用分片上传文件, 当文件分片数大于1时, 百度网盘服务端最终计算所得的md5值和本地的不一致, 这可能是百度网盘的bug.</p>
-<p>不过把上传的文件下载到本地后，对比md5值是匹配的, 也就是文件在传输中没有发生损坏.</p>
-<p>对于MD5值可能有误的文件, 程序会在获取文件的元信息时, 给出MD5值 “可能不正确” 的提示, 表示此文件可以尝试进行MD5值修复.</p>
-<p>修复文件MD5不一定能成功, 原因可能是服务器未刷新, 可过几天后再尝试.</p>
-<p>修复文件MD5的原理为秒传文件, 即修复文件MD5成功后, 文件的<strong>创建日期, 修改日期, fs_id, 版本历史等信息</strong>将会被覆盖, 修复的MD5值将覆盖原先的MD5值, 但不影响文件的完整性.</p>
-<p>注意: 无法修复 <strong>20GB</strong> 以上文件的 md5!!</p>
-<h4 id="例子-8"><a href="#例子-8" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修复 /我的资源/1.mp4 的 MD5 值</span></span><br><span class="line">BaiduPCS-Go fixmd5 /我的资源/1.mp4</span><br></pre></td></tr></table></figure>
-
-<h2 id="获取本地文件的秒传信息"><a href="#获取本地文件的秒传信息" class="headerlink" title="获取本地文件的秒传信息"></a>获取本地文件的秒传信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go sumfile &lt;本地文件的路径&gt;</span><br><span class="line">BaiduPCS-Go sf &lt;本地文件的路径&gt;</span><br></pre></td></tr></table></figure>
-
-<p>获取本地文件的大小, md5, 前256KB切片的 md5, crc32, 可用于秒传文件.</p>
-<h4 id="例子-9"><a href="#例子-9" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取 C:\Users\Administrator\Desktop\1.mp4 的秒传信息</span></span><br><span class="line">BaiduPCS-Go sumfile C:/Users/Administrator/Desktop/1.mp4</span><br></pre></td></tr></table></figure>
-
-<h2 id="导出文件-目录"><a href="#导出文件-目录" class="headerlink" title="导出文件/目录"></a>导出文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go <span class="built_in">export</span> &lt;文件/目录1&gt; &lt;文件/目录2&gt; ...</span><br><span class="line">BaiduPCS-Go ep &lt;文件/目录1&gt; &lt;文件/目录2&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>导出网盘内的文件或目录, 原理为秒传文件, 此操作会生成导出文件或目录的命令.</p>
-<h4 id="注意-4"><a href="#注意-4" class="headerlink" title="注意"></a>注意</h4><p><strong>无法导出 20GB 以上的文件!!</strong></p>
-<p><strong>无法导出文件的版本历史等数据!!</strong></p>
-<p>并不是所有的文件都能导出成功, 程序会列出无法导出的文件列表</p>
-<h4 id="例子-10"><a href="#例子-10" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导出当前工作目录:</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">export</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出所有文件和目录, 并设置新的根目录为 /root</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">export</span> -root=/root /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出 /我的资源</span></span><br><span class="line">BaiduPCS-Go <span class="built_in">export</span> /我的资源</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go mkdir &lt;目录&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-11"><a href="#例子-11" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go mkdir 123</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件-目录"><a href="#删除文件-目录" class="headerlink" title="删除文件/目录"></a>删除文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go rm &lt;网盘文件或目录的路径1&gt; &lt;文件或目录2&gt; &lt;文件或目录3&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>注意: 删除多个文件和目录时, 请确保每一个文件和目录都存在, 否则删除操作会失败.</p>
-<p>被删除的文件或目录可在网盘文件回收站找回.</p>
-<h4 id="例子-12"><a href="#例子-12" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除 /我的资源/1.mp4</span></span><br><span class="line">BaiduPCS-Go rm /我的资源/1.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 /我的资源/1.mp4 和 /我的资源/2.mp4</span></span><br><span class="line">BaiduPCS-Go rm /我的资源/1.mp4 /我的资源/2.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 /我的资源 内的所有文件和目录, 但不删除该目录</span></span><br><span class="line">BaiduPCS-Go rm /我的资源/*</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 /我的资源 整个目录 !!</span></span><br><span class="line">BaiduPCS-Go rm /我的资源</span><br></pre></td></tr></table></figure>
-
-<h2 id="拷贝文件-目录"><a href="#拷贝文件-目录" class="headerlink" title="拷贝文件/目录"></a>拷贝文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go cp &lt;文件/目录&gt; &lt;目标 文件/目录&gt;</span><br><span class="line">BaiduPCS-Go cp &lt;文件/目录1&gt; &lt;文件/目录2&gt; &lt;文件/目录3&gt; ... &lt;目标目录&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意: 拷贝多个文件和目录时, 请确保每一个文件和目录都存在, 否则拷贝操作会失败.</p>
-<h4 id="例子-13"><a href="#例子-13" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 /我的资源/1.mp4 复制到 根目录 /</span></span><br><span class="line">BaiduPCS-Go cp /我的资源/1.mp4 /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 /我的资源/1.mp4 和 /我的资源/2.mp4 复制到 根目录 /</span></span><br><span class="line">BaiduPCS-Go cp /我的资源/1.mp4 /我的资源/2.mp4 /</span><br></pre></td></tr></table></figure>
-
-<h2 id="移动-重命名文件-目录"><a href="#移动-重命名文件-目录" class="headerlink" title="移动/重命名文件/目录"></a>移动/重命名文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移动:</span></span><br><span class="line">BaiduPCS-Go mv &lt;文件/目录1&gt; &lt;文件/目录2&gt; &lt;文件/目录3&gt; ... &lt;目标目录&gt;</span><br><span class="line"><span class="comment"># 重命名:</span></span><br><span class="line">BaiduPCS-Go mv &lt;文件/目录&gt; &lt;重命名的文件/目录&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意: 移动多个文件和目录时, 请确保每一个文件和目录都存在, 否则移动操作会失败.</p>
-<h4 id="例子-14"><a href="#例子-14" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 /我的资源/1.mp4 移动到 根目录 /</span></span><br><span class="line">BaiduPCS-Go mv /我的资源/1.mp4 /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 /我的资源/1.mp4 重命名为 /我的资源/3.mp4</span></span><br><span class="line">BaiduPCS-Go mv /我的资源/1.mp4 /我的资源/3.mp4</span><br></pre></td></tr></table></figure>
-
-<h2 id="分享文件-目录"><a href="#分享文件-目录" class="headerlink" title="分享文件/目录"></a>分享文件/目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go share</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置分享文件-目录"><a href="#设置分享文件-目录" class="headerlink" title="设置分享文件/目录"></a>设置分享文件/目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go share <span class="built_in">set</span> &lt;文件/目录1&gt; &lt;文件/目录2&gt; ...</span><br><span class="line">BaiduPCS-Go share s &lt;文件/目录1&gt; &lt;文件/目录2&gt; ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="列出已分享文件-目录"><a href="#列出已分享文件-目录" class="headerlink" title="列出已分享文件/目录"></a>列出已分享文件/目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go share list</span><br><span class="line">BaiduPCS-Go share l</span><br></pre></td></tr></table></figure>
-
-<h3 id="取消分享文件-目录"><a href="#取消分享文件-目录" class="headerlink" title="取消分享文件/目录"></a>取消分享文件/目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go share cancel &lt;shareid_1&gt; &lt;shareid_2&gt; ...</span><br><span class="line">BaiduPCS-Go share c &lt;shareid_1&gt; &lt;shareid_2&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>目前只支持通过分享id (shareid) 来取消分享.</p>
-<h2 id="离线下载"><a href="#离线下载" class="headerlink" title="离线下载"></a>离线下载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl</span><br><span class="line">BaiduPCS-Go clouddl</span><br><span class="line">BaiduPCS-Go od</span><br></pre></td></tr></table></figure>
-
-<p>离线下载支持http/https/ftp/电驴/磁力链协议</p>
-<p>离线下载同时进行的任务数量有限, 超出限制的部分将无法添加.</p>
-<h3 id="添加离线下载任务"><a href="#添加离线下载任务" class="headerlink" title="添加离线下载任务"></a>添加离线下载任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl add -path=&lt;离线下载文件保存的路径&gt; 资源地址1 地址2 ...</span><br></pre></td></tr></table></figure>
-
-<p>添加任务成功之后, 返回离线下载的任务ID.</p>
-<h3 id="精确查询离线下载任务"><a href="#精确查询离线下载任务" class="headerlink" title="精确查询离线下载任务"></a>精确查询离线下载任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl query 任务ID1 任务ID2 ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="查询离线下载任务列表"><a href="#查询离线下载任务列表" class="headerlink" title="查询离线下载任务列表"></a>查询离线下载任务列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl list</span><br></pre></td></tr></table></figure>
-
-<h3 id="取消离线下载任务"><a href="#取消离线下载任务" class="headerlink" title="取消离线下载任务"></a>取消离线下载任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl cancel 任务ID1 任务ID2 ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除离线下载任务"><a href="#删除离线下载任务" class="headerlink" title="删除离线下载任务"></a>删除离线下载任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go offlinedl delete 任务ID1 任务ID2 ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空离线下载任务记录, 程序不会进行二次确认, 谨慎操作!!!</span></span><br><span class="line">BaiduPCS-Go offlinedl delete -all</span><br></pre></td></tr></table></figure>
-
-<h4 id="例子-15"><a href="#例子-15" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将百度和腾讯主页, 离线下载到根目录 /</span></span><br><span class="line">BaiduPCS-Go offlinedl add -path=/ http://baidu.com http://qq.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加磁力链接任务</span></span><br><span class="line">BaiduPCS-Go offlinedl add magnet:?xt=urn:btih:xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询任务ID为 12345 的离线下载任务状态</span></span><br><span class="line">BaiduPCS-Go offlinedl query 12345</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消任务ID为 12345 的离线下载任务</span></span><br><span class="line">BaiduPCS-Go offlinedl cancel 12345</span><br></pre></td></tr></table></figure>
-
-<h2 id="回收站"><a href="#回收站" class="headerlink" title="回收站"></a>回收站</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go recycle</span><br></pre></td></tr></table></figure>
-
-<p>回收站操作.</p>
-<h3 id="列出回收站文件列表"><a href="#列出回收站文件列表" class="headerlink" title="列出回收站文件列表"></a>列出回收站文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go recycle list</span><br></pre></td></tr></table></figure>
-
-<h4 id="可选参数-2"><a href="#可选参数-2" class="headerlink" title="可选参数"></a>可选参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--page value  回收站文件列表页数 (default: 1)</span><br></pre></td></tr></table></figure>
-
-<h3 id="还原回收站文件或目录"><a href="#还原回收站文件或目录" class="headerlink" title="还原回收站文件或目录"></a>还原回收站文件或目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go recycle restore &lt;fs_id 1&gt; &lt;fs_id 2&gt; &lt;fs_id 3&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>根据文件/目录的 fs_id, 还原回收站指定的文件或目录.</p>
-<h3 id="删除回收站文件或目录-清空回收站"><a href="#删除回收站文件或目录-清空回收站" class="headerlink" title="删除回收站文件或目录/清空回收站"></a>删除回收站文件或目录/清空回收站</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go recycle delete [-all] &lt;fs_id 1&gt; &lt;fs_id 2&gt; &lt;fs_id 3&gt; ...</span><br></pre></td></tr></table></figure>
-
-<p>根据文件/目录的 fs_id 或 -all 参数, 删除回收站指定的文件或目录或清空回收站.</p>
-<h4 id="例子-16"><a href="#例子-16" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从回收站还原两个文件, 其中的两个文件的 fs_id 分别为 1013792297798440 和 643596340463870</span></span><br><span class="line">BaiduPCS-Go recycle restore 1013792297798440 643596340463870</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从回收站删除两个文件, 其中的两个文件的 fs_id 分别为 1013792297798440 和 643596340463870</span></span><br><span class="line">BaiduPCS-Go recycle delete 1013792297798440 643596340463870</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空回收站, 程序不会进行二次确认, 谨慎操作!!!</span></span><br><span class="line">BaiduPCS-Go recycle delete -all</span><br></pre></td></tr></table></figure>
-
-<h2 id="显示程序环境变量"><a href="#显示程序环境变量" class="headerlink" title="显示程序环境变量"></a>显示程序环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go env</span><br></pre></td></tr></table></figure>
-
-<p>BAIDUPCS_GO_CONFIG_DIR: 配置文件路径,</p>
-<p>BAIDUPCS_GO_VERBOSE: 是否启用调试.</p>
-<h2 id="显示和修改程序配置项"><a href="#显示和修改程序配置项" class="headerlink" title="显示和修改程序配置项"></a>显示和修改程序配置项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示配置</span></span><br><span class="line">BaiduPCS-Go config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置配置</span></span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span></span><br></pre></td></tr></table></figure>
-
-<p>注意: v3.5 以后, 程序对配置文件储存路径的寻找做了调整, 配置文件所在的目录可以是程序本身所在目录, 也可以是家目录.</p>
-<p>配置文件所在的目录为家目录的情况:</p>
-<p>Windows: <code>%APPDATA%\BaiduPCS-Go</code></p>
-<p>其他操作系统: <code>$HOME/.config/BaiduPCS-Go</code></p>
-<p>可通过设置环境变量 <code>BAIDUPCS_GO_CONFIG_DIR</code>, 指定配置文件存放的目录.</p>
-<h4 id="例子-17"><a href="#例子-17" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有可以设置的值</span></span><br><span class="line">BaiduPCS-Go config -h</span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置下载文件的储存目录</span></span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -savedir D:/Downloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置下载最大并发量为 150</span></span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -max_parallel 150</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组合设置</span></span><br><span class="line">BaiduPCS-Go config <span class="built_in">set</span> -max_parallel 150 -savedir D:/Downloads</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试通配符"><a href="#测试通配符" class="headerlink" title="测试通配符"></a>测试通配符</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go match &lt;通配符表达式&gt;</span><br></pre></td></tr></table></figure>
-
-<p>测试通配符匹配路径, 操作成功则输出所有匹配到的路径.</p>
-<h4 id="例子-18"><a href="#例子-18" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 匹配 /我的资源 目录下所有mp4格式的文件</span></span><br><span class="line">BaiduPCS-Go match /我的资源/*.mp4</span><br></pre></td></tr></table></figure>
-
-<h2 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go tool</span><br></pre></td></tr></table></figure>
-
-<p>目前工具箱支持加解密文件等.</p>
-<h1 id="初级使用教程"><a href="#初级使用教程" class="headerlink" title="初级使用教程"></a>初级使用教程</h1><p>新手建议: <strong>双击运行程序</strong>, 进入仿 Linux shell 的 cli 交互模式;</p>
-<p>cli交互模式下, 光标所在行的前缀应为 <code>BaiduPCS-Go &gt;</code>, 如果登录了百度帐号则格式为 <code>BaiduPCS-Go:&lt;工作目录&gt; &lt;百度ID&gt;$</code></p>
-<p>以下例子的命令, 均为 cli交互模式下的命令</p>
-<p>运行命令的正确操作: <strong>输入命令, 按一下回车键 (键盘上的 Enter 键)</strong>, 程序会接收到命令并输出结果</p>
-<h2 id="1-查看程序使用说明"><a href="#1-查看程序使用说明" class="headerlink" title="1. 查看程序使用说明"></a>1. 查看程序使用说明</h2><p>cli交互模式下, 运行命令 <code>help</code></p>
-<h2 id="2-登录百度帐号-必做"><a href="#2-登录百度帐号-必做" class="headerlink" title="2. 登录百度帐号 (必做)"></a>2. 登录百度帐号 (必做)</h2><p>cli交互模式下, 运行命令 <code>login -h</code> (注意空格) 查看帮助</p>
-<p>cli交互模式下, 运行命令 <code>login</code> 程序将会提示你输入百度用户名(手机号/邮箱/用户名)和密码, 必要时还可以在线验证绑定的手机号或邮箱</p>
-<h2 id="3-切换网盘工作目录"><a href="#3-切换网盘工作目录" class="headerlink" title="3. 切换网盘工作目录"></a>3. 切换网盘工作目录</h2><p>cli交互模式下, 运行命令 <code>cd /我的资源</code> 将工作目录切换为 <code>/我的资源</code> (前提: 该目录存在于网盘)</p>
-<p>目录支持通配符匹配, 所以你也可以这样: 运行命令 <code>cd /我的*</code> 或 <code>cd /我的??</code> 将工作目录切换为 <code>/我的资源</code>, 简化输入.</p>
-<p>将工作目录切换为 <code>/我的资源</code> 成功后, 运行命令 <code>cd ..</code> 切换上级目录, 即将工作目录切换为 <code>/</code></p>
-<p>为什么要这样设计呢, 举个例子,</p>
-<p>假设 你要下载 <code>/我的资源</code> 内名为 <code>1.mp4</code> 和 <code>2.mp4</code> 两个文件, 而未切换工作目录, 你需要依次运行以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d /我的资源/1.mp4</span><br><span class="line">d /我的资源/2.mp4</span><br></pre></td></tr></table></figure>
-
-<p>而切换网盘工作目录之后, 依次运行以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /我的资源</span><br><span class="line">d 1.mp4</span><br><span class="line">d 2.mp4</span><br></pre></td></tr></table></figure>
-
-<p>这样就达到了简化输入的目的</p>
-<h2 id="4-网盘内列出文件和目录"><a href="#4-网盘内列出文件和目录" class="headerlink" title="4. 网盘内列出文件和目录"></a>4. 网盘内列出文件和目录</h2><p>cli交互模式下, 运行命令 <code>ls -h</code> (注意空格) 查看帮助</p>
-<p>cli交互模式下, 运行命令 <code>ls</code> 来列出当前所在目录的文件和目录</p>
-<p>cli交互模式下, 运行命令 <code>ls /我的资源</code> 来列出 <code>/我的资源</code> 内的文件和目录</p>
-<p>cli交互模式下, 运行命令 <code>ls ..</code> 来列出当前所在目录的上级目录的文件和目录</p>
-<h2 id="5-下载文件"><a href="#5-下载文件" class="headerlink" title="5. 下载文件"></a>5. 下载文件</h2><p>说明: 下载的文件默认保存到 download/ 目录 (文件夹)</p>
-<p>cli交互模式下, 运行命令 <code>d -h</code> (注意空格) 查看帮助</p>
-<p>cli交互模式下, 运行命令 <code>d /我的资源/1.mp4</code> 来下载位于 <code>/我的资源/1.mp4</code> 的文件 <code>1.mp4</code> , 该操作等效于运行以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /我的资源</span><br><span class="line">d 1.mp4</span><br></pre></td></tr></table></figure>
-
-<p>现在已经支持目录 (文件夹) 下载, 所以, 运行以下命令, 会下载 <code>/我的资源</code> 内的所有文件 (违规文件除外):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d /我的资源</span><br></pre></td></tr></table></figure>
-
-<p>参见 例6 设置下载最大并发量</p>
-<h2 id="6-设置下载最大并发量"><a href="#6-设置下载最大并发量" class="headerlink" title="6. 设置下载最大并发量"></a>6. 设置下载最大并发量</h2><p>cli交互模式下, 运行命令 <code>config set -h</code> (注意空格) 查看设置帮助以及可供设置的值</p>
-<p>cli交互模式下, 运行命令 <code>config set -max_parallel 250</code> 将下载最大并发量设置为 250</p>
-<p>下载最大并发量建议值: 50~500, 太低下载速度提升不明显甚至速度会变为0, 太高可能会导致程序出错被操作系统结束掉.</p>
-<h2 id="7-退出程序"><a href="#7-退出程序" class="headerlink" title="7. 退出程序"></a>7. 退出程序</h2><p>运行命令 <code>quit</code> 或 <code>exit</code> 或 组合键 <code>Ctrl+C</code> 或 组合键 <code>Ctrl+D</code></p>
-<h1 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h1><ul>
-<li>分片上传文件时, 当文件分片数大于1, 网盘端最终计算所得的md5值和本地的不一致, 这可能是百度网盘的bug, 测试把上传的文件下载到本地后，对比md5值是匹配的. 可通过秒传的原理来修复md5值.</li>
-</ul>
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p>参见 <a href="https://github.com/iikira/BaiduPCS-Go/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">常见问题</a></p>
-<h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ol>
-<li>上传大文件;</li>
-<li>回收站操作, 例如查询回收站文件, 还原文件或目录等.</li>
-</ol>
-
+</blockquote><h3 id="Android运行BaiduPCS-Go"><a href="#Android运行BaiduPCS-Go" class="headerlink" title="Android运行BaiduPCS-Go"></a><a href="https://github.com/iikira/BaiduPCS-Go/wiki/Android-%E8%BF%90%E8%A1%8C%E6%9C%AC%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E5%8F%82%E8%80%83%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">Android运行BaiduPCS-Go</a></h3><p><a href="https://termux.com/" target="_blank" rel="noopener">下载Termux</a> 安装并运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure><p>始终允许Termux获取存储权限</p><h4 id="安装方式一-通过软件源安装"><a href="#安装方式一-通过软件源安装" class="headerlink" title="安装方式一: 通过软件源安装"></a>安装方式一: 通过软件源安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb [trusted=yes] http://termux.iikira.com stable main"</span> &gt;&gt; /data/data/com.termux/files/usr/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/BaiduPCS-Go.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -793,128 +477,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>日常更新</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update -y</span><br><span class="line">apt-get upgrade -y</span><br></pre></td></tr></table></figure>
-
-<p>查找程序名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search apache | grep <span class="string">'apache2'</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="安装Apache2"><a href="#安装Apache2" class="headerlink" title="安装Apache2"></a>安装Apache2</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install apache2</span><br></pre></td></tr></table></figure>
-
-<p>安装好后开服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service apache2 start</span><br><span class="line">systemctl <span class="built_in">enable</span> apache2</span><br></pre></td></tr></table></figure>
-
-<p>检查Apache2运行状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status apache2</span><br></pre></td></tr></table></figure>
-
-<p>安装Apache的php支持模块</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-php</span><br></pre></td></tr></table></figure>
-
-<p>重启Apache2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 restart</span><br></pre></td></tr></table></figure>
-
-<p>停止</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 stop</span><br></pre></td></tr></table></figure>
-
-<p>状态查询</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 status</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中输入IP地址，看到以下页面说明apache成功安装</p>
-<p>Debian系统上Apache2 Web服务器安装的配置布局如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/etc/apache2/</span><br><span class="line">|-- apache2.conf</span><br><span class="line">|       `--  ports.conf</span><br><span class="line">|-- mods-enabled</span><br><span class="line">|       |-- *.load</span><br><span class="line">|       `-- *.conf</span><br><span class="line">|-- conf-enabled</span><br><span class="line">|       `-- *.conf</span><br><span class="line">|-- sites-enabled</span><br><span class="line">|       `-- *.conf</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>apache2.conf is the main configuration file. It puts the pieces together by including all remaining configuration files when starting up the web server.</li>
-<li>ports.conf is always included from the main configuration file. It is used to determine the listening ports for incoming connections, and this file can be customized anytime.</li>
-<li>Configuration files in the mods-enabled/, conf-enabled/ and sites-enabled/ directories contain particular configuration snippets which manage modules, global configuration fragments, or virtual host configurations, respectively.</li>
-<li>They are activated by symlinking available configuration files from their respective *-available/ counterparts. These should be managed by using our helpers a2enmod, a2dismod, a2ensite, a2dissite, and a2enconf, a2disconf . See their respective man pages for detailed information.</li>
-<li>The binary is called apache2. Due to the use of environment variables, in the default configuration, apache2 needs to be started/stopped with /etc/init.d/apache2 or apache2ctl. Calling /usr/bin/apache2 directly will not work with the default configuration.</li>
-</ol>
-<p>Document Roots</p>
-<p>By default, Debian does not allow access through the web browser to any file apart of those located in /var/www, public_html directories (when enabled) and /usr/share (for web applications). If your site is using a web document root located elsewhere (such as in /srv) you may need to whitelist your document root directory in /etc/apache2/apache2.conf.</p>
-<p>The default Debian document root is /var/www/html. You can make your own virtual hosts under /var/www. This is different to previous releases which provides better security out of the box.</p>
-<p>Reporting Problems</p>
-<p>Please use the reportbug tool to report bugs in the Apache2 package with Debian. However, check existing bug reports before reporting a new bug.</p>
-<p>Please report bugs specific to modules (such as PHP and others) to respective packages, not to the web server itself.</p>
-<p>查看apache2版本号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apache2 -v</span><br></pre></td></tr></table></figure>
-
-<p>显示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server version: Apache/2.4.25 (Debian)</span><br><span class="line">Server built:   2019-04-02T19:05:13</span><br></pre></td></tr></table></figure>
-
-<p>列出 Debian 仓库中与 Apache 相关的软件列表。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search apache | less</span><br></pre></td></tr></table></figure>
-
-<p>带有 “apache” 字眼的软件包通常都是与相应软件包有关的，如 -doc, -dev, -common, -perl …</p>
-<p><a href="https://wiki.debian.org/zh_CN/Apache" target="_blank" rel="noopener">https://wiki.debian.org/zh_CN/Apache</a></p>
-<h1 id="安装PHP及所需的模块："><a href="#安装PHP及所需的模块：" class="headerlink" title="安装PHP及所需的模块："></a>安装PHP及所需的模块：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip -y</span><br></pre></td></tr></table></figure>
-
-<p>查看PHP版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
-
-<p>显示如下</p>
-<p>PHP 7.0.33-0+deb9u3 (cli) (built: Mar  8 2019 10:01:24) ( NTS )<br>Copyright (c) 1997-2017 The PHP Group<br>Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies<br>    with Zend OPcache v7.0.33-0+deb9u3, Copyright (c) 1999-2017, by Zend Technologies</p>
-<p>测试是否安装成功<br>创建<code>test.php</code>脚本，保存到<code>/var/www/html</code>目录下,脚本内容为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hellow World"</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>浏览器输入localhost/test.php，浏览器返回Hello World则环境配置成功</p>
-<h1 id="设置域名虚拟主机"><a href="#设置域名虚拟主机" class="headerlink" title="设置域名虚拟主机"></a>设置域名虚拟主机</h1><p>使用Apache Web服务器时，您可以使用虚拟主机 （类似于Nginx中的服务器块）来封装配置详细信息并从单个服务器托管多个域。 我们将设置一个名为example.com的域名，但您应将其替换为您自己的域名 。 要了解有关使用DigitalOcean设置域名的更多信息，请参阅我们的DigitalOcean DNS简介 。</p>
-<p>Debian 9上的Apache默认启用了一个服务器块，配置为从/var/www/html目录中提供文档。 虽然这适用于单个站点，但如果您托管多个站点，它可能会变得难以处理。 不要修改/var/www/html ，让我们在example.com网站的/var/www创建一个目录结构，将/var/www/html保留为默认目录，如果客户端请求没有匹配任何其他网站。</p>
-<p>按如下所示为example.com创建目录，使用-p标志创建任何必需的父目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/www/example.com/html</span><br></pre></td></tr></table></figure>
-
-<p>接下来，使用$USER环境变量分配目录的所有权：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /var/www/example.com/html</span><br></pre></td></tr></table></figure>
-
-<p>如果您尚未修改unmask值，则Web根目录的权限应该是正确的，但您可以通过键入以下内容来确保：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 755 /var/www/example.com</span><br></pre></td></tr></table></figure>
-
-<p>接下来，使用nano或您喜欢的编辑器创建一个示例index.html页面：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /var/www/example.com/html/index.html</span><br></pre></td></tr></table></figure>
-
-<p>在里面，添加以下示例HTML：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/var/www/example.com/html/index.html</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Welcome to Example.com!&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;Success!  The example.com server block is working!&lt;/h1&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完成后保存并关闭文件。</p>
-<p>为了使Apache能够提供此内容，必须使用正确的指令创建虚拟主机文件。 不要直接修改位于<code>/etc/apache2/sites-available/000-default.conf</code>的默认配置文件，而是在<code>/etc/apache2/sites-available/example.com.conf</code>创建一个新文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apache2/sites-available/example.com.conf</span><br></pre></td></tr></table></figure>
-
-<p>粘贴在以下配置块中，类似于默认配置块，但为我们的新目录和域名更新：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apache2/sites-available/example.com.conf</span><br></pre></td></tr></table></figure>
-
-<p>键入以下内容来</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin admin@example.com</span><br><span class="line">    ServerName example.com</span><br><span class="line">    ServerAlias www.example.com</span><br><span class="line">    DocumentRoot /var/www/example.com/html</span><br><span class="line">    ErrorLog <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/error.log</span><br><span class="line">    CustomLog <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/access.log combined</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-
-<p>请注意，我们已将DocumentRoot更新为新目录，将ServerAdmin更新为example.com站点管理员可以访问的电子邮件。 我们还添加了两个指令： ServerName ，它建立了应该与此虚拟主机定义匹配的基本域; ServerAlias ，它定义了应该匹配的更多名称，就像它们是基本名称一样。</p>
-<p>完成后保存并关闭文件。</p>
-<p>让我们使用a2ensite工具启用该文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2ensite example.com.conf</span><br></pre></td></tr></table></figure>
-
-<p>禁用000-default.conf定义的默认站点：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2dissite 000-default.conf</span><br></pre></td></tr></table></figure>
-
-<p>接下来，让我们测试一下配置错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apache2ctl configtest</span><br></pre></td></tr></table></figure>
-
-<p>您应该看到以下输出：</p>
-<p>Syntax OK</p>
-<p>重启Apache以实现更改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
-
-<p>Apache现在应该为您的域名服务。 您可以通过导航到http:// example.com来测试这一点，您应该在其中看到如下内容：</p>
-<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
-<li>/var/www/html ：实际的Web内容默认只包含您之前看到的默认Apache页面，它是在/var/www/html目录下提供的。 这可以通过更改Apache配置文件来更改。</li>
-<li>/etc/apache2 ：Apache配置目录。 所有Apache配置文件都驻留在此处。</li>
-<li>/etc/apache2/apache2.conf ：主要的Apache配置文件。 可以对其进行修改以更改Apache全局配置。 该文件负责加载配置目录中的许多其他文件。</li>
-<li>/etc/apache2/ports.conf ：此文件指定Apache将监听的端口。 默认情况下，Apache在端口80上监听，并在启用提供SSL功能的模块时另外监听端口443。</li>
-<li>/etc/apache2/sites-available/ ：可以存储每站点虚拟主机的目录。 Apache不会使用此目录中的配置文件，除非它们链接到sites-enabled目录。 通常，所有服务器块配置都在此目录中完成，然后通过使用a2ensite命令链接到其他目录来启用。</li>
-<li>/etc/apache2/sites-enabled/ ：存储已启用的每站点虚拟主机的目录。 通常，这些是通过使用a2ensite链接到sites-available目录中的配置文件来创建的。 Apache在启动或重新加载以编译完整配置时读取此目录中的配置文件和链接。</li>
-<li>/etc/apache2/conf-available/ ， /etc/apache2/conf-enabled/ ：这些目录与sites-available和sites-enabled目录具有相同的关系，但用于存储不属于a的配置片段虚拟主机。 可以使用a2enconf命令启用conf-available目录中的文件，并使用a2enconf命令禁用这些a2disconf 。</li>
-<li>/etc/apache2/mods-available/ ， /etc/apache2/mods-enabled/ ：这些目录分别包含可用和已启用的模块。 以.load结尾的文件包含用于加载特定模块的片段，而以.conf结尾的文件包含这些模块的配置。 可以使用a2enmod和a2dismod命令启用和禁用模块。</li>
-<li>/var/log/apache2/access.log ：默认情况下，除非将Apache配置为执行其他操作，否则对Web服务器的每个请求都将记录在此日志文件中。</li>
-<li>/var/log/apache2/error.log ：默认情况下，所有错误都记录在此文件中。 Apache配置中的LogLevel指令指定错误日志将包含多少详细信息。</li>
-</ul>
-
+          <p>日常更新</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update -y</span><br><span class="line">apt-get upgrade -y</span><br></pre></td></tr></table></figure><p>查找程序名</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search apache | grep <span class="string">'apache2'</span></span><br></pre></td></tr></table></figure><h1 id="安装Apache2"><a href="#安装Apache2" class="headerlink" title="安装Apache2"></a>安装Apache2</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install apache2</span><br></pre></td></tr></table></figure><p>安装好后开服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service apache2 start</span><br><span class="line">systemctl <span class="built_in">enable</span> apache2</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Ubuntu-Debian-Apache2-php-vhost-sites.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -983,32 +555,15 @@
 
       
           <h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">【2018.10.30】</span><br><span class="line">这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：</span><br><span class="line">1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。</span><br><span class="line">2、判断上传文件的文件大小区间。</span><br><span class="line">限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。</span><br><span class="line">限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行更改其数值。</span><br><span class="line">3、支持文件名中包含空格等特殊字符。</span><br></pre></td></tr></table></figure>
-
-<h1 id="脚本说明-Aria2-一键安装管理脚本"><a href="#脚本说明-Aria2-一键安装管理脚本" class="headerlink" title="脚本说明: Aria2 一键安装管理脚本"></a>脚本说明: Aria2 一键安装管理脚本</h1><p>系统支持: CentOS6+ / Debian6+ / Ubuntu14+</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/ojbk8/doubi/master/aria2.sh &amp;&amp; chmod +x aria2.sh &amp;&amp; bash aria2.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Aria2下载为什么会多出一个.aria2后缀的文件？</p>
-</blockquote>
-<p>找到force-save参数，进行设置</p>
-<p><code>force-save=true</code> 会保存文件下载历史,但会在下载目录产生同名.aria2文件</p>
-<p><code>force-save=false</code>不产生同名.aria2文件,同时也不能能保存下载历史</p>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>原理是当下载完后<code>aria2</code>会给脚本传3个参数<code>$1</code>、<code>$2</code>、<code>$3</code>分别为<code>gid</code>、文件数量、文件路径。我们对文件路径这个字符串处理一番就可以达到目的了。</p>
-<p>新建脚本文件<code>rcloneupload.sh</code>并复制下面代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">downloadpath=<span class="string">'/root/Download'</span> <span class="comment">#需要上传的目录，Aria2下载目录</span></span><br><span class="line">name=<span class="string">'rclonename'</span> <span class="comment">#配置Rclone时填写的name</span></span><br><span class="line">folder=<span class="string">'/rclone'</span> <span class="comment">#网盘里的文件夹，留空为整个网盘。</span></span><br><span class="line">MinSize=<span class="string">'0.01k'</span> <span class="comment">#限制最低上传大小，默认10k，BT下载时可防止上传其他无用文件。会删除文件，谨慎设置。</span></span><br><span class="line">MaxSize=<span class="string">'15G'</span> <span class="comment">#限制最高文件大小，默认15G，OneDrive上传限制。</span></span><br><span class="line"></span><br><span class="line">filepath=<span class="variable">$3</span> <span class="comment">#Aria2传递给脚本的原始路径，如果是单文件则为/root/Download/1.mp4，如果是文件夹则该值为文件夹内第一个文件比如/root/Download/a/b/1.mp4</span></span><br><span class="line">rdp=<span class="variable">$&#123;filepath#$&#123;downloadpath&#125;</span>/&#125; <span class="comment">#路径转换，去掉开头的下载路径。</span></span><br><span class="line">path=<span class="variable">$&#123;downloadpath&#125;</span>/<span class="variable">$&#123;rdp%%/*&#125;</span> <span class="comment">#文件或文件夹路径。如果是单个文件，应与原始路径一致。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$2</span> -eq 0 ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$path</span>"</span> = <span class="string">"<span class="variable">$filepath</span>"</span> ] &amp;&amp; [ <span class="variable">$2</span> -eq 1 ] <span class="comment">#如果下载的是单个文件</span></span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">	rclone move -v <span class="string">"<span class="variable">$filepath</span>"</span> <span class="variable">$&#123;name&#125;</span>:<span class="variable">$&#123;folder&#125;</span> --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span></span><br><span class="line">	rm -vf <span class="string">"<span class="variable">$filepath</span>"</span>.aria2 <span class="comment">#删除残留的.aria.2文件</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$path</span>"</span> != <span class="string">"<span class="variable">$filepath</span>"</span> ] <span class="comment">#如果下载的是文件夹</span></span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">	<span class="keyword">while</span> [[ <span class="string">"`ls -A "</span><span class="variable">$path</span>/<span class="string">"`"</span> != <span class="string">""</span> ]]; <span class="keyword">do</span></span><br><span class="line">	rclone move -v <span class="string">"<span class="variable">$path</span>"</span> <span class="variable">$&#123;name&#125;</span>:<span class="string">"<span class="variable">$&#123;folder&#125;</span>"</span>/<span class="string">"<span class="variable">$&#123;rdp%%/*&#125;</span>"</span> --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span> --delete-empty-src-dirs</span><br><span class="line">	rclone delete -v <span class="string">"<span class="variable">$path</span>"</span> --max-size <span class="variable">$MinSize</span> <span class="comment">#删除多余的文件</span></span><br><span class="line">	rclone rmdirs -v <span class="string">"<span class="variable">$downloadpath</span>"</span> --leave-root <span class="comment">#删除空目录，--delete-empty-src-dirs参数已实现，加上无所谓。</span></span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line">	rm -vf <span class="string">"<span class="variable">$path</span>"</span>.aria2 <span class="comment">#删除残留的.aria2文件</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">GID=<span class="string">"<span class="variable">$1</span>"</span>;</span><br><span class="line">FileNum=<span class="string">"<span class="variable">$2</span>"</span>;</span><br><span class="line">File=<span class="string">"<span class="variable">$3</span>"</span>;</span><br><span class="line">MinSize=<span class="string">"5"</span>  <span class="comment">#限制最低上传大小，默认5k</span></span><br><span class="line">MaxSize=<span class="string">"157286400"</span>  <span class="comment">#限制最高文件大小(单位k)，默认15G</span></span><br><span class="line">RemoteDIR=<span class="string">"/RATS/"</span>;  <span class="comment">#rclone挂载的本地文件夹，最后面保留/</span></span><br><span class="line">LocalDIR=<span class="string">"/download/"</span>;  <span class="comment">#Aria2下载目录，最后面保留/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ -z $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$FileNum</span>"</span> |grep -o <span class="string">'[0-9]*'</span> |head -n1) ]]; <span class="keyword">then</span> FileNum=<span class="string">'0'</span>; <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileNum</span>"</span> -le <span class="string">'0'</span> ]]; <span class="keyword">then</span> <span class="built_in">exit</span> 0; <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$#</span>"</span> != <span class="string">'3'</span> ]]; <span class="keyword">then</span> <span class="built_in">exit</span> 0; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">LoadFile</span></span>()&#123;</span><br><span class="line">  IFS_BAK=<span class="variable">$IFS</span></span><br><span class="line">  IFS=$<span class="string">'\n'</span></span><br><span class="line">  <span class="keyword">if</span> [[ ! -d <span class="string">"<span class="variable">$LocalDIR</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">if</span> [[ -e <span class="string">"<span class="variable">$File</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">    FileLoad=<span class="string">"<span class="variable">$&#123;File/#$LocalDIR&#125;</span>"</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">true</span></span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileLoad</span>"</span> == <span class="string">'/'</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$FileLoad</span>"</span> |grep -q <span class="string">'/'</span>;</span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">"$?"</span> == <span class="string">"0"</span> ]]; <span class="keyword">then</span></span><br><span class="line">          FileLoad=$(dirname <span class="string">"<span class="variable">$FileLoad</span>"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          <span class="built_in">break</span>;</span><br><span class="line">        <span class="keyword">fi</span>;</span><br><span class="line">      <span class="keyword">done</span>;</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileLoad</span>"</span> == <span class="string">"<span class="variable">$LocalDIR</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">    EXEC=<span class="string">"<span class="variable">$(command -v mv)</span>"</span></span><br><span class="line">    <span class="keyword">if</span> [[ -z <span class="string">"<span class="variable">$EXEC</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">    Option=<span class="string">" -f"</span>;</span><br><span class="line">    <span class="built_in">cd</span> <span class="string">"<span class="variable">$LocalDIR</span>"</span>;</span><br><span class="line">    <span class="keyword">if</span> [[ -e <span class="string">"<span class="variable">$FileLoad</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">      ItemSize=$(du -s <span class="string">"<span class="variable">$FileLoad</span>"</span> |cut -f1 |grep -o <span class="string">'[0-9]*'</span> |head -n1)</span><br><span class="line">      <span class="keyword">if</span> [[ -z <span class="string">"<span class="variable">$ItemSize</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$ItemSize</span>"</span> -le <span class="string">"<span class="variable">$MinSize</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">"\033[33m<span class="variable">$FileLoad</span> \033[0mtoo small to spik.\n"</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$ItemSize</span>"</span> -ge <span class="string">"<span class="variable">$MaxSize</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">"\033[33m<span class="variable">$FileLoad</span> \033[0mtoo large to spik.\n"</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      <span class="built_in">eval</span> <span class="string">"<span class="variable">$&#123;EXEC&#125;</span><span class="variable">$&#123;Option&#125;</span>"</span> \<span class="string">'"$&#123;FileLoad&#125;"\'</span> <span class="string">"<span class="variable">$&#123;RemoteDIR&#125;</span>"</span>;</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  IFS=<span class="variable">$IFS_BAK</span></span><br><span class="line">&#125;</span><br><span class="line">LoadFile;</span><br></pre></td></tr></table></figure>
-
-<p>授权</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x rcloneupload.sh</span><br></pre></td></tr></table></figure>
-
-<p>然后再到Aria2配置文件中加上一行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">on-download-complete=/root/rcloneupload.sh</span><br></pre></td></tr></table></figure>
-
-<p>即可，后面为脚本的路径。最后重启Aria2生效。</p>
-<p>转载自： <a href="https://www.moerats.com/archives/482/" target="_blank" rel="noopener">https://www.moerats.com/archives/482/</a></p>
-
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Aira2-uploads-GoogleDrive-onedrive.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1076,80 +631,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="获取-Certbot-客户端"><a href="#获取-Certbot-客户端" class="headerlink" title="获取 Certbot 客户端"></a>获取 Certbot 客户端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x ./certbot-auto</span><br><span class="line">./certbot-auto --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-nginx-、验证域名所有权"><a href="#配置-nginx-、验证域名所有权" class="headerlink" title="配置 nginx 、验证域名所有权"></a>配置 nginx 、验证域名所有权</h3><p>在虚拟主机配置文件（ /etc/nginx/conf.d/xxx.com.conf ）中添加如下内容，这一步是为了通过 Let’s Encrypt 的验证，验证 linuxstory.org 这个域名是属于我的管理之下。（具体解释可见下一章“一些补充说明”的“ certbot 的两种工作方式”）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">   default_type <span class="string">"text/plain"</span>;</span><br><span class="line">   root     /home/wwwroot/xxx.com/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">   <span class="built_in">return</span> 404;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>/home/wwwroot/xxx.com/</code>是站点根目录路径<br><code>xxx.com</code>替换成自己的域名</p>
-<p>3、重载 nginx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-
-<p>4、生成证书</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly --webroot -w /home/wwwroot/xxx.com/ -d  xxx.com</span><br></pre></td></tr></table></figure>
-
-<p>证书生成成功后，会有 Congratulations 的提示，并告诉我们证书放在 /etc/letsencrypt/live 这个位置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/letsencrypt/live/xxx.com/fullchain.pem</span><br><span class="line">/etc/letsencrypt/live/xxx.com/privkey.pem</span><br></pre></td></tr></table></figure>
-
-<p>配置 Nginx修改<code>/etc/nginx/conf.d/xxx.com.conf</code>使用 SSL 证书</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_certificate      /etc/letsencrypt/live/xxx.com/fullchain.pem;</span><br><span class="line">ssl_certificate_key  /etc/letsencrypt/live/xxx.com/privkey.pem;</span><br></pre></td></tr></table></figure>
-
-<p>配置所有http自动跳转到https</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name xxx.com;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>重载 nginx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="后续工作"><a href="#后续工作" class="headerlink" title="后续工作"></a>后续工作</h3><p>出于安全策略， Let’s Encrypt 签发的证书有效期只有 90 天，所以需要每隔三个月就要更新一次安全证书，虽然有点麻烦，但是为了网络安全，这是值得的也是应该的。好在 Certbot 也提供了很方便的更新方法。</p>
-<p>测试<code>Certbot</code>进行更新</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renew --dry-run</span><br></pre></td></tr></table></figure>
-
-<p>如果出现类似的结果，就说明测试成功了（总之有 Congratulations 的字眼）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, all renewals succeeded. The following certs have been renewed:  </span><br><span class="line">   /etc/letsencrypt/live/linuxstory.org/fullchain.pem (success)</span><br><span class="line">** DRY RUN: simulating <span class="string">'certbot renew'</span> close to cert expiry</span><br><span class="line">** (The <span class="built_in">test</span> certificates above have not been saved.)</span><br></pre></td></tr></table></figure>
-
-<p>设置定时任务</p>
-<p>出于安全策略， Let’s Encrypt 签发的证书有效期只有 90 天。通过 ./certbot-auto renew 命令可以续签。 编辑 crontab 文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
-
-<p>添加 certbot 命令： </p>
-<p>在每天凌晨3点运行。该命令将检查服务器上的证书是否将在未来30天内过期，如果是，则进行更新。–quiet 指令告诉 certbot 不要生成输出。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 3 * * * /root/letsencrypt/certbot-auto renew --quiet</span><br></pre></td></tr></table></figure>
-
-<p>手动更新的方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renew -v</span><br></pre></td></tr></table></figure>
-
-<p>自动更新的方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renew --quiet --no-self-upgrade</span><br></pre></td></tr></table></figure>
-
-<p>完整的配置示范</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  xxx.com;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen       443;</span><br><span class="line">    server_name  xxx.com;</span><br><span class="line">    root         /usr/share/nginx/<span class="built_in">test</span>;</span><br><span class="line">    location / &#123;</span><br><span class="line">	index  index.php index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># php</span></span><br><span class="line">	location ~ \.php$ &#123;</span><br><span class="line">	fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">	fastcgi_index index.php;</span><br><span class="line">	fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">	include fastcgi_params;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># Certbot</span></span><br><span class="line">	location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">	default_type <span class="string">"text/plain"</span>;</span><br><span class="line">	root   /usr/share/nginx/<span class="built_in">test</span>/;</span><br><span class="line">	&#125;</span><br><span class="line">	location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">	<span class="built_in">return</span> 404;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment"># ssl</span></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate    /etc/letsencrypt/live/xxx.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key    /etc/letsencrypt/live/xxx.com/privkey.pem;</span><br><span class="line">    <span class="comment">#include /etc/letsencrypt/options-ssl-nginx.conf;</span></span><br><span class="line">    <span class="comment">#ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;</span></span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line">    <span class="comment">#ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;	</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="certbot泛域名证书"><a href="#certbot泛域名证书" class="headerlink" title="certbot泛域名证书"></a>certbot泛域名证书</h1><p>申请命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly -d *.xxx.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory</span><br></pre></td></tr></table></figure>
-
-<p><code>--manual</code>交互式获取，<code>--preferred-challenges dns</code>使用DNS验证的方式（泛域名只能使用DNS验证），<code>--server</code>指明支持acme-v02的Server地址，默认是acme-v01的地址。</p>
-<p>按照要求输入邮箱，同意协议，当看到下面信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------------------------</span><br><span class="line">Please deploy a DNS TXT record under the name</span><br><span class="line">_acme-challenge.xxx.com with the following value:</span><br><span class="line"></span><br><span class="line">JHkwGFgXq3OgedI-4RU1X0EcFUz7cxIPN7r1Qyw5JTw</span><br><span class="line"></span><br><span class="line">Before continuing, verify the record is deployed.</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">Press Enter to Continue</span><br></pre></td></tr></table></figure>
-
-<p>暂停操作，配置域名解析，添加一条TXT类型的解析：</p>
-<p>纪录：<code>_acme-challenge.xxx.com</code> 结果：<code>JHkwGFgXq3OgedI-4RU1X0EcFUz7cxIPN7r1Qyw5JTw</code></p>
-<p>等待3-5分钟，使用以下命令检查解析是否设置成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig -t txt _acme-challenge.xxx.com @8.8.8.8</span><br></pre></td></tr></table></figure>
-
-<p>域名解析结果正确，再回到certbot申请的流程中敲回车，成功后，certbot会提示证书和私钥的路径，接着在nginx中配置并重启即可</p>
-<p>问题一： <code>certbot</code>升级完成后，运行certbot进行泛域名申请时，提示缺少库文件：</p>
-<p>No module named ‘requests.packages.urllib3’</p>
-<p>通过以下命令安装依赖：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests urllib3 pyOpenSSL --force --upgrade</span><br></pre></td></tr></table></figure>
-
-<p>问题二： 再次运行时，继续提示错误：</p>
-<p>ImportError: ‘pyOpenSSL’ module missing required functionality. Try upgrading to v0.14 or newer.</p>
-<p>通过以下命令修复：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --force-reinstall <span class="string">'requests==2.6.0'</span></span><br></pre></td></tr></table></figure>
-
-<p>注意</p>
-<p>申请的泛域名证书*.xxx.com并不能用在xxx.com，所以服务器还是需要两个证书。</p>
-
+          <h3 id="获取-Certbot-客户端"><a href="#获取-Certbot-客户端" class="headerlink" title="获取 Certbot 客户端"></a>获取 Certbot 客户端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x ./certbot-auto</span><br><span class="line">./certbot-auto --<span class="built_in">help</span></span><br></pre></td></tr></table></figure><h3 id="配置-nginx-、验证域名所有权"><a href="#配置-nginx-、验证域名所有权" class="headerlink" title="配置 nginx 、验证域名所有权"></a>配置 nginx 、验证域名所有权</h3><p>在虚拟主机配置文件（ /etc/nginx/conf.d/xxx.com.conf ）中添加如下内容，这一步是为了通过 Let’s Encrypt 的验证，验证 linuxstory.org 这个域名是属于我的管理之下。（具体解释可见下一章“一些补充说明”的“ certbot 的两种工作方式”）</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Debian-Ubuntu-Nginx-Certbot-Let’s-Encrypt-SSL.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1217,67 +708,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；</p>
-<p>一、添加Nginx源<br>新建一个nginx.list文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure>
-
-<p>加入以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/mainline/debian/ stretch nginx</span><br><span class="line">deb-src http://nginx.org/packages/mainline/debian/ stretch nginx</span><br></pre></td></tr></table></figure>
-
-<p>下面这个我也不晓得干什么的，反正老外是这样写的</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -</span><br></pre></td></tr></table></figure>
-
-<p>更新一下让源生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
-
-
-
-<p>二、安装更新版本nginx</p>
-<p>如果之前用apt命令安装了旧版本nginx,需要卸载掉才行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt remove nginx-common</span><br></pre></td></tr></table></figure>
-
-<p>正式开始安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nginx</span><br></pre></td></tr></table></figure>
-
-
-
-<p>安装完成查看版本:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
-
-<p>会列出<code>Nginx</code> <code>OpenSSL</code>相关配置文件路径…</p>
-<p>查看nginx进程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br><span class="line">pgrep nginx</span><br></pre></td></tr></table></figure>
-
-<p>安装好的文件位置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx  <span class="comment">#主程序</span></span><br><span class="line">/etc/nginx  <span class="comment">#存放配置文件</span></span><br><span class="line">/usr/share/nginx  <span class="comment">#存放静态文件</span></span><br><span class="line">/var/<span class="built_in">log</span>/nginx  <span class="comment">#存放日志</span></span><br><span class="line">/etc/nginx/nginx.conf  <span class="comment">#默认nginx配置文件</span></span><br></pre></td></tr></table></figure>
-
-<p>Nginx控制命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br><span class="line"><span class="comment">###重启</span></span><br><span class="line">systemctl restart nginx</span><br><span class="line"><span class="comment">###停止</span></span><br><span class="line">systemctl stop nginx</span><br><span class="line"><span class="comment">###也可以使用</span></span><br><span class="line">/etc/init.d/nginx start <span class="comment"># 启动Nginx服务</span></span><br><span class="line">/etc/init.d/nginx stop <span class="comment"># 停止Nginx服务</span></span><br><span class="line">/etc/init.d/nginx  restart <span class="comment"># 重启Nginx服务</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="增加-Nginx-虚拟主机"><a href="#增加-Nginx-虚拟主机" class="headerlink" title="增加 Nginx 虚拟主机"></a>增加 Nginx 虚拟主机</h1><p>检查<code>/etc/nginx/nginx.conf</code>配置文件，确保文件中有：<code>include /etc/nginx/conf.d/*.conf;</code> 默认已经有了的。</p>
-<p>然后在目录<code>/etc/nginx/conf.d/</code>下面新建文件<code>site1.conf</code>，<code>site2.conf</code>…文件名任意写，自己看明白就OK  </p>
-<p>Nginx配置支持PHP</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">	&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">	location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>又或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">include snippets/fastcgi-php.conf;</span><br><span class="line">fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="解决Nginx-php-fpm配置有误引起的502错误"><a href="#解决Nginx-php-fpm配置有误引起的502错误" class="headerlink" title="解决Nginx php-fpm配置有误引起的502错误"></a>解决Nginx php-fpm配置有误引起的502错误</h1><p>针对该问题的解决方案是，修改<code>/etc/nginx/conf/vhosts</code>下的conf文件，</p>
-<p>将<code>fastcgi_pass 127.0.0.1:9000;</code>修改为<code>fastcgi_pass unix:/run/php/php7.0-fpm.sock;</code></p>
-<p>重启Nginx服务后，WEB访问依然报错502，继续定位分析。</p>
-<p>在nginx error_log日志<code>/var/log/nginx/error.log</code>中出现了以下新的报错内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2017/07/29 11:24:47 [crit] 6114<span class="comment">#0: *1 connect() to unix:/run/php/php7.2-fpm.sock failed (13: Permission denied) while connecting to upstream, client: 183.14.134.xx, server: 112.74.89.xx, request: “GET / HTTP/1.1”, upstream: “fastcgi://unix:/run/php/php7.2-fpm.sock:”, host: “112.74.89.xx”</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑文件<code>/etc/php/7.2/fpm/pool.d/www.conf</code>找到</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">listen.owner = www-data</span><br><span class="line">listen.group = www-data</span><br><span class="line">;listen.mode = 0660</span><br></pre></td></tr></table></figure>
-
-<p>修改为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;listen.owner = www-data</span><br><span class="line">;listen.group = www-data</span><br><span class="line">listen.mode = 0666</span><br></pre></td></tr></table></figure>
-
-<p>重启下Nginx和php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br><span class="line">systemctl restart php7.2-fpm</span><br></pre></td></tr></table></figure>
-
-
+          <p>apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；</p><p>一、添加Nginx源<br>新建一个nginx.list文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure><p>加入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/mainline/debian/ stretch nginx</span><br><span class="line">deb-src http://nginx.org/packages/mainline/debian/ stretch nginx</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/Debian-Ubuntu-install-New-Nginx.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1464,38 +904,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>为什么要配置虚拟机环境<br>出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。</p>
-<h3 id="所需要的软件"><a href="#所需要的软件" class="headerlink" title="所需要的软件"></a>所需要的软件</h3><ul>
+          <p>为什么要配置虚拟机环境<br>出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。</p><h3 id="所需要的软件"><a href="#所需要的软件" class="headerlink" title="所需要的软件"></a>所需要的软件</h3><ul>
 <li><a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html" target="_blank" rel="noopener">VMware Workstation 15 Pro</a> 注册码SN:<code>ZY1MK-4UD80-M81VY-RZYNX-Z22X2</code></li>
 <li><a href="https://www.starwindsoftware.com/starwind-v2v-converter" target="_blank" rel="noopener">StarWind V2V Converter</a> </li>
 <li><a href="http://firmware.koolshare.cn/LEDE_X64_fw867" target="_blank" rel="noopener">KoolShare 固件</a>  <em>选择普通的就行，不一定非要虚拟机转盘或PE下写盘专用</em></li>
 </ul>
-<h3 id="使用StarWind-V2V-Image-Converter转换格式"><a href="#使用StarWind-V2V-Image-Converter转换格式" class="headerlink" title="使用StarWind V2V-Image Converter转换格式"></a>使用StarWind V2V-Image Converter转换格式</h3><p><code>Image format</code>选择<code>Vmware growable image</code></p>
-<p>![](/images/StarWind V2V-Image Converter-1.png)</p>
-<p>![](/images/StarWind V2V-Image Converter-2.png)</p>
-<h3 id="配置VMware-Workstation"><a href="#配置VMware-Workstation" class="headerlink" title="配置VMware Workstation"></a>配置VMware Workstation</h3><p>开始新建虚拟机，选择<code>稍后安装操作系统</code></p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-1.png" alt></p>
-<p>客户机操作系统选择<code>Linx</code>版本<code>其它Linx 4.X或更高版本内核64位</code> </p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-2.png" alt></p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-3.png" alt></p>
-<p>一路默认完成创建,<code>编辑虚拟机设置</code><br>删除打印机(可选)，删除原有的硬盘，然后添加硬盘<code>使用现有虚拟磁盘</code> 找到刚才转换好的后缀为.vmdk格式的并使用它。</p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-4.png" alt></p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-5.png" alt></p>
-<p><code>网络适配器</code>中的<code>网络连接</code>选择<code>桥接模式(B):直接连接物理网络</code></p>
-<p><img src="/images/openwrt-lede-VMware-Workstation-6.png" alt></p>
-<h3 id="配置LEDE软路由"><a href="#配置LEDE软路由" class="headerlink" title="配置LEDE软路由"></a>配置LEDE软路由</h3><p>配置网络 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/config/network</span><br></pre></td></tr></table></figure>
-
-<p>这里有2种联网方式</p>
-<h4 id="通过上级路由器拨号上网"><a href="#通过上级路由器拨号上网" class="headerlink" title="通过上级路由器拨号上网"></a>通过上级路由器拨号上网</h4><p>上级路由器已经设置好了拨号上网。<br>假设宿主机路由器的网关为10.10.10.1<br><img src="/images/openwrt-lede-VMware-Workstation-7.png" alt><br>此时可以删除WAN口(可选)，也可以保留。<br><img src="/images/openwrt-lede-VMware-Workstation-8.png" alt><br>上图中上级拨号路由器的IP地址为<code>10.10.10.1</code>虚拟机软路由器的IP地址为<code>10.10.10.11</code> 按实际IP修改</p>
-<ol>
-<li><code>IPV4 网关</code>务必一定要设置成上级路由器的IP地址</li>
-<li><code>IPV4 地址</code>必须要跟上级路由器在同一个网段内</li>
-<li><code>DNS</code>可以设置成公共DNS，也可以使用运营商的。</li>
-</ol>
-<p>联网后去<code>酪软中心</code>安装<code>科学上网</code>插件并配置好以后<br>其它设置，包括本机电脑的只要网关设置成<code>10.10.10.11</code>就能享受国际互联网了。</p>
-<h4 id="在虚拟机路由器里拨号上网"><a href="#在虚拟机路由器里拨号上网" class="headerlink" title="在虚拟机路由器里拨号上网"></a>在虚拟机路由器里拨号上网</h4><p>待完善中… …</p>
-
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/router-on-a-stick-VMwareWorkstation-openwrt-lede.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1576,13 +998,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>登陆后依次进入<code>系统</code>,<code>进阶设置</code>,<code>配置dnsmasq</code><br>或者在<code>/etc/dnsmasq.conf</code>添加以下内容</p>
-<h3 id="屏蔽腾讯的方法"><a href="#屏蔽腾讯的方法" class="headerlink" title="屏蔽腾讯的方法"></a>屏蔽腾讯的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">address=/qq.com/127.0.0.1</span><br><span class="line">address=/tencent.com/127.0.0.1</span><br><span class="line">address=/qcloud.com/127.0.0.1</span><br><span class="line">address=/gtimg.com/127.0.0.1</span><br><span class="line">address=/gtimg.cn/127.0.0.1</span><br><span class="line">address=/qpic.cn/127.0.0.1</span><br><span class="line">address=/qlogo.cn/127.0.0.1</span><br><span class="line">address=/url.cn/127.0.0.1</span><br></pre></td></tr></table></figure>
-
-<h3 id="屏蔽360腾讯的方法"><a href="#屏蔽360腾讯的方法" class="headerlink" title="屏蔽360腾讯的方法"></a>屏蔽360腾讯的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">address=/360.cn/127.0.0.1</span><br><span class="line">address=/360.com/127.0.0.1</span><br><span class="line">address=/so.com/127.0.0.1</span><br><span class="line">address=/i360mall.com/127.0.0.1</span><br><span class="line">address=/360shouji.com/127.0.0.1</span><br><span class="line">address=/360.net/127.0.0.1</span><br><span class="line">address=/360totalsecurity.com/127.0.0.1</span><br></pre></td></tr></table></figure>
-
-<p>PS <strong>抓包网址还不够全面，且对UDP流量不起作用</strong>  欢迎留言补充</p>
-
+          <p>登陆后依次进入<code>系统</code>,<code>进阶设置</code>,<code>配置dnsmasq</code><br>或者在<code>/etc/dnsmasq.conf</code>添加以下内容</p><h3 id="屏蔽腾讯的方法"><a href="#屏蔽腾讯的方法" class="headerlink" title="屏蔽腾讯的方法"></a>屏蔽腾讯的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">address=/qq.com/127.0.0.1</span><br><span class="line">address=/tencent.com/127.0.0.1</span><br><span class="line">address=/qcloud.com/127.0.0.1</span><br><span class="line">address=/gtimg.com/127.0.0.1</span><br><span class="line">address=/gtimg.cn/127.0.0.1</span><br><span class="line">address=/qpic.cn/127.0.0.1</span><br><span class="line">address=/qlogo.cn/127.0.0.1</span><br><span class="line">address=/url.cn/127.0.0.1</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/koolshare-shield-tencent-360.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1663,19 +1088,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>整出了一个集合BBR、BBR魔改、BBR plus、锐速四合一的脚本<br>本脚本支持KVM架构的VPS，不支持OpenVZ。</p>
-<blockquote>
+          <p>整出了一个集合BBR、BBR魔改、BBR plus、锐速四合一的脚本<br>本脚本支持KVM架构的VPS，不支持OpenVZ。</p><blockquote>
 <p>项目地址：(<a href="https://github.com/cx9208/Linux-NetSpeed" target="_blank" rel="noopener">https://github.com/cx9208/Linux-NetSpeed</a>)</p>
-</blockquote>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/ojbk8/Linux-NetSpeed/raw/master/tcp.sh</span><br><span class="line">chmod +x tcp.sh</span><br><span class="line">./tcp.sh</span><br></pre></td></tr></table></figure>
-
-<p>先换成对应加速<br>出现弹窗按<code>TAB键</code>切换选择<code>No</code>回车删除原内核</p>
-<p><img src="/images/tcp-bbrplus-lotserver.png" alt></p>
-<p>重启后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tcp.sh</span><br></pre></td></tr></table></figure>
-
-<p>开启加速</p>
-
+</blockquote><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/ojbk8/Linux-NetSpeed/raw/master/tcp.sh</span><br><span class="line">chmod +x tcp.sh</span><br><span class="line">./tcp.sh</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/linux-tcp-bbr-lotserver.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

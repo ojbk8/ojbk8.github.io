@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="crond简介crond是linux定时执行计划任务 Linux下的任务调度分为两类，系统任务调度和用户任务调度。 系统任务配置文件/etc/crontab 1nano /etc/crontab  用户任务1crontab -e  crontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的">
+  <meta name="description" content="crond简介crond是linux定时执行计划任务Linux下的任务调度分为两类，系统任务调度和用户任务调度。系统任务配置文件/etc/crontab1nano /etc/crontab用户任务1crontab -ecrontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如">
 <meta name="keywords" content="crontab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crontab定时执行计划任务">
 <meta property="og:url" content="https://ojbk8.github.io/crontab.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="crond简介crond是linux定时执行计划任务 Linux下的任务调度分为两类，系统任务调度和用户任务调度。 系统任务配置文件/etc/crontab 1nano /etc/crontab  用户任务1crontab -e  crontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的">
+<meta property="og:description" content="crond简介crond是linux定时执行计划任务Linux下的任务调度分为两类，系统任务调度和用户任务调度。系统任务配置文件/etc/crontab1nano /etc/crontab用户任务1crontab -ecrontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ojbk8.github.io/images/crontab.png">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Crontab定时执行计划任务">
-<meta name="twitter:description" content="crond简介crond是linux定时执行计划任务 Linux下的任务调度分为两类，系统任务调度和用户任务调度。 系统任务配置文件/etc/crontab 1nano /etc/crontab  用户任务1crontab -e  crontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的">
+<meta name="twitter:description" content="crond简介crond是linux定时执行计划任务Linux下的任务调度分为两类，系统任务调度和用户任务调度。系统任务配置文件/etc/crontab1nano /etc/crontab用户任务1crontab -ecrontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如">
 <meta name="twitter:image" content="https://ojbk8.github.io/images/crontab.png">
   <link rel="canonical" href="https://ojbk8.github.io/crontab">
 
@@ -315,14 +315,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="crond简介"><a href="#crond简介" class="headerlink" title="crond简介"></a>crond简介</h2><p>crond是linux定时执行计划任务</p>
-<p>Linux下的任务调度分为两类，系统任务调度和用户任务调度。</p>
-<h3 id="系统任务"><a href="#系统任务" class="headerlink" title="系统任务"></a>系统任务</h3><p>配置文件<code>/etc/crontab</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/crontab</span><br></pre></td></tr></table></figure>
+        <h2 id="crond简介"><a href="#crond简介" class="headerlink" title="crond简介"></a>crond简介</h2><p>crond是linux定时执行计划任务</p><p>Linux下的任务调度分为两类，系统任务调度和用户任务调度。</p><h3 id="系统任务"><a href="#系统任务" class="headerlink" title="系统任务"></a>系统任务</h3><p>配置文件<code>/etc/crontab</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/crontab</span><br></pre></td></tr></table></figure><h3 id="用户任务"><a href="#用户任务" class="headerlink" title="用户任务"></a>用户任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure><h2 id="crontab文件的含义"><a href="#crontab文件的含义" class="headerlink" title="crontab文件的含义"></a>crontab文件的含义</h2><p>用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下：</p><a id="more"></a>
 
-<h3 id="用户任务"><a href="#用户任务" class="headerlink" title="用户任务"></a>用户任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 
-<h2 id="crontab文件的含义"><a href="#crontab文件的含义" class="headerlink" title="crontab文件的含义"></a>crontab文件的含义</h2><p>用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下：</p>
+
+
+
+
+
 <p>minute   hour   day   month   week   command</p>
 <p><img src="/images/crontab.png" alt></p>
 <p>其中：</p>

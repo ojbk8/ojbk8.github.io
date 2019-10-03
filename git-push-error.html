@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="安装git 1apt-get install git -y  进入目录后初始化 1git init  排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例： 123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log  使用 SSH 密钥登录 GitHub123git config">
+  <meta name="description" content="安装git1apt-get install git -y进入目录后初始化1git init排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例：123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log">
 <meta name="keywords" content="GitHub">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推送发布到GitHub及错误提示">
 <meta property="og:url" content="https://ojbk8.github.io/git-push-error.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装git 1apt-get install git -y  进入目录后初始化 1git init  排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例： 123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log  使用 SSH 密钥登录 GitHub123git config">
+<meta property="og:description" content="安装git1apt-get install git -y进入目录后初始化1git init排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例：123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="推送发布到GitHub及错误提示">
-<meta name="twitter:description" content="安装git 1apt-get install git -y  进入目录后初始化 1git init  排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例： 123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log  使用 SSH 密钥登录 GitHub123git config">
+<meta name="twitter:description" content="安装git1apt-get install git -y进入目录后初始化1git init排除不需要备份的文件和目录在根目录下创建.gitignore文件，里面的文件或目录不会被上传到github. 例：123456789publicthemesdev.git.DS_Store*.bak*_bak*.old*.log">
   <link rel="canonical" href="https://ojbk8.github.io/git-push-error">
 
 
@@ -313,14 +313,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>安装git</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git -y</span><br></pre></td></tr></table></figure>
+        <p>安装git</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git -y</span><br></pre></td></tr></table></figure><p>进入目录后初始化</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><h1 id="排除不需要备份的文件和目录"><a href="#排除不需要备份的文件和目录" class="headerlink" title="排除不需要备份的文件和目录"></a>排除不需要备份的文件和目录</h1><p>在根目录下创建<code>.gitignore</code>文件，里面的文件或目录不会被上传到github. 例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public</span><br><span class="line">themes</span><br><span class="line">dev</span><br><span class="line">.git</span><br><span class="line">.DS_Store</span><br><span class="line">*.bak</span><br><span class="line">*_bak</span><br><span class="line">*.old</span><br><span class="line">*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure><a id="more"></a>
 
-<p>进入目录后初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 
-<h1 id="排除不需要备份的文件和目录"><a href="#排除不需要备份的文件和目录" class="headerlink" title="排除不需要备份的文件和目录"></a>排除不需要备份的文件和目录</h1><p>在根目录下创建<code>.gitignore</code>文件，里面的文件或目录不会被上传到github. 例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public</span><br><span class="line">themes</span><br><span class="line">dev</span><br><span class="line">.git</span><br><span class="line">.DS_Store</span><br><span class="line">*.bak</span><br><span class="line">*_bak</span><br><span class="line">*.old</span><br><span class="line">*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
 <h1 id="使用-SSH-密钥登录-GitHub"><a href="#使用-SSH-密钥登录-GitHub" class="headerlink" title="使用 SSH 密钥登录 GitHub"></a>使用 SSH 密钥登录 GitHub</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"username168@gmail.com"</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">'username@gmail.com'</span></span><br></pre></td></tr></table></figure>
 
