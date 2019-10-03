@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://ojbk8.github.io/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  <link rel="canonical" href="https://ojbk8.github.io/page/4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/docker-images.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/docker-images.html" class="post-title-link" itemprop="url">docker创建删除使用容器或镜像</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-24 16:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T16:00:00+03:00">2018-07-24</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><em>更多容器可以访问<a href="https://www.docker.com/" target="_blank" rel="noopener">docker</a>的<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></em></p>
+<p>操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- get.docker.com | bash</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行下面的命令，验证是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/docker-images.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/hexo-edit-Markdown.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/hexo-edit-Markdown.html" class="post-title-link" itemprop="url">hexo文章编辑模版示范</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-24 16:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T16:00:00+03:00">2018-07-24</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eefef</span><br></pre></td></tr></table></figure>
+
+<p><code>这是灰底字</code></p>
+<h3 id="修改字体颜色-大小-背景色"><a href="#修改字体颜色-大小-背景色" class="headerlink" title="修改字体颜色/大小/背景色"></a>修改字体颜色/大小/背景色</h3><p>如果想自定义字体大小以及颜色，可以直接在 Markdown 文档中使用 html 语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;font size=4 &gt; 这里输入文字，自定义字体大小 &lt;/font&gt;</span><br><span class="line">&lt;font color=<span class="string">"#FF0000"</span>&gt; 这里输入文字，自定义字体颜色&lt;/font&gt; </span><br><span class="line">&lt;span style=<span class="string">"background-color: #ff6600;"</span>&gt;这里输入文字，自定义字体背景色&lt;/span&gt;</span><br><span class="line">&lt;font color=<span class="string">"#000000"</span> size=4&gt;&lt;span style=<span class="string">"background-color: #ADFF2F;"</span>&gt;这是综合起来的效果 &lt;/span&gt;&lt;/font&gt;</span><br><span class="line">&lt;font color=<span class="string">"#FFFFFF"</span> size=4&gt;&lt;span style=<span class="string">"background-color: #68228B;"</span>&gt;这是综合起来的效果2 &lt;/span&gt;&lt;/font&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/hexo-edit-Markdown.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Debian-Ubuntu-install-php7.2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/Debian-Ubuntu-install-php7.2.html" class="post-title-link" itemprop="url">Debian和Ubuntu安装php7.2</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-22 01:35:31" itemprop="dateCreated datePublished" datetime="2018-07-22T01:35:31+03:00">2018-07-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>适用系统： </p>
+<ul>
+<li>Ubuntu 16.04 LTS </li>
+<li>Ubuntu 14.04 LTS </li>
+<li>Debian 9 stretch </li>
+<li>Debian 8 jessie</li>
+</ul>
+<h1 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h1><p>Ond?ej Sury 的 PHP PPA 为 Ubuntu 16.04/14.04 提供了 PHP7.2 版本，同时也有通过个人网站为 Debian 9/8 提供 PHP7.2 版本，因此 Ubuntu 是源于 Debian 所以基本可以通用，同时维护难度较低，软件源安装的 PHP 默认以 Unix Socket 的状态运行在 /run/php/php7.1-fpm.sock，比使用 TCP 以 localhost:9000 的方式性能更好。</p>
+<h1 id="添加软件源"><a href="#添加软件源" class="headerlink" title="添加软件源"></a>添加软件源</h1><blockquote>
+<p>Ubuntu安装软件源拓展工具：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install software-properties-common apt-transport-https lsb-release ca-certificates</span><br></pre></td></tr></table></figure>
+
+<p>添加 Ond?ej Sury 的 PHP PPA 源，需要按一次回车：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:ondrej/php</span><br></pre></td></tr></table></figure>
+
+<p>更新软件源缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Debian安装软件源拓展工具：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install software-properties-common apt-transport-https lsb-release ca-certificates</span><br></pre></td></tr></table></figure>
+
+<p>添加 GPG</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/apt/trusted.gpg.d/php.gpg https://mirror.xtom.com.hk/sury/php/apt.gpg</span><br></pre></td></tr></table></figure>
+
+<p>添加 sury 软件源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">'echo "deb https://mirror.xtom.com.hk/sury/php/ $(lsb_release -sc) main" &gt; /etc/apt/sources.list.d/php.list'</span></span><br></pre></td></tr></table></figure>
+
+<p>更新软件源缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装-PHP7-2："><a href="#安装-PHP7-2：" class="headerlink" title="安装 PHP7.2："></a>安装 PHP7.2：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install php7.2-fpm php7.2-mysql php7.2-curl php7.2-gd php7.2-mbstring php7.2-xml php7.2-xmlrpc php7.2-zip php7.2-opcache -y</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>设置 PHP</p>
+</blockquote>
+<p>安装完成后，编辑 /etc/php/7.2/fpm/php.ini 替换换 ;cgi.fix_pathinfo=1 为 cgi.fix_pathinfo=0 快捷命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/'</span> /etc/php/7.2/fpm/php.ini</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>管理 PHP</p>
+</blockquote>
+<p>安装好了先重启一下！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart php7.2-fpm</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多操作：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php -v <span class="comment">#查看PHP版本号</span></span><br><span class="line">systemctl restart php7.2-fpm <span class="comment">#重启</span></span><br><span class="line">systemctl start php7.2-fpm <span class="comment">#启动</span></span><br><span class="line">systemctl stop php7.2-fpm <span class="comment">#关闭</span></span><br><span class="line">systemctl status php7.2-fpm <span class="comment">#检查状态</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更新 PHP</p>
+</blockquote>
+<p>运行下面的命令系统就会更新所有可以更新的软件包括 PHP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<p>安装更多组件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search php7.2</span><br></pre></td></tr></table></figure>
+
+<p>上面的一条命令安装 PHP 只是安装了部分 PHP 拓展，更多的软件可见：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">php-radius - radius client library <span class="keyword">for</span> PHP</span><br><span class="line">php-http - PECL HTTP module <span class="keyword">for</span> PHP Extended HTTP Support</span><br><span class="line">php-uploadprogress - file upload progress tracking extension <span class="keyword">for</span> PHP</span><br><span class="line">php-yaml - YAML-1.1 parser and emitter <span class="keyword">for</span> PHP</span><br><span class="line">php-mongodb - MongoDB driver <span class="keyword">for</span> PHP</span><br><span class="line">php-apcu - APC User Cache <span class="keyword">for</span> PHP</span><br><span class="line">php-imagick - Provides a wrapper to the ImageMagick library</span><br><span class="line">php-ssh2 - Bindings <span class="keyword">for</span> the libssh2 library</span><br><span class="line">php-redis - PHP extension <span class="keyword">for</span> interfacing with Redis</span><br><span class="line">php-memcached - memcached extension module <span class="keyword">for</span> PHP, uses libmemcached</span><br><span class="line">php-apcu-bc - APCu Backwards Compatibility Module</span><br><span class="line">php-rrd - PHP bindings to rrd tool system</span><br><span class="line">php-uuid - PHP UUID extension</span><br><span class="line">php-memcache - memcache extension module <span class="keyword">for</span> PHP</span><br><span class="line">php-zmq - ZeroMQ messaging bindings <span class="keyword">for</span> PHP</span><br><span class="line">php-igbinary - igbinary PHP serializer</span><br><span class="line">php-msgpack - PHP extension <span class="keyword">for</span> interfacing with MessagePack</span><br><span class="line">php-geoip - GeoIP module <span class="keyword">for</span> PHP</span><br><span class="line">php-tideways - Tideways PHP Profiler Extension</span><br><span class="line">php-yac - YAC (Yet Another Cache) <span class="keyword">for</span> PHP</span><br><span class="line">php-mailparse - Email message manipulation <span class="keyword">for</span> PHP</span><br><span class="line">php-oauth - OAuth 1.0 consumer and provider extension</span><br><span class="line">php-gnupg - PHP wrapper around the gpgme library</span><br><span class="line">php-propro - propro module <span class="keyword">for</span> PHP</span><br><span class="line">php-raphf - raphf module <span class="keyword">for</span> PHP</span><br><span class="line">php-solr - PHP extension <span class="keyword">for</span> communicating with Apache Solr server</span><br><span class="line">php-stomp - Streaming Text Oriented Messaging Protocol (STOMP) client module <span class="keyword">for</span> PHP</span><br><span class="line">php-gearman - PHP wrapper to libgearman</span><br><span class="line">php-phalcon - full-stack PHP framework delivered as a C-extension</span><br><span class="line">php-ds - PHP extension providing efficient data structures <span class="keyword">for</span> PHP 7</span><br><span class="line">php-sass - PHP bindings to libsass - fast, native Sass parsing <span class="keyword">in</span> PHP</span><br><span class="line">php-lua - PHP Embedded lua interpreter</span><br><span class="line">libapache2-mod-php7.2 - server-side, HTML-embedded scripting language (Apache 2 module)</span><br><span class="line">libphp7.2-embed - HTML-embedded scripting language (Embedded SAPI library)</span><br><span class="line">php7.2-bcmath - Bcmath module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-bz2 - bzip2 module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-cgi - server-side, HTML-embedded scripting language (CGI binary)</span><br><span class="line">php7.2-cli - <span class="built_in">command</span>-line interpreter <span class="keyword">for</span> the PHP scripting language</span><br><span class="line">php7.2-common - documentation, examples and common module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-curl - CURL module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-dba - DBA module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-dev - Files <span class="keyword">for</span> PHP7.2 module development</span><br><span class="line">php7.2-enchant - Enchant module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-fpm - server-side, HTML-embedded scripting language (FPM-CGI binary)</span><br><span class="line">php7.2-gd - GD module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-gmp - GMP module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-imap - IMAP module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-interbase - Interbase module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-intl - Internationalisation module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-json - JSON module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-ldap - LDAP module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-mbstring - MBSTRING module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-mysql - MySQL module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-odbc - ODBC module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-opcache - Zend OpCache module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-pgsql - PostgreSQL module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-phpdbg - server-side, HTML-embedded scripting language (PHPDBG binary)</span><br><span class="line">php7.2-pspell - pspell module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-readline - readline module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-recode - recode module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-snmp - SNMP module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-soap - SOAP module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-sqlite3 - SQLite3 module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-sybase - Sybase module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-tidy - tidy module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-xml - DOM, SimpleXML, WDDX, XML, and XSL module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-xmlrpc - XMLRPC-EPI module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-zip - Zip module <span class="keyword">for</span> PHP</span><br><span class="line">php7.2-xsl - XSL module <span class="keyword">for</span> PHP (dummy)</span><br><span class="line">php7.2 - server-side, HTML-embedded scripting language (metapackage)</span><br><span class="line">php7.2-sodium - libsodium module <span class="keyword">for</span> PHP</span><br></pre></td></tr></table></figure>
+
+<p>以后内容转载自 <a href="https://www.mf8.biz/debian-install-php7-2/" target="_blank" rel="noopener">https://www.mf8.biz/debian-install-php7-2/</a></p>
+<h1 id="Caddy调用PHP7-2"><a href="#Caddy调用PHP7-2" class="headerlink" title="Caddy调用PHP7.2"></a>Caddy调用PHP7.2</h1><p>在<code>/etc/caddy/Caddyfile</code>中添加以下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi / /run/php/php7.2-fpm.sock php</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/rclone-upload-GoogleDrive-MicrosoftOneDrive.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/rclone-upload-GoogleDrive-MicrosoftOneDrive.html" class="post-title-link" itemprop="url">rclone成功挂载GoogleDrive和MicrosoftOneDrive自动上传</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-16 03:59:54" itemprop="dateCreated datePublished" datetime="2018-07-16T03:59:54+03:00">2018-07-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用前请确保已经rclone成功挂载GoogleDrive或MicrosoftOneDrive <a href="/rclone-upload-googledrive-microsoftonedrive.html">搭建教程</a></p>
+<p> <strong>实现功能</strong> </p>
+<ol>
+<li>自动上传</li>
+<li>删除本地文件</li>
+</ol>
+<p>避免占用本地磁盘空间。</p>
+<p>适用于<code>rclone</code>或<code>aria2</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"#!/bin/bash</span></span><br><span class="line"><span class="string">downloadpath='/root/Download' #需要上传的目录，Aria2下载目录</span></span><br><span class="line"><span class="string">name='gdrive' #配置Rclone时填写的name</span></span><br><span class="line"><span class="string">folder='/rclone' #网盘里的文件夹，留空为整个网盘。</span></span><br><span class="line"><span class="string">MinSize='10k' #限制最低上传大小，默认10k，BT下载时可防止上传其他无用文件。会删除文件，谨慎设置。</span></span><br><span class="line"><span class="string">MaxSize='15G' #限制最高文件大小，默认15G，OneDrive上传限制。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">filepath=<span class="variable">$3</span> #Aria2传递给脚本的原始路径，如果是单文件则为/root/Download/1.mp4，如果是文件夹则该值为文件夹内第一个文件比如/root/Download/a/b/1.mp4</span></span><br><span class="line"><span class="string">rdp=<span class="variable">$&#123;filepath#$&#123;downloadpath&#125;</span>/&#125; #路径转换，去掉开头的下载路径。</span></span><br><span class="line"><span class="string">path=<span class="variable">$&#123;downloadpath&#125;</span>/<span class="variable">$&#123;rdp%%/*&#125;</span> #文件或文件夹路径。如果是单个文件，应与原始路径一致。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">if [ <span class="variable">$2</span> -eq 0 ]</span></span><br><span class="line"><span class="string">	then</span></span><br><span class="line"><span class="string">		exit 0</span></span><br><span class="line"><span class="string">fi</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">while true; do</span></span><br><span class="line"><span class="string">if [ "</span><span class="variable">$path</span><span class="string">" = "</span><span class="variable">$filepath</span><span class="string">" ] &amp;&amp; [ <span class="variable">$2</span> -eq 1 ] #如果下载的是单个文件</span></span><br><span class="line"><span class="string">	then</span></span><br><span class="line"><span class="string">	rclone move -v "</span><span class="variable">$filepath</span><span class="string">" <span class="variable">$&#123;name&#125;</span>:<span class="variable">$&#123;folder&#125;</span> --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span></span></span><br><span class="line"><span class="string">	rm -vf "</span><span class="variable">$filepath</span><span class="string">".aria2 #删除残留的.aria.2文件</span></span><br><span class="line"><span class="string">	exit 0</span></span><br><span class="line"><span class="string">elif [ "</span><span class="variable">$path</span><span class="string">" != "</span><span class="variable">$filepath</span><span class="string">" ] #如果下载的是文件夹</span></span><br><span class="line"><span class="string">	then</span></span><br><span class="line"><span class="string">	while [[ "</span>`ls -A <span class="string">"<span class="variable">$path</span>/"</span>`<span class="string">" != "</span><span class="string">" ]]; do</span></span><br><span class="line"><span class="string">	rclone move -v "</span><span class="variable">$path</span><span class="string">" <span class="variable">$&#123;name&#125;</span>:"</span><span class="variable">$&#123;folder&#125;</span><span class="string">"/"</span><span class="variable">$&#123;rdp%%/*&#125;</span><span class="string">" --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span> --delete-empty-src-dirs</span></span><br><span class="line"><span class="string">	rclone delete -v "</span><span class="variable">$path</span><span class="string">" --max-size <span class="variable">$MinSize</span> #删除多余的文件</span></span><br><span class="line"><span class="string">	rclone rmdirs -v "</span><span class="variable">$downloadpath</span><span class="string">" --leave-root #删除空目录，--delete-empty-src-dirs参数已实现，加上无所谓。</span></span><br><span class="line"><span class="string">	done</span></span><br><span class="line"><span class="string">	rm -vf "</span><span class="variable">$path</span><span class="string">".aria2 #删除残留的.aria2文件</span></span><br><span class="line"><span class="string">	exit 0</span></span><br><span class="line"><span class="string">fi</span></span><br><span class="line"><span class="string">done"</span> &gt;&gt; /root/upload.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>记得修改里面的路径为自己的</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">downloadpath=<span class="string">'/root/Download'</span> <span class="comment">#需要上传的目录，Aria2下载目录</span></span><br><span class="line">name=<span class="string">'gdrive'</span> <span class="comment">#配置Rclone时填写的name</span></span><br><span class="line">folder=<span class="string">'/rclone'</span> <span class="comment">#网盘里的文件夹，留空为整个网盘。</span></span><br></pre></td></tr></table></figure>
+
+<p>授予可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x upload.sh</span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash upload.sh</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Caddy-PHP7-Sqlite3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/Caddy-PHP7-Sqlite3.html" class="post-title-link" itemprop="url">一键安装 Caddy+PHP7+Sqlite3 环境</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-14 16:00:00" itemprop="dateCreated datePublished" datetime="2018-06-14T16:00:00+03:00">2018-06-14</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>项目地址： (<a href="https://github.com/dylanbai8/Onekey_Caddy_PHP7_Sqlite3" target="_blank" rel="noopener">https://github.com/dylanbai8/Onekey_Caddy_PHP7_Sqlite3</a>)</p>
+</blockquote>
+<p>小内存 VPS 一键搭建 Caddy+PHP7+Sqlite3 环境 (支持VPS最小内存64M)，一键翻墙 caddy+web(php+sqlite3)+v2ray+bbr。</p>
+<h2 id="一键安装-Caddy-PHP7-Sqlite3-环境"><a href="#一键安装-Caddy-PHP7-Sqlite3-环境" class="headerlink" title="一键安装 Caddy+PHP7+Sqlite3 环境"></a>一键安装 Caddy+PHP7+Sqlite3 环境</h2><ul>
+<li>解析好域名,执行以下命令</li>
+<li>提示：支持IPv6（AAAA记录）如果本地网络不支持IPv6可以通过cloudflareCDN转换为IP4</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/dylanbai8/Onekey_Caddy_PHP7_Sqlite3/master/c.sh &amp;&amp; chmod +x c.sh &amp;&amp; bash c.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="Caddy-PHP7-Sqlite3-环境"><a href="#Caddy-PHP7-Sqlite3-环境" class="headerlink" title="Caddy+PHP7+Sqlite3 环境"></a>Caddy+PHP7+Sqlite3 环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">启动：systemctl start caddy </span><br><span class="line">停止：systemctl stop caddy </span><br><span class="line">重启：systemctl restart caddy </span><br><span class="line">网站根目录：/www </span><br><span class="line">Caddyfile文件: /etc/dylanbai8/caddy/Caddyfile</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-typecho-博客"><a href="#一键安装-typecho-博客" class="headerlink" title="一键安装 typecho 博客"></a>一键安装 typecho 博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -t</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-wordpress-博客"><a href="#一键安装-wordpress-博客" class="headerlink" title="一键安装 wordpress 博客"></a>一键安装 wordpress 博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -w</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-zblog-博客"><a href="#一键安装-zblog-博客" class="headerlink" title="一键安装 zblog 博客"></a>一键安装 zblog 博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -z</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-kodexplorer-可道云"><a href="#一键安装-kodexplorer-可道云" class="headerlink" title="一键安装 kodexplorer 可道云"></a>一键安装 kodexplorer 可道云</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -k</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-laverna-印象笔记"><a href="#一键安装-laverna-印象笔记" class="headerlink" title="一键安装 laverna 印象笔记"></a>一键安装 laverna 印象笔记</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -l</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键整站备份（一键打包-www目录-含数据库）"><a href="#一键整站备份（一键打包-www目录-含数据库）" class="headerlink" title="一键整站备份（一键打包/www目录 含数据库）"></a>一键整站备份（一键打包/www目录 含数据库）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -a</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-v2ray-翻墙"><a href="#一键安装-v2ray-翻墙" class="headerlink" title="一键安装 v2ray 翻墙"></a>一键安装 v2ray 翻墙</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -v</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键安装-rinetd-bbr-端口加速"><a href="#一键安装-rinetd-bbr-端口加速" class="headerlink" title="一键安装 rinetd bbr 端口加速"></a>一键安装 rinetd bbr 端口加速</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash c.sh -b</span><br></pre></td></tr></table></figure>
+
+<h4 id="一键卸载命令："><a href="#一键卸载命令：" class="headerlink" title="一键卸载命令："></a>一键卸载命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">卸载 caddy</span><br><span class="line">bash c.sh -unc</span><br><span class="line"></span><br><span class="line">卸载 php+sqlite</span><br><span class="line">bash c.sh -unp</span><br><span class="line"></span><br><span class="line">卸载 v2ray</span><br><span class="line">bash c.sh -unv</span><br><span class="line"></span><br><span class="line">卸载 rinetdbbr</span><br><span class="line">bash c.sh -unb</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件目录权限设置"><a href="#文件目录权限设置" class="headerlink" title="文件目录权限设置"></a>文件目录权限设置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 755 /www/*</span><br><span class="line">chown www-data:www-data -R /www/*</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Linux-VPS-rclone-GoogleDrive-MicrosoftOneDrive.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/Linux-VPS-rclone-GoogleDrive-MicrosoftOneDrive.html" class="post-title-link" itemprop="url">在Linux_VPS上使用rclone挂载GoogleDrive云端硬盘和MicrosoftOneDrive</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-14 03:59:54" itemprop="dateCreated datePublished" datetime="2018-06-14T03:59:54+03:00">2018-06-14</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://rclone.org/" target="_blank" rel="noopener">rclone</a>可以在Linux上挂载包括</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Rclone is a <span class="built_in">command</span> line program to sync files and directories to and from:</span><br><span class="line"></span><br><span class="line">Alibaba Cloud (Aliyun) Object Storage System (OSS)  </span><br><span class="line">Amazon Drive   (See note)</span><br><span class="line">Amazon S3  </span><br><span class="line">Backblaze B2  </span><br><span class="line">Box  </span><br><span class="line">Ceph  </span><br><span class="line">DigitalOcean Spaces  </span><br><span class="line">Dreamhost  </span><br><span class="line">Dropbox  </span><br><span class="line">FTP  </span><br><span class="line">Google Cloud Storage  </span><br><span class="line">Google Drive  </span><br><span class="line">HTTP  </span><br><span class="line">Hubic  </span><br><span class="line">Jottacloud  </span><br><span class="line">IBM COS S3  </span><br><span class="line">Koofr  </span><br><span class="line">Memset Memstore  </span><br><span class="line">Mega  </span><br><span class="line">Microsoft Azure Blob Storage  </span><br><span class="line">Microsoft OneDrive  </span><br><span class="line">Minio  </span><br><span class="line">Nextcloud  </span><br><span class="line">OVH  </span><br><span class="line">OpenDrive  </span><br><span class="line">Openstack Swift  </span><br><span class="line">Oracle Cloud Storage  </span><br><span class="line">ownCloud  </span><br><span class="line">pCloud  </span><br><span class="line">put.io  </span><br><span class="line">QingStor  </span><br><span class="line">Rackspace Cloud Files  </span><br><span class="line">Scaleway  </span><br><span class="line">SFTP  </span><br><span class="line">Wasabi  </span><br><span class="line">WebDAV  </span><br><span class="line">Yandex Disk  </span><br><span class="line">The <span class="built_in">local</span> filesystem</span><br></pre></td></tr></table></figure>
+
+<p>且不会占用本地硬盘空间</p>
+<h1 id="安装rclone"><a href="#安装rclone" class="headerlink" title="安装rclone"></a>安装rclone</h1><p>以Debian为例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install fuse -y</span><br><span class="line">curl https://rclone.org/install.sh | sudo bash</span><br></pre></td></tr></table></figure>
+
+<p>运行以下命令开始配置rclone</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone config</span><br></pre></td></tr></table></figure>
+
+<p>配置文件路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/root/.config/rclone/rclone.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="rclone挂载Google-Drive"><a href="#rclone挂载Google-Drive" class="headerlink" title="rclone挂载Google Drive"></a>rclone挂载Google Drive</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">root@MonstrousPointed-VM:~<span class="comment"># rclone config</span></span><br><span class="line">Current remotes:</span><br><span class="line"></span><br><span class="line">Name                 Type</span><br><span class="line">====                 ====</span><br><span class="line">gdname               drive</span><br><span class="line">odname               onedrive</span><br><span class="line"></span><br><span class="line">e) Edit existing remote</span><br><span class="line">n) New remote</span><br><span class="line">d) Delete remote</span><br><span class="line">r) Rename remote</span><br><span class="line">c) Copy remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line">e/n/d/r/c/s/q&gt; n   <span class="comment">#选择n新建</span></span><br><span class="line">name&gt; googledrive   <span class="comment">#名字随意例如googledrive</span></span><br><span class="line">Type of storage to configure.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> your own value</span><br><span class="line"> 1 / A stackable unification remote, <span class="built_in">which</span> can appear to merge the contents of s                                                                                        everal remotes</span><br><span class="line">   \ <span class="string">"union"</span></span><br><span class="line"> 2 / Alias <span class="keyword">for</span> a existing remote</span><br><span class="line">   \ <span class="string">"alias"</span></span><br><span class="line"> 3 / Amazon Drive</span><br><span class="line">   \ <span class="string">"amazon cloud drive"</span></span><br><span class="line"> 4 / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dr                                                                                        eamhost, IBM COS, Minio, etc)</span><br><span class="line">   \ <span class="string">"s3"</span></span><br><span class="line"> 5 / Backblaze B2</span><br><span class="line">   \ <span class="string">"b2"</span></span><br><span class="line"> 6 / Box</span><br><span class="line">   \ <span class="string">"box"</span></span><br><span class="line"> 7 / Cache a remote</span><br><span class="line">   \ <span class="string">"cache"</span></span><br><span class="line"> 8 / Dropbox</span><br><span class="line">   \ <span class="string">"dropbox"</span></span><br><span class="line"> 9 / Encrypt/Decrypt a remote</span><br><span class="line">   \ <span class="string">"crypt"</span></span><br><span class="line">10 / FTP Connection</span><br><span class="line">   \ <span class="string">"ftp"</span></span><br><span class="line">11 / Google Cloud Storage (this is not Google Drive)</span><br><span class="line">   \ <span class="string">"google cloud storage"</span></span><br><span class="line">12 / Google Drive</span><br><span class="line">   \ <span class="string">"drive"</span></span><br><span class="line">13 / Hubic</span><br><span class="line">   \ <span class="string">"hubic"</span></span><br><span class="line">14 / JottaCloud</span><br><span class="line">   \ <span class="string">"jottacloud"</span></span><br><span class="line">15 / Koofr</span><br><span class="line">   \ <span class="string">"koofr"</span></span><br><span class="line">16 / Local Disk</span><br><span class="line">   \ <span class="string">"local"</span></span><br><span class="line">17 / Mega</span><br><span class="line">   \ <span class="string">"mega"</span></span><br><span class="line">18 / Microsoft Azure Blob Storage</span><br><span class="line">   \ <span class="string">"azureblob"</span></span><br><span class="line">19 / Microsoft OneDrive</span><br><span class="line">   \ <span class="string">"onedrive"</span></span><br><span class="line">20 / OpenDrive</span><br><span class="line">   \ <span class="string">"opendrive"</span></span><br><span class="line">21 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)</span><br><span class="line">   \ <span class="string">"swift"</span></span><br><span class="line">22 / Pcloud</span><br><span class="line">   \ <span class="string">"pcloud"</span></span><br><span class="line">23 / QingCloud Object Storage</span><br><span class="line">   \ <span class="string">"qingstor"</span></span><br><span class="line">24 / SSH/SFTP Connection</span><br><span class="line">   \ <span class="string">"sftp"</span></span><br><span class="line">25 / Webdav</span><br><span class="line">   \ <span class="string">"webdav"</span></span><br><span class="line">26 / Yandex Disk</span><br><span class="line">   \ <span class="string">"yandex"</span></span><br><span class="line">27 / http Connection</span><br><span class="line">   \ <span class="string">"http"</span></span><br><span class="line">Storage&gt; 12  <span class="comment">#选12选定Google Drive</span></span><br><span class="line">** See <span class="built_in">help</span> <span class="keyword">for</span> drive backend at: https://rclone.org/drive/ **</span><br><span class="line"></span><br><span class="line">Google Application Client Id</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">See https://rclone.org/drive/<span class="comment">#making-your-own-client-id for how to create your o                                                                                        wn.</span></span><br><span class="line">If you leave this blank, it will use an internal key <span class="built_in">which</span> is low performance.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">client_id&gt;</span><br><span class="line">Google Application Client Secret</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">client_secret&gt;</span><br><span class="line">Scope that rclone should use when requesting access from drive.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> your own value</span><br><span class="line"> 1 / Full access all files, excluding Application Data Folder.</span><br><span class="line">   \ <span class="string">"drive"</span></span><br><span class="line"> 2 / Read-only access to file metadata and file contents.</span><br><span class="line">   \ <span class="string">"drive.readonly"</span></span><br><span class="line">   / Access to files created by rclone only.</span><br><span class="line"> 3 | These are visible <span class="keyword">in</span> the drive website.</span><br><span class="line">   | File authorization is revoked when the user deauthorizes the app.</span><br><span class="line">   \ <span class="string">"drive.file"</span></span><br><span class="line">   / Allows <span class="built_in">read</span> and write access to the Application Data folder.</span><br><span class="line"> 4 | This is not visible <span class="keyword">in</span> the drive website.</span><br><span class="line">   \ <span class="string">"drive.appfolder"</span></span><br><span class="line">   / Allows <span class="built_in">read</span>-only access to file metadata but</span><br><span class="line"> 5 | does not allow any access to <span class="built_in">read</span> or download file content.</span><br><span class="line">   \ <span class="string">"drive.metadata.readonly"</span></span><br><span class="line">scope&gt; 1</span><br><span class="line">ID of the root folder</span><br><span class="line">Leave blank normally.</span><br><span class="line">Fill <span class="keyword">in</span> to access <span class="string">"Computers"</span> folders. (see docs).</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">root_folder_id&gt;</span><br><span class="line">Service Account Credentials JSON file path</span><br><span class="line">Leave blank normally.</span><br><span class="line">Needed only <span class="keyword">if</span> you want use SA instead of interactive login.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">service_account_file&gt;</span><br><span class="line">Edit advanced config? (y/n)</span><br><span class="line">y) Yes</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; n</span><br><span class="line">Remote config</span><br><span class="line">Use auto config?</span><br><span class="line"> * Say Y <span class="keyword">if</span> not sure</span><br><span class="line"> * Say N <span class="keyword">if</span> you are working on a remote or headless machine</span><br><span class="line">y) Yes</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; n</span><br><span class="line">If your browser doesn<span class="string">'t open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;client_id=202xxxxxx5644.apps.gc6d8875f163240ea0bf58</span></span><br><span class="line"><span class="string">#注意网址不能有空格，在浏览器中打开并按提示完成授权，获得code码</span></span><br><span class="line"><span class="string">Enter verification code&gt; xxxxxxxxxxxxx  #这里填写你刚才获得的code码</span></span><br><span class="line"><span class="string">Configure this as a team drive?</span></span><br><span class="line"><span class="string">y) Yes</span></span><br><span class="line"><span class="string">n) No</span></span><br><span class="line"><span class="string">y/n&gt; y</span></span><br><span class="line"><span class="string">y) Yes this is OK</span></span><br><span class="line"><span class="string">e) Edit this remote</span></span><br><span class="line"><span class="string">d) Delete this remote</span></span><br><span class="line"><span class="string">y/e/d&gt; y</span></span><br><span class="line"><span class="string">Current remotes:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Name                 Type</span></span><br><span class="line"><span class="string">====                 ====</span></span><br><span class="line"><span class="string">gd                   googledrive</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">e) Edit existing remote</span></span><br><span class="line"><span class="string">n) New remote</span></span><br><span class="line"><span class="string">d) Delete remote</span></span><br><span class="line"><span class="string">r) Rename remote</span></span><br><span class="line"><span class="string">c) Copy remote</span></span><br><span class="line"><span class="string">s) Set configuration password</span></span><br><span class="line"><span class="string">q) Quit config</span></span><br><span class="line"><span class="string">e/n/d/r/c/s/q&gt; q</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="rclone挂载Microsoft-OneDrive"><a href="#rclone挂载Microsoft-OneDrive" class="headerlink" title="rclone挂载Microsoft OneDrive"></a>rclone挂载Microsoft OneDrive</h2><h3 id="客户端授权"><a href="#客户端授权" class="headerlink" title="客户端授权"></a>客户端授权</h3><p>在本地Windows电脑上下载<a href="https://rclone.org/downloads" target="_blank" rel="noopener">rclone</a> <a href="https://downloads.rclone.org/v1.47.0/rclone-v1.47.0-windows-386.zip" target="_blank" rel="noopener">点我下载rclone客户端</a><br>然后解压出来，进入文件夹，按住<code>shift</code>键后右击<code>在此处打开命令窗口</code>键入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone authorize <span class="string">"onedrive"</span></span><br></pre></td></tr></table></figure>
+
+<p>这时会自动打开浏览器按提示登陆授权，当网页显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Success!</span><br><span class="line">All <span class="keyword">done</span>. Please go back to rclone.</span><br></pre></td></tr></table></figure>
+
+<p>回到CMD界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Users&gt;<span class="built_in">cd</span> /d d:\rclone</span><br><span class="line">d:\rclone&gt;rclone authorize <span class="string">"onedrive"</span></span><br><span class="line">2018/12/24 19:14:35 NOTICE: Config file <span class="string">"C:\\Users\\Users\\.config\\rclone\\rclone.conf"</span> not found - using defaults</span><br><span class="line">If your browser doesn<span class="string">'t open automatically go to the following link: http://127.0.0.1:53682/auth</span></span><br><span class="line"><span class="string">Log in and authorize rclone for access</span></span><br><span class="line"><span class="string">Waiting for code...</span></span><br><span class="line"><span class="string">Got code</span></span><br><span class="line"><span class="string">Paste the following into your remote machine ---&gt;</span></span><br><span class="line"><span class="string">&#123;"access_token":"EwBwA8l6BxxxxxxxxxxxxacbtK!VgGItbS7sxc","expiry":"2018-12-24T20:15:31.0560991+08:00"&#125;</span></span><br><span class="line"><span class="string">&lt;---End paste</span></span><br><span class="line"><span class="string">d:\rclone&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中中括号在内就是VPS挂载所需要的result值，包括<strong>{}</strong>中括号在内</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"access_token"</span>:<span class="string">"EwBwA8l6BxxxxxxxxxxxxacbtK!VgGItbS7sxc"</span>,<span class="string">"expiry"</span>:<span class="string">"2018-12-24T20:15:31.0560991+08:00"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="linux上挂载Microsoft-OneDrive"><a href="#linux上挂载Microsoft-OneDrive" class="headerlink" title="linux上挂载Microsoft OneDrive"></a>linux上挂载Microsoft OneDrive</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone config</span><br></pre></td></tr></table></figure>
+
+<p>开始配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">root@MonstrousPointed-VM:~<span class="comment"># rclone config</span></span><br><span class="line">Current remotes:</span><br><span class="line">e) Edit existing remote</span><br><span class="line">n) New remote</span><br><span class="line">d) Delete remote</span><br><span class="line">r) Rename remote</span><br><span class="line">c) Copy remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line">e/n/d/r/c/s/q&gt; n</span><br><span class="line">name&gt; onedrive    <span class="comment">#名字自定义</span></span><br><span class="line">Type of storage to configure.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> your own value</span><br><span class="line"> 1 / A stackable unification remote, <span class="built_in">which</span> can appear to merge the contents of several remotes</span><br><span class="line">   \ <span class="string">"union"</span></span><br><span class="line"> 2 / Alias <span class="keyword">for</span> a existing remote</span><br><span class="line">   \ <span class="string">"alias"</span></span><br><span class="line"> 3 / Amazon Drive</span><br><span class="line">   \ <span class="string">"amazon cloud drive"</span></span><br><span class="line"> 4 / Amazon S3 Compliant Storage Providers (AWS, Ceph, Dreamhost, IBM COS, Minio)</span><br><span class="line">   \ <span class="string">"s3"</span></span><br><span class="line"> 5 / Backblaze B2</span><br><span class="line">   \ <span class="string">"b2"</span></span><br><span class="line"> 6 / Box</span><br><span class="line">   \ <span class="string">"box"</span></span><br><span class="line"> 7 / Cache a remote</span><br><span class="line">   \ <span class="string">"cache"</span></span><br><span class="line"> 8 / Dropbox</span><br><span class="line">   \ <span class="string">"dropbox"</span></span><br><span class="line"> 9 / Encrypt/Decrypt a remote</span><br><span class="line">   \ <span class="string">"crypt"</span></span><br><span class="line">10 / FTP Connection</span><br><span class="line">   \ <span class="string">"ftp"</span></span><br><span class="line">11 / Google Cloud Storage (this is not Google Drive)</span><br><span class="line">   \ <span class="string">"google cloud storage"</span></span><br><span class="line">12 / Google Drive</span><br><span class="line">   \ <span class="string">"drive"</span></span><br><span class="line">13 / Hubic</span><br><span class="line">   \ <span class="string">"hubic"</span></span><br><span class="line">14 / JottaCloud</span><br><span class="line">   \ <span class="string">"jottacloud"</span></span><br><span class="line">15 / Local Disk</span><br><span class="line">   \ <span class="string">"local"</span></span><br><span class="line">16 / Mega</span><br><span class="line">   \ <span class="string">"mega"</span></span><br><span class="line">17 / Microsoft Azure Blob Storage</span><br><span class="line">   \ <span class="string">"azureblob"</span></span><br><span class="line">18 / Microsoft OneDrive</span><br><span class="line">   \ <span class="string">"onedrive"</span></span><br><span class="line">19 / OpenDrive</span><br><span class="line">   \ <span class="string">"opendrive"</span></span><br><span class="line">20 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)</span><br><span class="line">   \ <span class="string">"swift"</span></span><br><span class="line">21 / Pcloud</span><br><span class="line">   \ <span class="string">"pcloud"</span></span><br><span class="line">22 / QingCloud Object Storage</span><br><span class="line">   \ <span class="string">"qingstor"</span></span><br><span class="line">23 / SSH/SFTP Connection</span><br><span class="line">   \ <span class="string">"sftp"</span></span><br><span class="line">24 / Webdav</span><br><span class="line">   \ <span class="string">"webdav"</span></span><br><span class="line">25 / Yandex Disk</span><br><span class="line">   \ <span class="string">"yandex"</span></span><br><span class="line">26 / http Connection</span><br><span class="line">   \ <span class="string">"http"</span></span><br><span class="line">Storage&gt; 18  <span class="comment">#Microsoft OneDrive</span></span><br><span class="line">** See <span class="built_in">help</span> <span class="keyword">for</span> onedrive backend at: https://rclone.org/onedrive/ **</span><br><span class="line"></span><br><span class="line">Microsoft App Client Id</span><br><span class="line">Leave blank normally.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">client_id&gt;</span><br><span class="line">Microsoft App Client Secret</span><br><span class="line">Leave blank normally.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">""</span>).</span><br><span class="line">client_secret&gt;</span><br><span class="line">Edit advanced config? (y/n)</span><br><span class="line">y) Yes</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; n</span><br><span class="line">Remote config</span><br><span class="line">Use auto config?</span><br><span class="line"> * Say Y <span class="keyword">if</span> not sure</span><br><span class="line"> * Say N <span class="keyword">if</span> you are working on a remote or headless machine</span><br><span class="line">y) Yes</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; n</span><br><span class="line">For this to work, you will need rclone available on a machine that has a web browser available.</span><br><span class="line">Execute the following on your machine:</span><br><span class="line">        rclone authorize <span class="string">"onedrive"</span></span><br><span class="line">Then paste the result below:</span><br><span class="line">result&gt; &#123;<span class="string">"access_token"</span>:<span class="string">"EwBwA8l6BAAURxxxxxxxxxxxxxxxxxxxxxxxxxxxCMszTZEI27EacbtK!VgGItbS7sxc"</span>,<span class="string">"expiry"</span>:<span class="string">"2018-12-24T20:15:31.0560991+08:00"</span>&#125;</span><br><span class="line">2018/12/24 06:39:03 ERROR : Failed to save new token <span class="keyword">in</span> config file: section <span class="string">'od100'</span> not found</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> an existing value</span><br><span class="line"> 1 / OneDrive Personal or Business</span><br><span class="line">   \ <span class="string">"onedrive"</span></span><br><span class="line"> 2 / Root Sharepoint site</span><br><span class="line">   \ <span class="string">"sharepoint"</span></span><br><span class="line"> 3 / Type <span class="keyword">in</span> driveID</span><br><span class="line">   \ <span class="string">"driveid"</span></span><br><span class="line"> 4 / Type <span class="keyword">in</span> SiteID</span><br><span class="line">   \ <span class="string">"siteid"</span></span><br><span class="line"> 5 / Search a Sharepoint site</span><br><span class="line">   \ <span class="string">"search"</span></span><br><span class="line">Your choice&gt; 1</span><br><span class="line">Found 1 drives, please select the one you want to use:</span><br><span class="line">0:  (personal) id=xxxxxxxxxxxxxx</span><br><span class="line">Chose drive to use:&gt; 0  <span class="comment">#0: 这里输入0</span></span><br><span class="line">Found drive <span class="string">'root'</span> of <span class="built_in">type</span> <span class="string">'personal'</span>, URL: https://onedrive.live.com/?cid=e164800991cb8f79</span><br><span class="line">Is that okay?</span><br><span class="line">y) Yes</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; y</span><br><span class="line">--------------------</span><br><span class="line">[onedrive]</span><br><span class="line"><span class="built_in">type</span> = onedrive</span><br><span class="line">token = &#123;<span class="string">"access_token"</span>:<span class="string">"EwBwA8l6BAAURxxxxxxxxxxxxxxxxxxxxxxxxxxxCMszTZEI27EacbtK!VgGItbS7sxc"</span>,<span class="string">"expiry"</span>:<span class="string">"2018-12-24T20:15:31.0560991+08:00"</span>&#125;</span><br><span class="line">drive_id = xxxxxxxxxxxxxx</span><br><span class="line">drive_type = personal  <span class="comment">#personal个人版,Business挂载方法类似。</span></span><br><span class="line">--------------------</span><br><span class="line">y) Yes this is OK</span><br><span class="line">e) Edit this remote</span><br><span class="line">d) Delete this remote</span><br><span class="line">y/e/d&gt; y</span><br><span class="line">Current remotes:</span><br><span class="line"></span><br><span class="line">Name                 Type</span><br><span class="line">====                 ====</span><br><span class="line">onedrive                onedrive</span><br><span class="line"><span class="comment">#这里能看到上面自定义名称说明成功了</span></span><br><span class="line">e) Edit existing remote</span><br><span class="line">n) New remote</span><br><span class="line">d) Delete remote</span><br><span class="line">r) Rename remote</span><br><span class="line">c) Copy remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line">e/n/d/r/c/s/q&gt; q</span><br><span class="line"><span class="comment"># 退出</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置rclone开机自动挂载为本地磁盘"><a href="#配置rclone开机自动挂载为本地磁盘" class="headerlink" title="配置rclone开机自动挂载为本地磁盘"></a>配置rclone开机自动挂载为本地磁盘</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"#!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span></span><br><span class="line"><span class="string">export PATH</span></span><br><span class="line"><span class="string">NAME_BIN="</span>rclone<span class="string">"</span></span><br><span class="line"><span class="string">### BEGIN INIT INFO</span></span><br><span class="line"><span class="string"># Provides:          rclone</span></span><br><span class="line"><span class="string"># Required-Start:    <span class="variable">$all</span></span></span><br><span class="line"><span class="string"># Required-Stop:     <span class="variable">$all</span></span></span><br><span class="line"><span class="string"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="string"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="string"># Short-Description: Start rclone at boot time</span></span><br><span class="line"><span class="string"># Description:       Enable rclone by daemon.</span></span><br><span class="line"><span class="string">### END INIT INFO</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">NAME="</span>rclone_name<span class="string">" #rclone name名</span></span><br><span class="line"><span class="string">REMOTE='/rclone' #远程文件夹，Google Drive网盘里的挂载的一个文件夹</span></span><br><span class="line"><span class="string">LOCAL='/mnt/gdrive' #VPS本地挂载目录</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Green_font_prefix="</span>\033[32m<span class="string">" &amp;&amp; Red_font_prefix="</span>\033[31m<span class="string">" &amp;&amp; Green_background_prefix="</span>\033[42;37m<span class="string">" &amp;&amp; Red_background_prefix="</span>\033[41;37m<span class="string">" &amp;&amp; Font_color_suffix="</span>\033[0m<span class="string">"</span></span><br><span class="line"><span class="string">Info="</span><span class="variable">$&#123;Green_font_prefix&#125;</span>[信息]<span class="variable">$&#123;Font_color_suffix&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">Error="</span><span class="variable">$&#123;Red_font_prefix&#125;</span>[错误]<span class="variable">$&#123;Font_color_suffix&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">RETVAL=0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">check_running()&#123;</span></span><br><span class="line"><span class="string">	PID="</span>$(ps -C <span class="variable">$NAME_BIN</span> -o pid= |head -n1 |grep -o <span class="string">'[0-9]\&#123;1,\&#125;'</span>)<span class="string">"</span></span><br><span class="line"><span class="string">	if [[ ! -z <span class="variable">$&#123;PID&#125;</span> ]]; then</span></span><br><span class="line"><span class="string">		return 0</span></span><br><span class="line"><span class="string">	else</span></span><br><span class="line"><span class="string">		return 1</span></span><br><span class="line"><span class="string">	fi</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">do_start()&#123;</span></span><br><span class="line"><span class="string">	check_running</span></span><br><span class="line"><span class="string">	if [[ $? -eq 0 ]]; then</span></span><br><span class="line"><span class="string">		echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> (PID <span class="variable">$&#123;PID&#125;</span>) 正在运行...<span class="string">" &amp;&amp; exit 0</span></span><br><span class="line"><span class="string">	else</span></span><br><span class="line"><span class="string">		fusermount -zuq <span class="variable">$LOCAL</span> &gt;/dev/null 2&gt;&amp;1</span></span><br><span class="line"><span class="string">		mkdir -p <span class="variable">$LOCAL</span></span></span><br><span class="line"><span class="string">		sudo /usr/bin/rclone mount <span class="variable">$NAME</span>:<span class="variable">$REMOTE</span> <span class="variable">$LOCAL</span> --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 &gt;/dev/null 2&gt;&amp;1 &amp;</span></span><br><span class="line"><span class="string">		sleep 2s</span></span><br><span class="line"><span class="string">		check_running</span></span><br><span class="line"><span class="string">		if [[ $? -eq 0 ]]; then</span></span><br><span class="line"><span class="string">			echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> 启动成功 !<span class="string">"</span></span><br><span class="line"><span class="string">		else</span></span><br><span class="line"><span class="string">			echo -e "</span><span class="variable">$&#123;Error&#125;</span> <span class="variable">$NAME_BIN</span> 启动失败 !<span class="string">"</span></span><br><span class="line"><span class="string">		fi</span></span><br><span class="line"><span class="string">	fi</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">do_stop()&#123;</span></span><br><span class="line"><span class="string">	check_running</span></span><br><span class="line"><span class="string">	if [[ $? -eq 0 ]]; then</span></span><br><span class="line"><span class="string">		kill -9 <span class="variable">$&#123;PID&#125;</span></span></span><br><span class="line"><span class="string">		RETVAL=$?</span></span><br><span class="line"><span class="string">		if [[ <span class="variable">$RETVAL</span> -eq 0 ]]; then</span></span><br><span class="line"><span class="string">			echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> 停止成功 !<span class="string">"</span></span><br><span class="line"><span class="string">		else</span></span><br><span class="line"><span class="string">			echo -e "</span><span class="variable">$&#123;Error&#125;</span> <span class="variable">$NAME_BIN</span> 停止失败 !<span class="string">"</span></span><br><span class="line"><span class="string">		fi</span></span><br><span class="line"><span class="string">	else</span></span><br><span class="line"><span class="string">		echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> 未运行<span class="string">"</span></span><br><span class="line"><span class="string">		RETVAL=1</span></span><br><span class="line"><span class="string">	fi</span></span><br><span class="line"><span class="string">	fusermount -zuq <span class="variable">$LOCAL</span> &gt;/dev/null 2&gt;&amp;1</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">do_status()&#123;</span></span><br><span class="line"><span class="string">	check_running</span></span><br><span class="line"><span class="string">	if [[ $? -eq 0 ]]; then</span></span><br><span class="line"><span class="string">		echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> (PID $(<span class="built_in">echo</span> <span class="variable">$&#123;PID&#125;</span>)) 正在运行...<span class="string">"</span></span><br><span class="line"><span class="string">	else</span></span><br><span class="line"><span class="string">		echo -e "</span><span class="variable">$&#123;Info&#125;</span> <span class="variable">$NAME_BIN</span> 未运行 !<span class="string">"</span></span><br><span class="line"><span class="string">		RETVAL=1</span></span><br><span class="line"><span class="string">	fi</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">do_restart()&#123;</span></span><br><span class="line"><span class="string">	do_stop</span></span><br><span class="line"><span class="string">	do_start</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">case "</span><span class="variable">$1</span><span class="string">" in</span></span><br><span class="line"><span class="string">	start|stop|restart|status)</span></span><br><span class="line"><span class="string">	do_<span class="variable">$1</span></span></span><br><span class="line"><span class="string">	;;</span></span><br><span class="line"><span class="string">	*)</span></span><br><span class="line"><span class="string">	echo "</span>使用方法: <span class="variable">$0</span> &#123; start | stop | restart | status &#125;<span class="string">"</span></span><br><span class="line"><span class="string">	RETVAL=1</span></span><br><span class="line"><span class="string">	;;</span></span><br><span class="line"><span class="string">esac</span></span><br><span class="line"><span class="string">exit <span class="variable">$RETVAL</span>"</span> &gt;&gt; /etc/init.d/rcloned</span><br></pre></td></tr></table></figure>
+
+<p>修改一下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NAME=<span class="string">"rclone_name"</span> <span class="comment">#rclone name名</span></span><br><span class="line">REMOTE=<span class="string">'/rclone'</span> <span class="comment">#远程文件夹，Google Drive网盘里的挂载的一个文件夹</span></span><br><span class="line">LOCAL=<span class="string">'/mnt/gdrive'</span> <span class="comment">#VPS本地挂载目录</span></span><br></pre></td></tr></table></figure>
+
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/init.d/rcloned</span><br><span class="line">update-rc.d -f rcloned defaults</span><br><span class="line">bash /etc/init.d/rcloned start</span><br></pre></td></tr></table></figure>
+
+<p>重启一下查看是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/df-honedrivegdrive.png" alt></p>
+<p>如果上面脚本的挂载失败,可以手动挂载，以onedrive为例:</p>
+<p>先新建一个目录,用于挂载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /mnt/onedrive</span><br></pre></td></tr></table></figure>
+
+<p>挂载命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rclone mount onedrive: /mnt/onedrive --allow-other --allow-non-empty </span><br><span class="line">--vfs-cache-mode writes</span><br></pre></td></tr></table></figure>
+
+<h1 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 文件上传</span></span><br><span class="line">rclone copy /home/backup gdrive:backup <span class="comment"># 本地路径 配置名字:谷歌文件夹名字</span></span><br><span class="line"><span class="comment">### 文件下载</span></span><br><span class="line">rclone copy gdrive:backup /home/backup</span><br><span class="line"><span class="comment">### 列表</span></span><br><span class="line">rclone ls gdrive:backup</span><br><span class="line">rclone lsl gdrive:backup <span class="comment"># 比上面多一个显示上传时间</span></span><br><span class="line">rclone lsd gdrive:backup <span class="comment"># 只显示文件夹</span></span><br><span class="line"><span class="comment">### 新建文件夹</span></span><br><span class="line">rclone mkdir gdrive:backup</span><br><span class="line"><span class="comment">### 挂载</span></span><br><span class="line">rclone mount gdrive:mm /root/mm &amp;</span><br><span class="line"><span class="comment">### 卸载</span></span><br><span class="line">fusermount -u  /root/mm</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">rclone config - 以控制会话的形式添加rclone的配置，配置保存在.rclone.conf文件中。</span><br><span class="line">rclone copy - 将文件从源复制到目的地址，跳过已复制完成的。</span><br><span class="line">rclone sync - 将源数据同步到目的地址，只更新目的地址的数据。   –dry-run标志来检查要复制、删除的数据</span><br><span class="line">rclone move - 将源数据移动到目的地址。</span><br><span class="line">rclone delete - 删除指定路径下的文件内容。</span><br><span class="line">rclone purge - 清空指定路径下所有文件数据。</span><br><span class="line">rclone mkdir - 创建一个新目录。</span><br><span class="line">rclone rmdir - 删除空目录。</span><br><span class="line">rclone check - 检查源和目的地址数据是否匹配。</span><br><span class="line">rclone ls - 列出指定路径下所有的文件以及文件大小和路径。</span><br><span class="line">rclone lsd - 列出指定路径下所有的目录/容器/桶。</span><br><span class="line">rclone lsl - 列出指定路径下所有文件以及修改时间、文件大小和路径。</span><br><span class="line">rclone md5sum - 为指定路径下的所有文件产生一个md5sum文件。</span><br><span class="line">rclone sha1sum - 为指定路径下的所有文件产生一个sha1sum文件。</span><br><span class="line">rclone size - 获取指定路径下，文件内容的总大小。.</span><br><span class="line">rclone version - 查看当前版本。</span><br><span class="line">rclone cleanup - 清空remote。</span><br><span class="line">rclone dedupe - 交互式查找重复文件，进行删除/重命名操作。</span><br></pre></td></tr></table></figure>
+
+<p>挂载服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y nload htop fuse p7zip-full</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="挂载为磁盘"><a href="#挂载为磁盘" class="headerlink" title="挂载为磁盘"></a>挂载为磁盘</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --<span class="built_in">umask</span> 000</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="卸载磁盘"><a href="#卸载磁盘" class="headerlink" title="卸载磁盘"></a>卸载磁盘</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -qzu LocalFolder</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/shadowsocksR.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/shadowsocksR.html" class="post-title-link" itemprop="url">秋水逸冰一键shadowsocksR</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-12 03:59:54" itemprop="dateCreated datePublished" datetime="2018-06-12T03:59:54+03:00">2018-06-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p><a href="https://shadowsocks.be/9.html" target="_blank" rel="noopener">https://shadowsocks.be/9.html</a></p>
+</blockquote>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+
+<p>如果链接失效可以使用下面的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://567899.xyz/bash/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+
+<p>使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br><span class="line">配置文件路径：/etc/shadowsocks.json</span><br><span class="line">日志文件路径：/var/<span class="built_in">log</span>/shadowsocks.log</span><br><span class="line">代码安装目录：/usr/<span class="built_in">local</span>/shadowsocks</span><br><span class="line">卸载方法：./shadowsocksR.sh uninstall</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后即已后台启动 ShadowsocksR ，运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>
+
+<p><strong>多端口配置示范</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"server_ipv6"</span>:<span class="string">"[::]"</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:1080,</span><br><span class="line">    <span class="string">"port_password"</span>:&#123;</span><br><span class="line">    <span class="string">"80"</span>:<span class="string">"password1"</span>,</span><br><span class="line">    <span class="string">"8770"</span>:<span class="string">"password2"</span>,</span><br><span class="line">    <span class="string">"8451"</span>:<span class="string">"password3"</span></span><br><span class="line">&#125;,</span><br><span class="line">    <span class="string">"timeout"</span>:120,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">    <span class="string">"protocol"</span>:<span class="string">"auth_sha1_v4_compatible"</span>,</span><br><span class="line">    <span class="string">"protocol_param"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"obfs"</span>:<span class="string">"http_simple_compatible"</span>,</span><br><span class="line">    <span class="string">"obfs_param"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"redirect"</span>:<span class="string">"*:80#127.0.0.1:81"</span>,</span><br><span class="line">    <span class="string">"dns_ipv6"</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="string">"workers"</span>:1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"redirect"</span>:<span class="string">"*:80#127.0.0.1:81"</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是设定shadowsocksR本地端口转发</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/nginx-caddy-proxy-google-youtube-wikipedia.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/nginx-caddy-proxy-google-youtube-wikipedia.html" class="post-title-link" itemprop="url">利用Caddy,Nginx反向代理谷歌YouTube等网站</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-20 16:00:00" itemprop="dateCreated datePublished" datetime="2018-05-20T16:00:00+03:00">2018-05-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://caddyserver.com" target="_blank" rel="noopener">Caddy</a> - The HTTP/2 Web Server with Automatic HTTPS</p>
+<ul>
+<li>go语言一个二进制单文件就是服务端</li>
+<li>自动申请<a href="https://letsencrypt.org" target="_blank" rel="noopener">Let’s Encrypt</a>免费的SSL/TLS证书,自动续期。</li>
+</ul>
+<h3 id="Caddy一键安装脚本"><a href="#Caddy一键安装脚本" class="headerlink" title="Caddy一键安装脚本"></a>Caddy一键安装脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/ojbk8/ToyoDAdoubiBackup/master/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>caddy_conf_file=”/usr/local/caddy/Caddyfile” </li>
+<li>日志文件：cat /tmp/caddy.log </li>
+<li>使用说明：service caddy start | stop | restart | status </li>
+<li>或者使用：/etc/init.d/caddy start | stop | restart | status </li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/nginx-caddy-proxy-google-youtube-wikipedia.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/gitbook-install-plugin.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/gitbook-install-plugin.html" class="post-title-link" itemprop="url">gitbook安装和插件的使用</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-16 16:00:00" itemprop="dateCreated datePublished" datetime="2018-05-16T16:00:00+03:00">2018-05-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>gitbook安装使用插件教程</p>
+</blockquote>
+<h3 id="安装gitbook"><a href="#安装gitbook" class="headerlink" title="安装gitbook"></a>安装gitbook</h3><p>先下载安装<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a>,然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gitbook-cli</span><br><span class="line">gitbook init</span><br><span class="line">gitbook install ./</span><br><span class="line">gitbook build</span><br><span class="line">gitbook serve</span><br></pre></td></tr></table></figure>
+
+<p>提示如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">D:\gitbook&gt;gitbook serve</span><br><span class="line">Live reload server started on port: 35729</span><br><span class="line">Press CTRL+C to quit ...</span><br><span class="line"></span><br><span class="line">info: 7 plugins are installed</span><br><span class="line">info: loading plugin <span class="string">"livereload"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"highlight"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"search"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"lunr"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"sharing"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"fontsettings"</span>... OK</span><br><span class="line">info: loading plugin <span class="string">"theme-default"</span>... OK</span><br><span class="line">info: found 5 pages</span><br><span class="line">info: found 4 asset files</span><br><span class="line">info: &gt;&gt; generation finished with success <span class="keyword">in</span> 1.0s !</span><br><span class="line"></span><br><span class="line">Starting server ...</span><br><span class="line">Serving book on http://localhost:4000</span><br></pre></td></tr></table></figure>
+
+<p>你可以你的浏览器中打开这个网址： (<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>)  预览</p>
+<h3 id="创建配置book-json"><a href="#创建配置book-json" class="headerlink" title="创建配置book.json"></a>创建配置<code>book.json</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"title"</span>: <span class="string">"站点标题"</span>,</span><br><span class="line">    <span class="string">"author"</span>: <span class="string">"作者"</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">"网站描述"</span>,</span><br><span class="line">	<span class="string">"keywords"</span>: <span class="string">"关键字1,关键字2,keyword3"</span>,</span><br><span class="line">    <span class="string">"language"</span>: <span class="string">"zh-hans"</span>,</span><br><span class="line">    <span class="string">"gitbook"</span>: <span class="string">"3.2.3"</span>,</span><br><span class="line">    <span class="string">"styles"</span>: &#123;</span><br><span class="line">        <span class="string">"website"</span>: <span class="string">"./styles/website.css"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"structure"</span>: &#123;</span><br><span class="line">        <span class="string">"readme"</span>: <span class="string">"README.md"</span></span><br><span class="line">    &#125;,</span><br><span class="line">	<span class="string">"links"</span>: &#123;</span><br><span class="line">        <span class="string">"sharing"</span>: &#123;</span><br><span class="line">            <span class="string">"all"</span>      : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"google"</span>   : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"facebook"</span> : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"twitter"</span>  : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"weibo"</span>    : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"qq"</span>       : <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"qrcode"</span>   : <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"links"</span>: &#123;</span><br><span class="line">        <span class="string">"sidebar"</span>: &#123;</span><br><span class="line">            <span class="string">"链接网站"</span>: <span class="string">"https://github.com"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"plugins"</span>: [</span><br><span class="line">		<span class="string">"-livereload"</span>,</span><br><span class="line">		<span class="string">"-highlight"</span>,</span><br><span class="line">		<span class="string">"search"</span>,</span><br><span class="line">		<span class="string">"-lunr"</span>,</span><br><span class="line">		<span class="string">"sharing"</span>,</span><br><span class="line">		<span class="string">"fontsettings"</span>,</span><br><span class="line">		<span class="string">"theme-default"</span>,</span><br><span class="line">		<span class="string">"copy-code-button"</span>,</span><br><span class="line">		<span class="string">"anchor-navigation-ex"</span>,</span><br><span class="line">		<span class="string">"donate"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"pluginsConfig"</span>: &#123;</span><br><span class="line">        <span class="string">"anchor-navigation-ex"</span>: &#123;</span><br><span class="line">            <span class="string">"isRewritePageTitle"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"isShowTocTitleIcon"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"tocLevel1Icon"</span>: <span class="string">"fa fa-hand-o-right"</span>,</span><br><span class="line">            <span class="string">"tocLevel2Icon"</span>: <span class="string">"fa fa-hand-o-right"</span>,</span><br><span class="line">            <span class="string">"tocLevel3Icon"</span>: <span class="string">"fa fa-hand-o-right"</span></span><br><span class="line">        &#125;,</span><br><span class="line">		<span class="string">"donate"</span>: &#123;</span><br><span class="line">          <span class="string">"wechat"</span>: <span class="string">"/images/wechatpay.jpg"</span>,</span><br><span class="line">          <span class="string">"alipay"</span>: <span class="string">"/images/alipay.jpg"</span>,</span><br><span class="line">          <span class="string">"title"</span>: <span class="string">""</span>,</span><br><span class="line">          <span class="string">"button"</span>: <span class="string">"Donate"</span>,</span><br><span class="line">          <span class="string">"alipayText"</span>: <span class="string">"支付宝捐赠"</span>,</span><br><span class="line">          <span class="string">"wechatText"</span>: <span class="string">"微信捐赠"</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置SUMMARY-md示范演示"><a href="#配置SUMMARY-md示范演示" class="headerlink" title="配置SUMMARY.md示范演示"></a>配置<code>SUMMARY.md</code>示范演示</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Summary</span></span><br><span class="line"></span><br><span class="line">* [Introduction](README.md)</span><br><span class="line">* [基本安装](howtouse/README.md)</span><br><span class="line">   * [Node.js安装](howtouse/nodejsinstall.md)</span><br><span class="line">   * [Gitbook安装](howtouse/gitbookinstall.md)</span><br><span class="line">   * [Gitbook命令行速览](howtouse/gitbookcli.md)</span><br></pre></td></tr></table></figure>
+
+<p>使用Markdown语法创建编辑<code>xxx.md</code></p>
+<p>然后安装所需要的插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook install</span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gitbook build</span><br><span class="line">gitbook serve</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/frps-service-install.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/frps-service-install.html" class="post-title-link" itemprop="url">搭建配置frps内网穿透服务端开机自启</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-14 16:00:00" itemprop="dateCreated datePublished" datetime="2018-05-14T16:00:00+03:00">2018-05-14</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在debian ubuntu x64上测试通过 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">其它系统frp下载</a></p>
+<p>假设你的IPV4地址为11.22.33.44 假设是以ROOT用户登陆并在root用户默认目录下</p>
+<h3 id="下载安装frp"><a href="#下载安装frp" class="headerlink" title="下载安装frp"></a>下载安装frp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -N -O frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.23.1/frp_0.23.1_linux_amd64.tar.gz</span><br><span class="line">tar -zxvf frp.tar.gz</span><br><span class="line">mv frp_0.23.1_linux_amd64 frp</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置frps服务端"><a href="#配置frps服务端" class="headerlink" title="配置frps服务端"></a>配置frps服务端</h3><p>修改文件frp/frps.ini服务端配置文件,按需要添加删减,示范如下</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/frps-service-install.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

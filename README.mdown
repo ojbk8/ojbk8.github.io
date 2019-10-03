@@ -1,0 +1,124 @@
+﻿这是由`Hxo` 和 `Next` 生成的静态网站，托管在`GitHub Pages` 
+
+site: https://ojbk8.github.io
+
+### 安装环境
+
+下载安装[Git](https://git-scm.com/downloads) 和 [Node.js](https://nodejs.org/zh-cn/download)
+
+
+### 搭建环境
+
+``` bash
+cd /d
+npm install hexo-cli -g
+hexo init blog
+cd blog
+npm install
+npm install hexo-deployer-git --save
+git init
+npm install hexo-generator-feed --save
+npm install hexo-generator-sitemap --save
+npm install hexo-generator-baidu-sitemap --save
+npm install hexo-generator-searchdb --save
+git clone https://github.com/theme-next/hexo-theme-next themes/next
+```
+
+### 连接到github
+``` bash
+git config --global user.name "username"
+git config --global user.email "username@qq.com"
+ssh-keygen -t rsa -C 'username@qq.com'
+```
+
+查看生成的KEY
+``` bash
+cat /c/Users/admin/.ssh/id_rsa.pub
+```
+将文本复制到`github` `Settings` `Deploy keys` `Add deploy key`
+查看是否连接成功
+
+``` bash
+ssh -T git@github.com
+```
+
+### 远程同步推送到github
+``` bash
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:username/username.github.io.git
+git push -u origin master
+```
+
+hexo生成的静态网站文件同步到github
+``` bash
+hexo clean
+hexo g
+hexo d
+```
+
+切换分支
+
+``` bash
+git checkout code
+```
+
+### code 分支
+
+``` bash
+# Initialized empty Git repository in /PATH/.git/
+git init
+
+# Switched to a new branch 'code', equal to 'git branch code && git checkout code'
+git checkout -b code
+
+# exclude dir public/
+echo '/public/' >> .gitignore
+sed -r -i '/^\/public\/$/{$!d}' .gitignore
+
+# Add file contents to the index
+git add .
+
+# Show the working tree status
+# git status
+
+# Record changes to the repository
+git commit -m "Hexo code"
+
+# Manage set of tracked repositories
+git remote add origin git@github.com:MaxdSre/maxdsre.github.io.git
+
+# Update remote refs along with associated objects to branch 'code'
+git push -u origin code
+```
+
+### master 分支
+
+``` bash
+# execute command hexo
+hexo cl & hexo g
+
+# create temporary dir
+HUGO_TEMP_DIR=$(mktemp -d)
+cp -R public/* "$HUGO_TEMP_DIR"
+
+# create orphan branch 'master'
+git checkout --orphan master
+
+# empty current dir
+rm .git/index
+git clean -fdx
+
+# copy back contents in dir public/
+cp -R "$HUGO_TEMP_DIR"/. .
+
+# add, commit, push
+git add .
+# git status
+git commit -m 'initial blog content'
+git push -u origin master
+
+# remove temp dir
+[[ -d "$HUGO_TEMP_DIR" ]] && rm -rf "$HUGO_TEMP_DIR"
+```

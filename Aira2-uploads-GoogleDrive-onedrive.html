@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="更新1234567【2018.10.30】这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。2、判断上传文件的文件大小区间。限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行">
+<meta name="keywords" content="Aira2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Aira2下载文件后自动上传到Google Drive网盘 onedrive">
+<meta property="og:url" content="https://ojbk8.github.io/Aira2-uploads-GoogleDrive-onedrive.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="更新1234567【2018.10.30】这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。2、判断上传文件的文件大小区间。限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Aira2下载文件后自动上传到Google Drive网盘 onedrive">
+<meta name="twitter:description" content="更新1234567【2018.10.30】这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。2、判断上传文件的文件大小区间。限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行">
+  <link rel="canonical" href="https://ojbk8.github.io/Aira2-uploads-GoogleDrive-onedrive">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>使用Aira2下载文件后自动上传到Google Drive网盘 onedrive | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Aira2-uploads-GoogleDrive-onedrive.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用Aira2下载文件后自动上传到Google Drive网盘 onedrive
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-23 03:25:41" itemprop="dateCreated datePublished" datetime="2018-12-23T03:25:41+03:00">2018-12-23</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">【2018.10.30】</span><br><span class="line">这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：</span><br><span class="line">1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。</span><br><span class="line">2、判断上传文件的文件大小区间。</span><br><span class="line">限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。</span><br><span class="line">限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行更改其数值。</span><br><span class="line">3、支持文件名中包含空格等特殊字符。</span><br></pre></td></tr></table></figure>
+
+<h1 id="脚本说明-Aria2-一键安装管理脚本"><a href="#脚本说明-Aria2-一键安装管理脚本" class="headerlink" title="脚本说明: Aria2 一键安装管理脚本"></a>脚本说明: Aria2 一键安装管理脚本</h1><p>系统支持: CentOS6+ / Debian6+ / Ubuntu14+</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/ojbk8/doubi/master/aria2.sh &amp;&amp; chmod +x aria2.sh &amp;&amp; bash aria2.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Aria2下载为什么会多出一个.aria2后缀的文件？</p>
+</blockquote>
+<p>找到force-save参数，进行设置</p>
+<p><code>force-save=true</code> 会保存文件下载历史,但会在下载目录产生同名.aria2文件</p>
+<p><code>force-save=false</code>不产生同名.aria2文件,同时也不能能保存下载历史</p>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>原理是当下载完后<code>aria2</code>会给脚本传3个参数<code>$1</code>、<code>$2</code>、<code>$3</code>分别为<code>gid</code>、文件数量、文件路径。我们对文件路径这个字符串处理一番就可以达到目的了。</p>
+<p>新建脚本文件<code>rcloneupload.sh</code>并复制下面代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">downloadpath=<span class="string">'/root/Download'</span> <span class="comment">#需要上传的目录，Aria2下载目录</span></span><br><span class="line">name=<span class="string">'rclonename'</span> <span class="comment">#配置Rclone时填写的name</span></span><br><span class="line">folder=<span class="string">'/rclone'</span> <span class="comment">#网盘里的文件夹，留空为整个网盘。</span></span><br><span class="line">MinSize=<span class="string">'0.01k'</span> <span class="comment">#限制最低上传大小，默认10k，BT下载时可防止上传其他无用文件。会删除文件，谨慎设置。</span></span><br><span class="line">MaxSize=<span class="string">'15G'</span> <span class="comment">#限制最高文件大小，默认15G，OneDrive上传限制。</span></span><br><span class="line"></span><br><span class="line">filepath=<span class="variable">$3</span> <span class="comment">#Aria2传递给脚本的原始路径，如果是单文件则为/root/Download/1.mp4，如果是文件夹则该值为文件夹内第一个文件比如/root/Download/a/b/1.mp4</span></span><br><span class="line">rdp=<span class="variable">$&#123;filepath#$&#123;downloadpath&#125;</span>/&#125; <span class="comment">#路径转换，去掉开头的下载路径。</span></span><br><span class="line">path=<span class="variable">$&#123;downloadpath&#125;</span>/<span class="variable">$&#123;rdp%%/*&#125;</span> <span class="comment">#文件或文件夹路径。如果是单个文件，应与原始路径一致。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$2</span> -eq 0 ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$path</span>"</span> = <span class="string">"<span class="variable">$filepath</span>"</span> ] &amp;&amp; [ <span class="variable">$2</span> -eq 1 ] <span class="comment">#如果下载的是单个文件</span></span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">	rclone move -v <span class="string">"<span class="variable">$filepath</span>"</span> <span class="variable">$&#123;name&#125;</span>:<span class="variable">$&#123;folder&#125;</span> --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span></span><br><span class="line">	rm -vf <span class="string">"<span class="variable">$filepath</span>"</span>.aria2 <span class="comment">#删除残留的.aria.2文件</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$path</span>"</span> != <span class="string">"<span class="variable">$filepath</span>"</span> ] <span class="comment">#如果下载的是文件夹</span></span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">	<span class="keyword">while</span> [[ <span class="string">"`ls -A "</span><span class="variable">$path</span>/<span class="string">"`"</span> != <span class="string">""</span> ]]; <span class="keyword">do</span></span><br><span class="line">	rclone move -v <span class="string">"<span class="variable">$path</span>"</span> <span class="variable">$&#123;name&#125;</span>:<span class="string">"<span class="variable">$&#123;folder&#125;</span>"</span>/<span class="string">"<span class="variable">$&#123;rdp%%/*&#125;</span>"</span> --min-size <span class="variable">$MinSize</span> --max-size <span class="variable">$MaxSize</span> --delete-empty-src-dirs</span><br><span class="line">	rclone delete -v <span class="string">"<span class="variable">$path</span>"</span> --max-size <span class="variable">$MinSize</span> <span class="comment">#删除多余的文件</span></span><br><span class="line">	rclone rmdirs -v <span class="string">"<span class="variable">$downloadpath</span>"</span> --leave-root <span class="comment">#删除空目录，--delete-empty-src-dirs参数已实现，加上无所谓。</span></span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line">	rm -vf <span class="string">"<span class="variable">$path</span>"</span>.aria2 <span class="comment">#删除残留的.aria2文件</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">GID=<span class="string">"<span class="variable">$1</span>"</span>;</span><br><span class="line">FileNum=<span class="string">"<span class="variable">$2</span>"</span>;</span><br><span class="line">File=<span class="string">"<span class="variable">$3</span>"</span>;</span><br><span class="line">MinSize=<span class="string">"5"</span>  <span class="comment">#限制最低上传大小，默认5k</span></span><br><span class="line">MaxSize=<span class="string">"157286400"</span>  <span class="comment">#限制最高文件大小(单位k)，默认15G</span></span><br><span class="line">RemoteDIR=<span class="string">"/RATS/"</span>;  <span class="comment">#rclone挂载的本地文件夹，最后面保留/</span></span><br><span class="line">LocalDIR=<span class="string">"/download/"</span>;  <span class="comment">#Aria2下载目录，最后面保留/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ -z $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$FileNum</span>"</span> |grep -o <span class="string">'[0-9]*'</span> |head -n1) ]]; <span class="keyword">then</span> FileNum=<span class="string">'0'</span>; <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileNum</span>"</span> -le <span class="string">'0'</span> ]]; <span class="keyword">then</span> <span class="built_in">exit</span> 0; <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$#</span>"</span> != <span class="string">'3'</span> ]]; <span class="keyword">then</span> <span class="built_in">exit</span> 0; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">LoadFile</span></span>()&#123;</span><br><span class="line">  IFS_BAK=<span class="variable">$IFS</span></span><br><span class="line">  IFS=$<span class="string">'\n'</span></span><br><span class="line">  <span class="keyword">if</span> [[ ! -d <span class="string">"<span class="variable">$LocalDIR</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">if</span> [[ -e <span class="string">"<span class="variable">$File</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">    FileLoad=<span class="string">"<span class="variable">$&#123;File/#$LocalDIR&#125;</span>"</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">true</span></span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileLoad</span>"</span> == <span class="string">'/'</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$FileLoad</span>"</span> |grep -q <span class="string">'/'</span>;</span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">"$?"</span> == <span class="string">"0"</span> ]]; <span class="keyword">then</span></span><br><span class="line">          FileLoad=$(dirname <span class="string">"<span class="variable">$FileLoad</span>"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          <span class="built_in">break</span>;</span><br><span class="line">        <span class="keyword">fi</span>;</span><br><span class="line">      <span class="keyword">done</span>;</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$FileLoad</span>"</span> == <span class="string">"<span class="variable">$LocalDIR</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">    EXEC=<span class="string">"<span class="variable">$(command -v mv)</span>"</span></span><br><span class="line">    <span class="keyword">if</span> [[ -z <span class="string">"<span class="variable">$EXEC</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">    Option=<span class="string">" -f"</span>;</span><br><span class="line">    <span class="built_in">cd</span> <span class="string">"<span class="variable">$LocalDIR</span>"</span>;</span><br><span class="line">    <span class="keyword">if</span> [[ -e <span class="string">"<span class="variable">$FileLoad</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">      ItemSize=$(du -s <span class="string">"<span class="variable">$FileLoad</span>"</span> |cut -f1 |grep -o <span class="string">'[0-9]*'</span> |head -n1)</span><br><span class="line">      <span class="keyword">if</span> [[ -z <span class="string">"<span class="variable">$ItemSize</span>"</span> ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$ItemSize</span>"</span> -le <span class="string">"<span class="variable">$MinSize</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">"\033[33m<span class="variable">$FileLoad</span> \033[0mtoo small to spik.\n"</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$ItemSize</span>"</span> -ge <span class="string">"<span class="variable">$MaxSize</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">"\033[33m<span class="variable">$FileLoad</span> \033[0mtoo large to spik.\n"</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      <span class="built_in">eval</span> <span class="string">"<span class="variable">$&#123;EXEC&#125;</span><span class="variable">$&#123;Option&#125;</span>"</span> \<span class="string">'"$&#123;FileLoad&#125;"\'</span> <span class="string">"<span class="variable">$&#123;RemoteDIR&#125;</span>"</span>;</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  IFS=<span class="variable">$IFS_BAK</span></span><br><span class="line">&#125;</span><br><span class="line">LoadFile;</span><br></pre></td></tr></table></figure>
+
+<p>授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x rcloneupload.sh</span><br></pre></td></tr></table></figure>
+
+<p>然后再到Aria2配置文件中加上一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">on-download-complete=/root/rcloneupload.sh</span><br></pre></td></tr></table></figure>
+
+<p>即可，后面为脚本的路径。最后重启Aria2生效。</p>
+<p>转载自： <a href="https://www.moerats.com/archives/482/" target="_blank" rel="noopener">https://www.moerats.com/archives/482/</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Aira2/" rel="tag"># Aira2</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/Debian-Ubuntu-Nginx-Certbot-Let’s-Encrypt-SSL.html" rel="next" title="Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程">
+                  <i class="fa fa-chevron-left"></i> Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/Ubuntu-Debian-Apache2-php-vhost-sites.html" rel="prev" title="Ubuntu_Debian配置Apache2_PHP配置站点">
+                  Ubuntu_Debian配置Apache2_PHP配置站点 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#更新"><span class="nav-number">1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本说明-Aria2-一键安装管理脚本"><span class="nav-number">2.</span> <span class="nav-text">脚本说明: Aria2 一键安装管理脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

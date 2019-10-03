@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Debian 9上安装最新的MySQL 在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。 安装MySQL首先添加MySQL软件库 MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软">
+<meta name="keywords" content="Debian,MySQL,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debian和Ubuntu安装最新的MySQL修改密码卸载清理">
+<meta property="og:url" content="https://ojbk8.github.io/Debian-Ubuntu-install-MySQL-uninstall.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Debian 9上安装最新的MySQL 在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。 安装MySQL首先添加MySQL软件库 MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Debian和Ubuntu安装最新的MySQL修改密码卸载清理">
+<meta name="twitter:description" content="Debian 9上安装最新的MySQL 在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。 安装MySQL首先添加MySQL软件库 MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软">
+  <link rel="canonical" href="https://ojbk8.github.io/Debian-Ubuntu-install-MySQL-uninstall">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Debian和Ubuntu安装最新的MySQL修改密码卸载清理 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Debian-Ubuntu-install-MySQL-uninstall.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Debian和Ubuntu安装最新的MySQL修改密码卸载清理
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-25 01:35:31" itemprop="dateCreated datePublished" datetime="2018-07-25T01:35:31+03:00">2018-07-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 08:19:08" itemprop="dateModified" datetime="2019-10-02T08:19:08+03:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Debian 9上安装最新的MySQL</p>
+<p>在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。</p>
+<h1 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h1><p>首先添加MySQL软件库</p>
+<p>MySQL开发人员提供了一个.deb包，用于处理配置和安装官方MySQL软件存储库。一旦设置了存储库，我们就可以使用Ubuntu的标准apt命令来安装该软件。我们将使用wget下载此.deb文件，然后使用该dpkg命令进行安装。</p>
+<p>首先，在Web浏览器中加载<a href="https://dev.mysql.com/downloads/repo/apt/" target="_blank" rel="noopener">MySQL下载页面</a>。找到右下角的“ 下载”按钮，然后单击下一页。此页面将提示您登录或注册Oracle Web帐户。我们可以跳过这一点，而是寻找说不用的链接，只需启动我的下载。右键单击该链接并选择“ 复制链接地址”（此选项的措辞可能不同，具体取决于您的浏览器）。</p>
+<p>现在我们要下载文件了。在您的服务器上，移动到您可以写入的目录。使用wget下载文件，记住粘贴刚刚复制的地址代替下面突出显示的部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p>该文件现在应该下载到我们当前的目录中<code>ls</code>列出文件以确保：</p>
+<p>您应该看到列出的文件名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql-apt-config_0.8.13-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p>现在我们准备安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i mysql-apt-config*</span><br></pre></td></tr></table></figure>
+
+<p>dpkg将会被用于安装，删除和检查.deb软件包。该-i标志表示我们要从指定的文件安装。</p>
+<p>在安装过程中，您将看到一个配置屏幕，您可以在其中指定您喜欢的MySQL版本，以及为其他MySQL相关工具安装存储库的选项。默认值将添加最新稳定版MySQL的存储库信息，而不是其他任何内容。这就是我们想要的，所以使用向下箭头导航到Ok菜单选项并点击ENTER。</p>
+<p>该包现在将完成添加存储库。刷新apt包缓存以使新软件包可用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dpkg-reconfigure mysql-apt-config</span><br><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>添加了存储库并使用我们的软件包缓存进行了新近更新</p>
+<p>安装MySQL</p>
+<p>我们现在可以使用apt安装最新的MySQL服务器软件包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>状态查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改MYSQL的初使密码"><a href="#修改MYSQL的初使密码" class="headerlink" title="修改MYSQL的初使密码"></a>修改MYSQL的初使密码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>用安装时设置的密码登陆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+
+<p>开始修改密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'yournewpassword'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>经过我们修改MYSQL的初使密码后，方可以顺利登陆phpMyAdmin管理</p>
+<p>用SET PASSWORD命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">mysql&gt; SET PASSWORD FOR <span class="string">'root'</span>@<span class="string">'localhost'</span> = PASSWORD(<span class="string">'yournewpassword'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>最后重启一下MySQL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="卸载清理MYSQL"><a href="#卸载清理MYSQL" class="headerlink" title="卸载清理MYSQL"></a>卸载清理MYSQL</h1><p>首先你可以通过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections | grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>命令罗列出你电脑上安装的和MySQL相关的软件，然后purge卸载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get --purge remove mysql-server</span><br><span class="line">apt-get --purge remove mysql-client</span><br><span class="line">apt-get --purge remove mysql-common</span><br><span class="line">apt-get --purge remove mysql-apt-config</span><br><span class="line">apt-get --purge remove mysql-community-client</span><br><span class="line">apt-get --purge remove mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p>上面列出的安装MYSQL组件列表会不一样，请根据自己的实际操作。</p>
+<p>最后再通过下面的命令清理残余：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get autoremove</span><br><span class="line">apt-get autoclean</span><br><span class="line">rm /etc/mysql/ -R</span><br><span class="line">rm /var/lib/mysql/ -R</span><br></pre></td></tr></table></figure>
+
+<p>至此卸载清理工作全部完成</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Debian/" rel="tag"># Debian</a>
+            
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            
+              <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/docker-images.html" rel="next" title="docker创建删除使用容器或镜像">
+                  <i class="fa fa-chevron-left"></i> docker创建删除使用容器或镜像
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/linux-tcp-bbr-lotserver.html" rel="prev" title="TCP加速bbr魔改plus锐速lotserver一键安装包">
+                  TCP加速bbr魔改plus锐速lotserver一键安装包 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装MySQL"><span class="nav-number">1.</span> <span class="nav-text">安装MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改MYSQL的初使密码"><span class="nav-number">2.</span> <span class="nav-text">修改MYSQL的初使密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#卸载清理MYSQL"><span class="nav-number">3.</span> <span class="nav-text">卸载清理MYSQL</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
