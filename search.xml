@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[test]]></title>
     <url>%2Ftest.html</url>
-    <content type="text"><![CDATA[这是Default这是Primary 8899 这是Success test 这是Info 这是Warning 这是Danger 首页这是有删除线的Danger 默认 用来替代引用标签还行 默认 有图标的引用标签吧 可以补充一些信息 Primary，不知道怎么用 Warning，写一些警告信息 Danger,就是这样很危险吧 Success，成功是什么鬼啊 没有图标的样子]]></content>
+    <content type="text"><![CDATA[这是Default这是Primary 8899 这是Success test 这是Info 这是Warning 这是Danger 首页这是有删除线的Danger 默认 用来替代引用标签还行 默认 有图标的引用标签吧 可以补充一些信息 Primary，不知道怎么用 Warning，写一些警告信息 Danger,就是这样很危险吧 Success，成功是什么鬼啊 没有图标的样子 default 提示块标签 primary 提示块标签 success提示块标签 info 提示块标签 warning 提示块标签 danger 提示块标签 世间所有的相遇，都是久别重逢]]></content>
       <categories>
         <category>未分类</category>
       </categories>
@@ -308,17 +308,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo文章编辑模版示范]]></title>
-    <url>%2Fhexo-edit-Markdown.html</url>
-    <content type="text"><![CDATA[1eefef 这是灰底字 修改字体颜色/大小/背景色如果想自定义字体大小以及颜色，可以直接在 Markdown 文档中使用 html 语法 12345&lt;font size=4 &gt; 这里输入文字，自定义字体大小 &lt;/font&gt;&lt;font color="#FF0000"&gt; 这里输入文字，自定义字体颜色&lt;/font&gt; &lt;span style="background-color: #ff6600;"&gt;这里输入文字，自定义字体背景色&lt;/span&gt;&lt;font color="#000000" size=4&gt;&lt;span style="background-color: #ADFF2F;"&gt;这是综合起来的效果 &lt;/span&gt;&lt;/font&gt;&lt;font color="#FFFFFF" size=4&gt;&lt;span style="background-color: #68228B;"&gt;这是综合起来的效果2 &lt;/span&gt;&lt;/font&gt; 其中#FF0000为RGB颜色代码，读者可去RGB颜色查询对照表网站查找自己喜欢的颜色。 若想在RGB颜色值与十六进制颜色码之间相互转化，可查看该网站。 这里输入文字，自定义字体大小 这里输入文字，自定义字体颜色这里输入文字，自定义字体背景色这是综合起来的效果 这是综合起来的效果2 文本居中对齐1&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125; 展示如下 blah blah blah 插入代码1``` bash 演示效果 1bash xxx.sh 插入表格1234|函数名|功能|其它||----|----|----||max|求最大值|其它1||min|求最小值|其它2| 演示效果 函数名 功能 其它 max 求最大值 其它1 min 求最小值 其它2]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[docker创建删除使用容器或镜像]]></title>
     <url>%2Fdocker-images.html</url>
     <content type="text"><![CDATA[更多容器可以访问docker的Docker Hub 操作系统内核大于等于 3.10 的都可以安装最新版 Docker 查看内核版本 1uname -r 安装docker1wget -qO- get.docker.com | bash 安装完成后，运行下面的命令，验证是否安装成功。 1docker version 启动 Docker 1systemctl start docker 查看 Docker 启动状态 1systemctl status docker 允许 Docker 开机自启 1systemctl enable docker 解决docker-compose: command not found的方法 您还需要安装Docker Compose。见 手册。以下是您需要执行的命令 123curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` &gt; ./docker-composesudo mv ./docker-compose /usr/bin/docker-composesudo chmod +x /usr/bin/docker-compose Docker 清理命令杀死所有正在运行的容器. 1alias dockerkill='docker kill $(docker ps -a -q)' 删除所有已经停止的容器. 1alias dockercleanc='docker rm $(docker ps -a -q)' 删除所有未打标签的镜像. 1alias dockercleani='docker rmi $(docker images -q -f dangling=true)' 删除所有已经停止的容器和未打标签的镜像. 1alias dockerclean='dockercleanc || true &amp;&amp; dockercleani' 删除所有未运行 Docker 容器docker rm $(docker ps -a -q)删除所有 Docker 镜像删除所有未打 tag 的镜像 docker rmi $(docker images -q | awk ‘/^/ { print $3 }’)删除所有镜像 docker rmi $(docker images -q)根据格式删除所有镜像 docker rm $(docker ps -qf status=exited) docker imagesdocker tag IMAGE_ID /[:]docker login#docker push 镜像到docker hub 的仓库docker push /:docker images镜像的保存docker save IMAGE_ID &gt; newname.tar镜像的导入docker load &lt; tnewname.tar 保存对容器的修改，示范docker commit cb439fb2c714 mxnet/python:gpu 停用全部运行中的容器: 1docker stop $(docker ps -q) 删除全部容器： 1docker rm $(docker ps -aq) 一条命令实现停用并删除容器： 1docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq) 12docker system prune -ydocker image prune --force --all -y 更新docker 1.13 中增加了 docker system prune的命令，针对container、image可以使用docker container prune、docker image prune命令。 docker image prune --force --all或者docker image prune -f -a : 删除所有不使用的镜像 docker container prune -f: 删除所有停止的容器 docker中如何删除image（镜像） 12docker imagesdocker ps -a 查看docker的帮助会发现有两个与删除有关的命令rm和rmi 12rm Remove one or more containersrmi Remove one or more images 1docker rmi ID 12docker pull ubuntudocker run -t -i ubuntu /bin/bash 使用示例 nginx 12docker pull nginxdocker run --name some-nginx -d -p 8080:80 some-content-nginx Then you can hit http://localhost:8080 or http://host-ip:8080 in your browser. shadowsocks-libev-teddysun 1docker pull teddysun/shadowsocks-libev:alpine 在宿主机上创建配置文件 123456789101112echo "&#123; "server":"0.0.0.0", "server_port":9000, "password":"password0", "timeout":300, "method":"aes-256-gcm", "fast_open":true, "nameserver":"8.8.8.8", "mode":"tcp_and_udp", "plugin":"obfs-server", "plugin_opts":"obfs=tls"&#125; " &gt; /etc/shadowsocks-libev/config.json 启动容器 1docker run -d -p 9000:9000 -p 9000:9000/udp --name ss-libev -v /etc/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev 介绍 docker run：开始运行一个容器。 -d 参数：容器以后台运行并输出容器 ID。 -p 参数：容器的 9000 端口映射到本机的 9000 端口。默认是映射 TCP，当需要映射 UDP 时，那就再追加一次 UDP 的映射。冒号后面是容器端口，冒号前面是宿主机端口，可以写成一致，也可以不一致。 –name 参数：给容器分配一个识别符，方便将来的启动，停止，删除等操作。 -v 参数：挂载卷(volume)，冒号后面是容器的路径，冒号前面是宿主机的路径，可以写成一致，也可以不一致。 teddysun/shadowsocks-libev：这是拉取回来的镜像路径。]]></content>
@@ -327,6 +316,17 @@
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo文章编辑模版示范]]></title>
+    <url>%2Fhexo-edit-Markdown.html</url>
+    <content type="text"><![CDATA[1eefef 这是灰底字 修改字体颜色/大小/背景色如果想自定义字体大小以及颜色，可以直接在 Markdown 文档中使用 html 语法 12345&lt;font size=4 &gt; 这里输入文字，自定义字体大小 &lt;/font&gt;&lt;font color="#FF0000"&gt; 这里输入文字，自定义字体颜色&lt;/font&gt; &lt;span style="background-color: #ff6600;"&gt;这里输入文字，自定义字体背景色&lt;/span&gt;&lt;font color="#000000" size=4&gt;&lt;span style="background-color: #ADFF2F;"&gt;这是综合起来的效果 &lt;/span&gt;&lt;/font&gt;&lt;font color="#FFFFFF" size=4&gt;&lt;span style="background-color: #68228B;"&gt;这是综合起来的效果2 &lt;/span&gt;&lt;/font&gt; 其中#FF0000为RGB颜色代码，读者可去RGB颜色查询对照表网站查找自己喜欢的颜色。 若想在RGB颜色值与十六进制颜色码之间相互转化，可查看该网站。 这里输入文字，自定义字体大小 这里输入文字，自定义字体颜色这里输入文字，自定义字体背景色这是综合起来的效果 这是综合起来的效果2 文本居中对齐1&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125; 展示如下 blah blah blah 插入代码1``` bash 演示效果 1bash xxx.sh 插入表格1234|函数名|功能|其它||----|----|----||max|求最大值|其它1||min|求最小值|其它2| 演示效果 函数名 功能 其它 max 求最大值 其它1 min 求最小值 其它2]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
