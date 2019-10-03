@@ -81,3 +81,10 @@ deploy:
   type: git
   repository: https://github.com/ojbk8/ojbk8.github.io
   branch: master
+
+# Local Search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
