@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="WireGuard简单介绍WireGuard是通过UDP协议传输数据的，这意味着它可以搭建在被墙的服务器上使用，复活被墙IP！ 更安全的加密  Curve25519 目前最高水平的秘钥交换算法。 ChaCha20 对称加解密算法，比 AES 更快更高效。 Poly1305 是一种 MAC (Message Authentication Code) 标准，用于验证数据的完整性和消息的真实性。 BLA">
+<meta name="keywords" content="WireGuard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动配置安装WireGuard服务端">
+<meta property="og:url" content="https://ojbk8.github.io/WireGuard-service-install/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="WireGuard简单介绍WireGuard是通过UDP协议传输数据的，这意味着它可以搭建在被墙的服务器上使用，复活被墙IP！ 更安全的加密  Curve25519 目前最高水平的秘钥交换算法。 ChaCha20 对称加解密算法，比 AES 更快更高效。 Poly1305 是一种 MAC (Message Authentication Code) 标准，用于验证数据的完整性和消息的真实性。 BLA">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手动配置安装WireGuard服务端">
+<meta name="twitter:description" content="WireGuard简单介绍WireGuard是通过UDP协议传输数据的，这意味着它可以搭建在被墙的服务器上使用，复活被墙IP！ 更安全的加密  Curve25519 目前最高水平的秘钥交换算法。 ChaCha20 对称加解密算法，比 AES 更快更高效。 Poly1305 是一种 MAC (Message Authentication Code) 标准，用于验证数据的完整性和消息的真实性。 BLA">
+  <link rel="canonical" href="https://ojbk8.github.io/WireGuard-service-install/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>手动配置安装WireGuard服务端 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/WireGuard-service-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">手动配置安装WireGuard服务端
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-07 16:00:00" itemprop="dateCreated datePublished" datetime="2019-02-07T16:00:00+03:00">2019-02-07</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="WireGuard简单介绍"><a href="#WireGuard简单介绍" class="headerlink" title="WireGuard简单介绍"></a>WireGuard简单介绍</h3><p>WireGuard是通过UDP协议传输数据的，这意味着它可以搭建在被墙的服务器上使用，复活被墙IP！</p>
+<p>更安全的加密</p>
+<ul>
+<li>Curve25519 目前最高水平的秘钥交换算法。</li>
+<li>ChaCha20 对称加解密算法，比 AES 更快更高效。</li>
+<li>Poly1305 是一种 MAC (Message Authentication Code) 标准，用于验证数据的完整性和消息的真实性。</li>
+<li>BLAKE2 一种更安全的 HASH 算法（类似的有 SHA1, SHA256, MD5）</li>
+<li>SipHash24 另一种 HASH 算法。</li>
+<li>HKDF 一种秘钥衍生算法。</li>
+</ul>
+<h3 id="前提要求"><a href="#前提要求" class="headerlink" title="前提要求"></a>前提要求</h3><p>系统要求：Debian 8 / 9、Ubuntu 14.04 / 16.04 / 18.04 / 18.10<br>服务器要求：OpenVZ 虚拟化的服务器不支持安装该VPN，其他虚拟化均可。<br>注意：如果你用的是 Vultr、DO，且你本地没有 IPv6 地址,那就不要勾选 Enable IPv6否则可能客户端链接时可能会出错。<br><a href="https://www.wireguard.com/install/#red-hat-enterprise-linux-centos-module-tools" target="_blank" rel="noopener">CentOS7官方安装代码</a></p>
+<a id="more"></a>
+
+
+<h3 id="Debian安装步骤"><a href="#Debian安装步骤" class="headerlink" title="Debian安装步骤"></a>Debian安装步骤</h3><p>安装和 linux-image 内核版本相对于的 linux-headers 内核</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install linux-headers-$(uname -r) -y</span><br></pre></td></tr></table></figure>
+
+<p>Debian安装后使用以下命令检测linux-headers内核是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l|grep linux-headers</span><br></pre></td></tr></table></figure>
+
+<p>安装WireGuard</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://deb.debian.org/debian/ unstable main"</span> &gt; /etc/apt/sources.list.d/unstable.list</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'Package: *\nPin: release a=unstable\nPin-Priority: 150'</span> &gt; /etc/apt/preferences.d/<span class="built_in">limit</span>-unstable</span><br><span class="line">apt update</span><br><span class="line">apt install wireguard resolvconf -y</span><br></pre></td></tr></table></figure>
+
+<p>resolvconf 是用来指定DNS的，旧一些的系统可能没装。</p>
+<h3 id="Ubuntu安装步骤"><a href="#Ubuntu安装步骤" class="headerlink" title="Ubuntu安装步骤"></a>Ubuntu安装步骤</h3><p>首先如果你是 Ubuntu 14.04 系统，那么请先安装 PPA<br>以下步骤仅限 Ubuntu 14.04 系统执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install software-properties-common -y</span><br></pre></td></tr></table></figure>
+
+<p>通过PPA工具添加WireGuard源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:wireguard/wireguard</span><br><span class="line">apt install wireguard</span><br></pre></td></tr></table></figure>
+
+<p>安装WireGuard</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install wireguard resolvconf -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h3><p>使用以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep wireguard</span><br><span class="line">modprobe wireguard &amp;&amp; lsmod | grep wireguard</span><br></pre></td></tr></table></figure>
+
+<p>输出能看到wireguard即表示安装成功了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wireguard             212992  0</span><br><span class="line">ip6_udp_tunnel         16384  1 wireguard</span><br><span class="line">udp_tunnel             16384  1 wireguard</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="生成密匙对"><a href="#生成密匙对" class="headerlink" title="生成密匙对"></a>生成密匙对</h4><p>请先手动创建配置文件目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/wireguard</span><br></pre></td></tr></table></figure>
+
+<p>然后开始生成 密匙对(公匙+私匙)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wg genkey | tee sprivatekey | wg pubkey &gt; spublickey</span><br><span class="line">wg genkey | tee cprivatekey | wg pubkey &gt; cpublickey</span><br></pre></td></tr></table></figure>
+
+<p>查看主网卡名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成服务端配置文件"><a href="#生成服务端配置文件" class="headerlink" title="生成服务端配置文件"></a>生成服务端配置文件</h4><ul>
+<li>井号开头的是注释说明，用该命令执行后会自动过滤注释文字。</li>
+<li>下面加粗的这一大段都是一个代码！请把下面几行全部复制，然后粘贴到 SSH软件中执行，不要一行一行执行！</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"[Interface]</span></span><br><span class="line"><span class="string"># 服务器的私匙，对应客户端配置中的公匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PrivateKey = <span class="variable">$(cat sprivatekey)</span></span></span><br><span class="line"><span class="string"># 本机的内网IP地址，一般默认即可，除非和你服务器或客户端设备本地网段冲突</span></span><br><span class="line"><span class="string">Address = 10.0.0.1/24 </span></span><br><span class="line"><span class="string"># 运行 WireGuard 时要执行的 iptables 防火墙规则，用于打开NAT转发之类的。</span></span><br><span class="line"><span class="string"># 如果你的服务器主网卡名称不是 eth0 ，那么请修改下面防火墙规则中最后的 eth0 为你的主网卡名称。</span></span><br><span class="line"><span class="string">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"><span class="string"># 停止 WireGuard 时要执行的 iptables 防火墙规则，用于关闭NAT转发之类的。</span></span><br><span class="line"><span class="string"># 如果你的服务器主网卡名称不是 eth0 ，那么请修改下面防火墙规则中最后的 eth0 为你的主网卡名称。</span></span><br><span class="line"><span class="string">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"><span class="string"># 服务端监听端口，可以自行修改</span></span><br><span class="line"><span class="string">ListenPort = 443</span></span><br><span class="line"><span class="string"># 服务端请求域名解析 DNS</span></span><br><span class="line"><span class="string">DNS = 8.8.8.8</span></span><br><span class="line"><span class="string"># 保持默认</span></span><br><span class="line"><span class="string">MTU = 1420</span></span><br><span class="line"><span class="string"># [Peer] 代表客户端配置，每增加一段 [Peer] 就是增加一个客户端账号，具体我稍后会写多用户教程。</span></span><br><span class="line"><span class="string">[Peer]</span></span><br><span class="line"><span class="string"># 该客户端账号的公匙，对应客户端配置中的私匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PublicKey = <span class="variable">$(cat cpublickey)</span></span></span><br><span class="line"><span class="string"># 该客户端账号的内网IP地址</span></span><br><span class="line"><span class="string">AllowedIPs = 10.0.0.2/32"</span>|sed <span class="string">'/^#/d;/^\s*$/d'</span> &gt; wg0.conf</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成客户端配置文件"><a href="#生成客户端配置文件" class="headerlink" title="生成客户端配置文件"></a>生成客户端配置文件</h4><ul>
+<li>井号开头的是注释说明，用该命令执行后会自动过滤注释文字。</li>
+<li>下面加粗的这一大段都是一个代码！请把下面几行全部复制，然后粘贴到 SSH软件中执行，不要一行一行执行！</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"[Interface]</span></span><br><span class="line"><span class="string"># 服务器的私匙，对应客户端配置中的公匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PrivateKey = <span class="variable">$(cat sprivatekey)</span></span></span><br><span class="line"><span class="string"># 本机的内网IP地址，一般默认即可，除非和你服务器或客户端设备本地网段冲突</span></span><br><span class="line"><span class="string">Address = 10.0.0.1/24 </span></span><br><span class="line"><span class="string"># 运行 WireGuard 时要执行的 iptables 防火墙规则，用于打开NAT转发之类的。</span></span><br><span class="line"><span class="string"># 如果你的服务器主网卡名称不是 eth0 ，那么请修改下面防火墙规则中最后的 eth0 为你的主网卡名称。</span></span><br><span class="line"><span class="string">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"><span class="string"># 停止 WireGuard 时要执行的 iptables 防火墙规则，用于关闭NAT转发之类的。</span></span><br><span class="line"><span class="string"># 如果你的服务器主网卡名称不是 eth0 ，那么请修改下面防火墙规则中最后的 eth0 为你的主网卡名称。</span></span><br><span class="line"><span class="string">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"><span class="string"># 服务端监听端口，可以自行修改</span></span><br><span class="line"><span class="string">ListenPort = 443</span></span><br><span class="line"><span class="string"># 服务端请求域名解析 DNS</span></span><br><span class="line"><span class="string">DNS = 8.8.8.8</span></span><br><span class="line"><span class="string"># 保持默认</span></span><br><span class="line"><span class="string">MTU = 1420</span></span><br><span class="line"><span class="string"># [Peer] 代表客户端配置，每增加一段 [Peer] 就是增加一个客户端账号，具体我稍后会写多用户教程。</span></span><br><span class="line"><span class="string">[Peer]</span></span><br><span class="line"><span class="string"># 该客户端账号的公匙，对应客户端配置中的私匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PublicKey = <span class="variable">$(cat cpublickey)</span></span></span><br><span class="line"><span class="string"># 该客户端账号的内网IP地址</span></span><br><span class="line"><span class="string">AllowedIPs = 10.0.0.2/32"</span>|sed <span class="string">'/^#/d;/^\s*$/d'</span> &gt; wg0.conf</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 上面加粗的这一大段都是一个代码！请把下面几行全部复制，然后粘贴到 SSH软件中执行，不要一行一行执行！</span></span><br><span class="line">生成客户端配置文件</span><br><span class="line">接下来就开始生成客户端配置文件：</span><br><span class="line"></span><br><span class="line"><span class="comment"># 井号开头的是注释说明，用该命令执行后会自动过滤注释文字。</span></span><br><span class="line"><span class="comment"># 下面加粗的这一大段都是一个代码！请把下面几行全部复制，然后粘贴到 SSH软件中执行，不要一行一行执行！</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"[Interface]</span></span><br><span class="line"><span class="string"># 客户端的私匙，对应服务器配置中的客户端公匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PrivateKey = <span class="variable">$(cat cprivatekey)</span></span></span><br><span class="line"><span class="string"># 客户端的内网IP地址</span></span><br><span class="line"><span class="string">Address = 10.0.0.2/24</span></span><br><span class="line"><span class="string"># 解析域名用的DNS</span></span><br><span class="line"><span class="string">DNS = 8.8.8.8</span></span><br><span class="line"><span class="string"># 保持默认</span></span><br><span class="line"><span class="string">MTU = 1420</span></span><br><span class="line"><span class="string">[Peer]</span></span><br><span class="line"><span class="string"># 服务器的公匙，对应服务器的私匙（自动读取上面刚刚生成的密匙内容）</span></span><br><span class="line"><span class="string">PublicKey = <span class="variable">$(cat spublickey)</span></span></span><br><span class="line"><span class="string"># 服务器地址和端口，下面的 X.X.X.X 记得更换为你的服务器公网IP，端口请填写服务端配置时的监听端口</span></span><br><span class="line"><span class="string">Endpoint = X.X.X.X:443</span></span><br><span class="line"><span class="string"># 因为是客户端，所以这个设置为全部IP段即可</span></span><br><span class="line"><span class="string">AllowedIPs = 0.0.0.0/0, ::0/0</span></span><br><span class="line"><span class="string"># 保持连接，如果客户端或服务端是 NAT 网络(比如国内大多数家庭宽带没有公网IP，都是NAT)，那么就需要添加这个参数定时链接服务端(单位：秒)，如果你的服务器和你本地都不是 NAT 网络，那么建议不使用该参数（设置为0，或客户端配置文件中删除这行）</span></span><br><span class="line"><span class="string">PersistentKeepalive = 25"</span>|sed <span class="string">'/^#/d;/^\s*$/d'</span> &gt; client.conf</span><br></pre></td></tr></table></figure>
+
+<p>接下来你就可以将这个客户端配置文件/etc/wireguard/client.conf 通过SFTP、HTTP等方式下载到本地了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/wireguard/client.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="剩余其他操作"><a href="#剩余其他操作" class="headerlink" title="剩余其他操作"></a>剩余其他操作</h3><h4 id="赋予配置文件夹权限"><a href="#赋予配置文件夹权限" class="headerlink" title="赋予配置文件夹权限"></a>赋予配置文件夹权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 -R /etc/wireguard</span><br></pre></td></tr></table></figure>
+
+<h4 id="打开防火墙转发功能"><a href="#打开防火墙转发功能" class="headerlink" title="打开防火墙转发功能"></a>打开防火墙转发功能</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.ip_forward = 1"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动WireGuard"><a href="#启动WireGuard" class="headerlink" title="启动WireGuard"></a>启动WireGuard</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wg-quick up wg0</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止WireGuard"><a href="#停止WireGuard" class="headerlink" title="停止WireGuard"></a>停止WireGuard</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wg-quick down wg0</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询WireGuard状态"><a href="#查询WireGuard状态" class="headerlink" title="查询WireGuard状态"></a>查询WireGuard状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wg</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><p>注意：Ubuntu 14.04 系统默认是没有 systemctl 的，所以无法配置开机启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> wg-quick@wg0</span><br></pre></td></tr></table></figure>
+
+<h3 id="取消开机启动"><a href="#取消开机启动" class="headerlink" title="取消开机启动"></a>取消开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> wg-quick@wg0</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/WireGuard/" rel="tag"><i class="fa fa-tag"></i> WireGuard</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/MarkdownPad2-Pro-SN-key/" rel="next" title="MarkdownPad2_Pro专业版注册码">
+                  <i class="fa fa-chevron-left"></i> MarkdownPad2_Pro专业版注册码
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/caddy/" rel="prev" title="caddy官方脚本一键手动安装与使用">
+                  caddy官方脚本一键手动安装与使用 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#WireGuard简单介绍"><span class="nav-number">1.</span> <span class="nav-text">WireGuard简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前提要求"><span class="nav-number">2.</span> <span class="nav-text">前提要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debian安装步骤"><span class="nav-number">3.</span> <span class="nav-text">Debian安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu安装步骤"><span class="nav-number">4.</span> <span class="nav-text">Ubuntu安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证是否安装成功"><span class="nav-number">5.</span> <span class="nav-text">验证是否安装成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">6.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成密匙对"><span class="nav-number">6.1.</span> <span class="nav-text">生成密匙对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成服务端配置文件"><span class="nav-number">6.2.</span> <span class="nav-text">生成服务端配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成客户端配置文件"><span class="nav-number">6.3.</span> <span class="nav-text">生成客户端配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剩余其他操作"><span class="nav-number">7.</span> <span class="nav-text">剩余其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#赋予配置文件夹权限"><span class="nav-number">7.1.</span> <span class="nav-text">赋予配置文件夹权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开防火墙转发功能"><span class="nav-number">7.2.</span> <span class="nav-text">打开防火墙转发功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动WireGuard"><span class="nav-number">8.</span> <span class="nav-text">启动WireGuard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止WireGuard"><span class="nav-number">9.</span> <span class="nav-text">停止WireGuard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询WireGuard状态"><span class="nav-number">10.</span> <span class="nav-text">查询WireGuard状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置开机启动"><span class="nav-number">11.</span> <span class="nav-text">设置开机启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消开机启动"><span class="nav-number">12.</span> <span class="nav-text">取消开机启动</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
