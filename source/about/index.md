@@ -2,11 +2,17 @@
 title: 关于
 date: 2019-01-17 15:18:28
 ---
-* 我最多只能算是一个部分会复制粘贴的人
-* 用于搜集整理互联网上们大佬们的各种资源
-* 同时也记录一下自己的折腾笔记，方便日后提取
-* 欢迎大伙给我留言
+
+记录折腾中的点点滴滴，方便日后查找。
+
 **如有侵权，请留言联系我删除**
 
 
-![支付宝扫码领红包](/images/alipay_Redenvelope_QRcode.jpg)
+``` bash
+git add .
+git commit -m "Hexo code"
+git push -u origin code
+hexo cl
+hexo g
+hexo d
+```
