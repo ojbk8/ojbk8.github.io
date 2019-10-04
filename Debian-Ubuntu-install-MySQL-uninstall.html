@@ -30,7 +30,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -56,7 +56,7 @@
 </script>
 
   <meta name="description" content="Debian 9上安装最新的MySQL在Debian 9中，MySQL项目的社区分支MariaDB被打包为默认的MySQL变体。虽然MariaDB在大多数情况下运行良好，但如果您需要仅在Oracle的MySQL中找到的功能，则可以从MySQL开发人员维护的存储库中安装和使用软件包。安装MySQL首先添加MySQL软件库">
-<meta name="keywords" content="Debian,Ubuntu,MySQL">
+<meta name="keywords" content="Debian,MySQL,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Debian和Ubuntu安装最新的MySQL修改密码卸载清理">
 <meta property="og:url" content="https://ojbk8.github.io/Debian-Ubuntu-install-MySQL-uninstall.html">
@@ -238,6 +238,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
   <div class="reading-progress-bar"></div>
 
 
@@ -372,9 +376,9 @@
             
               <a href="/tags/Debian/" rel="tag"><i class="fa fa-tag"></i> Debian</a>
             
-              <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
-            
               <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+            
+              <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
             
           </div>
         
@@ -414,6 +418,9 @@
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
 
         </div>
           
@@ -492,15 +499,23 @@
     
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/ojbk8/ojbk8.github.io" title="GitHub &rarr; https://github.com/ojbk8/ojbk8.github.io" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
 
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -617,6 +632,25 @@ var a_idx = 0;
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '1381bbf6e0bbdb35ace3',
+      clientSecret: '409a2fd66a2a2fb9b6afef261a6f1ba7927b0685',
+      repo: 'mygitalk',
+      owner: 'ojbk8',
+      admin: ['ojbk8'],
+      id: '6dd92a116d9279fe7559dd1e7d029b30',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
