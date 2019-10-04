@@ -5,7 +5,7 @@ publishdate: 2017-12-21
 lastmod: 2017-12-21
 draft: false
 tags: ["Debian","Ubuntu","bbr"]
-
+comments: false
 ---
 
 查看内核版本

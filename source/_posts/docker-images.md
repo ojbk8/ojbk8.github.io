@@ -5,7 +5,7 @@ lastmod: 2018-07-25T00:00:00+08:00
 draft: false
 tags: ["docker"]
 categories: ["教程"]
-
+comments: false
 ---
 
 *更多容器可以访问[docker](https://www.docker.com/)的[Docker Hub](https://hub.docker.com/)*

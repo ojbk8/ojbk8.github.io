@@ -5,7 +5,7 @@ publishdate: 2015-06-13
 lastmod: 2015-06-13
 draft: false
 tags: ["FastStone Capture"]
-
+comments: false
 ---
 
 [FastStone Capture](https://www.faststone.org)是一款非常小巧的屏幕截图屏幕录像软件。

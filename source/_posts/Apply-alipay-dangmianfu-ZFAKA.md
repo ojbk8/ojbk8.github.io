@@ -4,6 +4,8 @@ date: 2019-07-02T00:00:00+08:00
 lastmod: 2019-07-02T00:00:00+08:00
 draft: false
 tags: ["alipay"]
+comments: false
+categories: 教程
 ---
 
 # 申请开通支付宝当面付基础版费率0.38%

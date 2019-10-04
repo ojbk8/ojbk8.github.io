@@ -5,7 +5,7 @@ lastmod: 2018-10-12T00:00:00+08:00
 draft: false
 tags: ["Koolshare"]
 categories: ["教程"]
-
+comments: false
 ---
 
 登陆后依次进入`系统`,`进阶设置`,`配置dnsmasq`

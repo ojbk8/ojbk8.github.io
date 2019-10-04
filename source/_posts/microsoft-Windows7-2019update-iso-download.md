@@ -5,7 +5,7 @@ publishdate: 2019-03-25
 lastmod: 2019-03-25
 draft: false
 tags: ["Windows7"]
-
+comments: false
 ---
 
 近期微软放出了官方 Windows 7 （2019版） 全补丁集成版ISO映像文件，分别是2018年8月1日编译的旗舰版、专业版、家庭高级版的64位和32位镜像，版本号Build 7601.24214，目前只有英文版。

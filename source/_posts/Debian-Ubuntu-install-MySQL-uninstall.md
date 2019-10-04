@@ -5,7 +5,8 @@ publishdate: 2018-07-24
 lastmod: 2018-07-24
 draft: false
 tags: ["MySQL","Debian","Ubuntu"]
-
+comments: false
+categories: 教程
 ---
 
 Debian 9上安装最新的MySQL

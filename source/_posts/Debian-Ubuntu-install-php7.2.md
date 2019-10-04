@@ -5,7 +5,8 @@ publishdate: 2018-07-21
 lastmod: 2018-07-21
 draft: false
 tags: ["php","Debian","Ubuntu"]
-
+comments: false
+categories: 教程
 ---
 
 适用系统： 

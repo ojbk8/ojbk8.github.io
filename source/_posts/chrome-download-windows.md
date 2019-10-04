@@ -5,7 +5,8 @@ publishdate: 2019-06-18
 lastmod: 2019-06-18
 draft: false
 tags: ["chrome"]
-
+comments: false
+categories: 教程
 ---
 
 更新可以下载chrome企业包，全路径识别替换更新。国内可正常访问 企业版 

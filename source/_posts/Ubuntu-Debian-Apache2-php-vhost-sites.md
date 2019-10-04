@@ -5,6 +5,7 @@ draft: false
 tags: ["Ubuntu","Debian","Apache2","PHP"]
 Keywords: [""]
 categories: ["教程"]
+comments: false
 ---
 
 日常更新

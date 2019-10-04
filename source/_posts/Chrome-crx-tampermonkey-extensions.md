@@ -5,6 +5,7 @@ draft: false
 Keywords: [""]
 categories: ["教程"]
 tags: ["Chrome"]
+comments: false
 ---
 
 Chrome下载 [32位](https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise.msi) [64位](https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi)

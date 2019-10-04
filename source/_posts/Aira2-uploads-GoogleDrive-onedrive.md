@@ -5,6 +5,8 @@ publishdate: 2018-12-22
 lastmod: 2018-12-22
 draft: false
 tags: ["Aira2"]
+comments: false
+categories: 教程
 ---
 
 # 更新

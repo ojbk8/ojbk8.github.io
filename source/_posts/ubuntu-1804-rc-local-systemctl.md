@@ -5,6 +5,7 @@ draft: false
 tags: [""]
 Keywords: [""]
 categories: ["教程"]
+comments: false
 ---
 
 使用`update-rc.d`以及`rc.local`等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemd

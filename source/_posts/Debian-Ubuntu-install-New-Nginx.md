@@ -5,7 +5,8 @@ publishdate: 2018-11-21
 lastmod: 2018-11-21
 draft: false
 tags: ["Debian","Nginx"]
-
+comments: false
+categories: 教程
 ---
 
 apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；

@@ -5,7 +5,7 @@ lastmod: 2019-01-15T00:00:00+08:00
 draft: false
 tags: ["Node.js","NPM"]
 categories: ["教程"]
-
+comments: false
 ---
 
 `Node.js`是一个基于Chrome V8 JavaScript引擎构建的平台.Nodejs可用于轻松构建快速，可扩展的网络应用程序。最新版本node.js ppa由其官方网站维护。我们可以将这个PPA添加到Debian 9（Stretch） Debian 8（Jessie）和Debian 7（Wheezy）系统中。这篇我抄来的文章可以帮助你在Debian 9/8/7系统上安装最新的Nodejs和NPM。

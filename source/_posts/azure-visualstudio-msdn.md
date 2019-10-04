@@ -5,6 +5,8 @@ publishdate: 2019-05-28
 lastmod: 2019-05-28
 draft: false
 tags: ["azure"]
+comments: false
+categories: 教程
 ---
 
 订阅:Visual Studio Enterprise

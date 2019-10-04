@@ -1,11 +1,10 @@
 ---
 title: "Oneindex程序安装失败解决办法"
-date: 2018-010-15T00:00:00+08:00
-lastmod: 2018-10-15T00:00:00+08:00
+date: 2017-10-04 15:03:05
 draft: false
 tags: ["oneindex"]
 categories: ["教程"]
-
+comments: false
 ---
 
 项目地址： https://github.com/donwa/oneindex

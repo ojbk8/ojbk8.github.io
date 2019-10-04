@@ -3,7 +3,6 @@ title: 简要安装hexo和next主题
 date: 2019-01-18 19:28:47
 tags: ["hexo"]
 comments: false
-
 ---
 
 以下以Windows平台为例

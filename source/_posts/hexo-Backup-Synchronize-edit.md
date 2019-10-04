@@ -5,7 +5,7 @@ lastmod: 2018-04-11T00:00:00+08:00
 draft: false
 tags: ["hexo"]
 categories: ["教程"]
-
+comments: false
 ---
 
 ### 备份hexo原始配置文件

@@ -5,7 +5,7 @@ publishdate: 2018-07-15
 lastmod: 2018-07-15
 draft: false
 tags: ["GoogleDrive","rclone","OneDrive"]
-
+comments: false
 ---
 
 使用前请确保已经rclone成功挂载GoogleDrive或MicrosoftOneDrive [搭建教程](/rclone-upload-googledrive-microsoftonedrive.html)
