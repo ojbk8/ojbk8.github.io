@@ -510,14 +510,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[记录折腾中的点点滴滴，方便日后查找。 如有侵权，请留言联系我删除 123456git add .git commit -m "Hexo code"git push -u origin codehexo clhexo ghexo d]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[404 Not Found]]></title>
     <url>%2F%2F404.html</url>
     <content type="text"><![CDATA[抱歉您访问的页面不存在或已经删除 首页]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[记录折腾中的点点滴滴，方便日后查找。 如有侵权，请留言联系我删除 123456git add .git commit -m "Hexo code"git push -u origin codehexo clhexo ghexo d]]></content>
   </entry>
   <entry>
     <title><![CDATA[分类]]></title>
