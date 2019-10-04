@@ -83,6 +83,7 @@ deploy:
   branch: master
 
 # Local Search
+# https://github.com/theme-next/hexo-generator-searchdb
 search:
   path: search.json
   field: all
