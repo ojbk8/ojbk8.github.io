@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.json',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="個人Blog採用靜態Blog形式託管在[Github][github]上。此前使用的是[Hexo][hexo]，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的[Hugo][hugo]。本文記錄如何在GNU/Linux中通過[Travis CI][travisci]將[Hugo][hugo]生成的Blog內容自動同">
+<meta name="keywords" content="Hugo,Travis-CI,GitHub-Pages">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Travis CI和Hugo將Blog自動部署到Github Pages">
+<meta property="og:url" content="https://ojbk8.github.io/Hugo-Travis-CI-Deploy-Github-Pages-Automatically.html">
+<meta property="og:site_name" content="Ojbk8&#39;s BLOG">
+<meta property="og:description" content="個人Blog採用靜態Blog形式託管在[Github][github]上。此前使用的是[Hexo][hexo]，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的[Hugo][hugo]。本文記錄如何在GNU/Linux中通過[Travis CI][travisci]將[Hugo][hugo]生成的Blog內容自動同">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ojbk8.github.io/images/github-access-token.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/travisci-system-var-setting.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/travisci-general-setting.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/travisci-deploy-status.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/travisci-deploy-log-1.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/travisci-deploy-log-2.png">
+<meta property="og:updated_time" content="2019-10-04T04:05:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Travis CI和Hugo將Blog自動部署到Github Pages">
+<meta name="twitter:description" content="個人Blog採用靜態Blog形式託管在[Github][github]上。此前使用的是[Hexo][hexo]，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的[Hugo][hugo]。本文記錄如何在GNU/Linux中通過[Travis CI][travisci]將[Hugo][hugo]生成的Blog內容自動同">
+<meta name="twitter:image" content="https://ojbk8.github.io/images/github-access-token.png">
+  <link rel="canonical" href="https://ojbk8.github.io/Hugo-Travis-CI-Deploy-Github-Pages-Automatically">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>利用Travis CI和Hugo將Blog自動部署到Github Pages | Ojbk8's BLOG</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ojbk8's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">网站副标题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Hugo-Travis-CI-Deploy-Github-Pages-Automatically.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ojbk8">
+      <meta itemprop="description" content="网络记事本">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ojbk8's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">利用Travis CI和Hugo將Blog自動部署到Github Pages
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-19 16:00:00" itemprop="dateCreated datePublished" datetime="2019-01-19T16:00:00+03:00">2019-01-19</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>個人Blog採用靜態Blog形式託管在[Github][github]上。此前使用的是[Hexo][hexo]，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的[Hugo][hugo]。本文記錄如何在GNU/Linux中通過[Travis CI][travisci]將[Hugo][hugo]生成的Blog內容自動同步到[Github][github]，實現持續集成、部署。</p><a id="more"></a>
+<blockquote>
+<p>转载自 <a href="https://axdlog.com/zh/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/" target="_blank" rel="noopener">利用Travis CI和Hugo將Blog自動部署到Github Pages</a></p>
+</blockquote>
+<h2 id="官方文檔"><a href="#官方文檔" class="headerlink" title="官方文檔"></a>官方文檔</h2><p>本文中的相關操作皆以官方文檔爲操作依據</p>
+<ul>
+<li>Github<ul>
+<li><a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="noopener">GitHub Pages Basics</a></li>
+<li><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="noopener">User, Organization, and Project Pages</a></li>
+<li><a href="https://help.github.com/articles/creating-project-pages-using-the-command-line/" target="_blank" rel="noopener">Creating Project Pages using the command line</a></li>
+<li><a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="noopener">Configuring a publishing source for GitHub Pages</a></li>
+</ul>
+</li>
+<li>Hugo<ul>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/" target="_blank" rel="noopener">Host on GitHub</a></li>
+</ul>
+</li>
+<li>Travis CI<ul>
+<li>[GitHub Pages Deployment][travisci-github-page]</li>
+<li><a href="https://docs.travis-ci.com/user/languages/python/" target="_blank" rel="noopener">Building a Python Project</a></li>
+<li><a href="https://docs.travis-ci.com/user/best-practices-security/" target="_blank" rel="noopener">Best Practices in Securing Your Data</a></li>
+<li><a href="https://docs.travis-ci.com/user/customizing-the-build/" target="_blank" rel="noopener">Customizing the Build</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="GitHub-Pages-限制"><a href="#GitHub-Pages-限制" class="headerlink" title="GitHub Pages 限制"></a>GitHub Pages 限制</h3><blockquote>
+<p>GitHub Pages is a static site hosting service designed to host your personal, organization, or project pages directly from a GitHub repository.</p>
+</blockquote>
+<p>GitHub Pages 站點在使用上有如下限制：</p>
+<ol>
+<li>倉庫大小<a href="https://help.github.com/en/articles/what-is-my-disk-quota#file-and-repository-size-limitations" target="_blank" rel="noopener">不得超過1GB</a>；</li>
+<li>生成的 GitHub Pages 站點大小不得超過1 GB；</li>
+<li>GitHub Pages 站點每月限 100 GB 流量；</li>
+<li>GitHub Pages 站點每小時限構建10次；</li>
+</ol>
+<p>更多介紹見官方文檔 『<a href="https://help.github.com/en/articles/what-is-github-pages" target="_blank" rel="noopener">What is GitHub Pages?</a>』。</p>
+<h2 id="準備工作"><a href="#準備工作" class="headerlink" title="準備工作"></a>準備工作</h2><ol>
+<li>在[Github][github]註冊帳號；</li>
+<li>在[Travis CI][travisci]註冊帳號(可通過Github帳號登入)；</li>
+<li>本地系統安裝<code>git</code>，<code>hugo</code>；</li>
+<li>個人域名(可選，此處指定域名<code>axdlog.com</code>)；</li>
+</ol>
+<h2 id="安裝-Hugo"><a href="#安裝-Hugo" class="headerlink" title="安裝 Hugo"></a>安裝 Hugo</h2><ul>
+<li>Github 地址: <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">https://github.com/gohugoio/hugo</a></li>
+<li>下載頁: <a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener">https://github.com/gohugoio/hugo/releases</a></li>
+<li>版本信息API:  <a href="https://api.github.com/repos/gohugoio/hugo/releases/latest" target="_blank" rel="noopener">https://api.github.com/repos/gohugoio/hugo/releases/latest</a></li>
+</ul>
+<p>hugo官方的安裝文檔頁<a href="https://gohugo.io/getting-started/installing/" target="_blank" rel="noopener">Install Hugo</a>，如果使用GNU/Linux，可考慮使用本人寫的Python腳本進行快速安裝。</p>
+<p>查看版本信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># which hugo</span></span><br><span class="line">/usr/<span class="built_in">local</span>/bin/hugo</span><br><span class="line"></span><br><span class="line"><span class="comment"># hugo version</span></span><br><span class="line">Hugo Static Site Generator v0.55.5-A83256B9 linux/amd64 BuildDate: 2019-05-02T13:03:36Z</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python-Script"><a href="#Python-Script" class="headerlink" title="Python Script"></a>Python Script</h3><p>這個Python腳本用於安裝或升級 GNU/Linux 中的Hugo。</p>
+<p>操作過程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ sudo python3 ~/hugo.py</span><br><span class="line">uccessfully download pack /tmp/hugo_0.55.4_Linux-64bit.tar.gz!</span><br><span class="line">Successfully install Hugo v0.55.4!</span><br><span class="line"></span><br><span class="line">Symlink info:</span><br><span class="line">lrwxrwxrwx 1 root root 14 Apr 26 12:26 /usr/<span class="built_in">local</span>/bin/hugo -&gt; /opt/Hugo/hugo</span><br><span class="line"></span><br><span class="line">Hugo info:</span><br><span class="line">Hugo Static Site Generator v0.55.4-57900417 linux/amd64 BuildDate: 2019-04-25T07:38:50Z</span><br><span class="line"></span><br><span class="line">$ sudo python3 ~/hugo.py</span><br><span class="line">Latest version 0.55.4 existed.</span><br><span class="line"></span><br><span class="line">Hugo info:</span><br><span class="line">Hugo Static Site Generator v0.55.4-57900417 linux/amd64 BuildDate: 2019-04-25T07:38:50Z</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># update operation</span></span><br><span class="line">$ sudo python3 hugo.py</span><br><span class="line">Local version 0.55.4 &lt; latest version 0.55.5.</span><br><span class="line">Successfully download pack /tmp/hugo_0.55.5_Linux-64bit.tar.gz!</span><br><span class="line">Successfully install Hugo v0.55.5!</span><br><span class="line"></span><br><span class="line">Symlink info:</span><br><span class="line">lrwxrwxrwx 1 root root 14 May  2 11:21 /usr/<span class="built_in">local</span>/bin/hugo -&gt; /opt/Hugo/hugo</span><br><span class="line"></span><br><span class="line">Hugo info:</span><br><span class="line">Hugo Static Site Generator v0.55.5-A83256B9 linux/amd64 BuildDate: 2019-05-02T13:03:36Z</span><br></pre></td></tr></table></figure>
+
+<h3 id="創建新項目"><a href="#創建新項目" class="headerlink" title="創建新項目"></a>創建新項目</h3><p>如何通過[Hugo][hugo]創建一個新的站點，詳見官方文檔 <a href="https://gohugo.io/getting-started/" target="_blank" rel="noopener">Get Started</a>、<a href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noopener">Quick Start</a>。</p>
+<blockquote>
+<p>If this is your first time using Hugo and you’ve <a href="https://gohugo.io/getting-started/installing/" target="_blank" rel="noopener">already installed Hugo on your machine</a>, we recommend the <a href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noopener">quick start</a>.</p>
+</blockquote>
+<p>此處且將站點名稱命名爲<code>quickstart</code>(其實就是目錄名，不一定是最終的網站名稱)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo new site quickstart</span><br></pre></td></tr></table></figure>
+
+<p>Hugo生成的目錄結構如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tree -L 2</span></span><br><span class="line">├── archetypes</span><br><span class="line">│   └── default.md</span><br><span class="line">├── config.toml</span><br><span class="line">├── content</span><br><span class="line">├── data</span><br><span class="line">├── layouts</span><br><span class="line">├── static</span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">6 directories, 2 files</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：這些不是最終的Blog內容，是用於生成Blog內容的文件。</p>
+<p>目錄<code>content</code>中存放自己需要發佈的Blog (Markdown文件)；</p>
+<p>如果要預覽Blog最終效果，可通過命令<code>hugo server</code>在本地開啓一個Web服務器，端口號<code>1313</code>，在瀏覽器中打開即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Web Server is available at http://localhost:1313/ (<span class="built_in">bind</span> address 127.0.0.1)</span><br><span class="line">Press Ctrl+C to stop</span><br></pre></td></tr></table></figure>
+
+<p>在項目所在目錄中執行命令<code>hugo</code>，會生成名爲<code>public</code>的目錄，該目錄存放着最終的Blog內容文件。將<code>public</code>目錄中的所有內容上傳至Github的<code>master</code>分支中即可。</p>
+<p>演示過程如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hugo</span></span><br><span class="line"></span><br><span class="line">                   | EN   </span><br><span class="line">+------------------+-----+</span><br><span class="line">  Pages            | 426  </span><br><span class="line">  Paginator pages  |  24  </span><br><span class="line">  Non-page files   |   0  </span><br><span class="line">  Static files     |  34  </span><br><span class="line">  Processed images |   0  </span><br><span class="line">  Aliases          |  95  </span><br><span class="line">  Sitemaps         |   1  </span><br><span class="line">  Cleaned          |   0  </span><br><span class="line"></span><br><span class="line">Total <span class="keyword">in</span> 403 ms</span><br><span class="line"></span><br><span class="line"><span class="comment"># tree -L 1</span></span><br><span class="line">.</span><br><span class="line">├── archetypes</span><br><span class="line">├── config.toml</span><br><span class="line">├── content</span><br><span class="line">├── data</span><br><span class="line">├── layouts</span><br><span class="line">├── public</span><br><span class="line">├── resources</span><br><span class="line">├── static</span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">8 directories, 1 file</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-Github-倉庫"><a href="#配置-Github-倉庫" class="headerlink" title="配置 Github 倉庫"></a>配置 Github 倉庫</h2><p><strong>注意</strong>：本部分的處理思路、操作非常重要，Git配置步驟省略。Git的使用見官方文檔 『<a href="https://help.github.com/en" target="_blank" rel="noopener">GitHub Help</a>』、『<a href="https://github.github.com/training-kit/" target="_blank" rel="noopener">Git Cheat Sheets</a>』。</p>
+<p>使用GitHub Pages託管Blog內容，需要創建名爲<code>&lt;username&gt;.github.io</code>的倉庫，並將Hugo生成的Blog內容提交到倉庫的<code>master</code>中。</p>
+<p>因Hugo生成的內容分爲兩部分，源文件和<code>public</code>目錄中的Blog內容。故通過<code>git checkout --orphan</code>在同一倉庫中創建2個分支：</p>
+<ul>
+<li>分支<code>code</code>用於存放源文件；</li>
+<li>分支<code>master</code>用於存放<code>public</code>目錄中的Blog內容；</li>
+</ul>
+<p>處理思路與官方文檔 <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="noopener">Configuring a publishing source for GitHub Pages</a>不同，需要注意。</p>
+<h3 id="創建空倉庫"><a href="#創建空倉庫" class="headerlink" title="創建空倉庫"></a>創建空倉庫</h3><p>本人GitHub帳號名爲<code>MaxdSre</code>，故創建倉庫<code>maxdsre.github.io</code>。</p>
+<p>創建倉庫後，出現如下提示信息</p>
+<blockquote>
+<p>or create a new repository on the command line</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"# maxdsre.github.io"</span> &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line">git remote add origin git@github.com:MaxdSre/maxdsre.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>or push an existing repository from the command line</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:MaxdSre/maxdsre.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p>操作分爲4步：</p>
+<ol>
+<li>初始化Git倉庫(<code>git init</code>)；</li>
+<li>創建<code>code</code>分支，提交源文件代碼到倉庫；</li>
+<li>在目標目錄中執行<code>hugo</code>生成<code>public</code>目錄，將<code>public</code>目錄中內容轉移到臨時目錄中， 清空目標目錄，將臨時目錄中文件複製到該目錄中；</li>
+<li>通過命令<code>git checkout --orphan</code>創建<code>master</code>分支，將目錄中內容提交到倉庫。</li>
+</ol>
+<p>進入目標目錄（此處爲<code>/PATH/quickstart/</code>）後，順序執行如下操作命令</p>
+<h4 id="code-分支"><a href="#code-分支" class="headerlink" title="code 分支"></a>code 分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initialized empty Git repository in /PATH/.git/</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># Switched to a new branch 'code', equal to 'git branch code &amp;&amp; git checkout code'</span></span><br><span class="line">git checkout -b code</span><br><span class="line"></span><br><span class="line"><span class="comment"># exclude dir public/</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'/public/'</span> &gt;&gt; .gitignore</span><br><span class="line">sed -r -i <span class="string">'/^\/public\/$/&#123;$!d&#125;'</span> .gitignore</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add file contents to the index</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># Show the working tree status</span></span><br><span class="line"><span class="comment"># git status</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Record changes to the repository</span></span><br><span class="line">git commit -m <span class="string">"Hugo generator code"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Manage set of tracked repositories</span></span><br><span class="line">git remote add origin git@github.com:MaxdSre/maxdsre.github.io.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update remote refs along with associated objects to branch 'code'</span></span><br><span class="line">git push -u origin code</span><br></pre></td></tr></table></figure>
+
+<h4 id="master-分支"><a href="#master-分支" class="headerlink" title="master 分支"></a>master 分支</h4><p>在目錄中執行<code>hugo</code>生成<code>public</code>目錄。通過命令<code>git branch -a</code>可查看倉庫的分支信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># execute command hugo</span></span><br><span class="line">hugo</span><br><span class="line"></span><br><span class="line"><span class="comment"># create temporary dir</span></span><br><span class="line">HUGO_TEMP_DIR=$(mktemp -d)</span><br><span class="line">cp -R public/* <span class="string">"<span class="variable">$HUGO_TEMP_DIR</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create orphan branch 'master'</span></span><br><span class="line">git checkout --orphan master</span><br><span class="line"></span><br><span class="line"><span class="comment"># empty current dir</span></span><br><span class="line">rm .git/index</span><br><span class="line">git clean -fdx</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy back contents in dir public/</span></span><br><span class="line">cp -R <span class="string">"<span class="variable">$HUGO_TEMP_DIR</span>"</span>/. .</span><br><span class="line"></span><br><span class="line"><span class="comment"># add, commit, push</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment"># git status</span></span><br><span class="line">git commit -m <span class="string">'initial blog content'</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove temp dir</span></span><br><span class="line">[[ -d <span class="string">"<span class="variable">$HUGO_TEMP_DIR</span>"</span> ]] &amp;&amp; rm -rf <span class="string">"<span class="variable">$HUGO_TEMP_DIR</span>"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="image-分支"><a href="#image-分支" class="headerlink" title="image 分支"></a>image 分支</h4><p>此操作爲可選操作，本人創建第3個分支<code>image</code>用作圖牀，本文中的圖片即存放在該分支中。</p>
+<p><strong>注</strong>：[GitHub][github]每個倉庫可使用 <strong>1 GB</strong> 存儲空間，單個文件大小不超過 <strong>100 MB</strong>，詳見官方文檔 『<a href="https://help.github.com/en/articles/what-is-my-disk-quota#file-and-repository-size-limitations" target="_blank" rel="noopener">File and repository size limitations</a>』。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git checkout --orphan image</span><br><span class="line">rm .git/index</span><br><span class="line">git clean -fdx</span><br><span class="line"></span><br><span class="line"><span class="comment"># add content to this branch</span></span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'initial blog images'</span></span><br><span class="line">git push -u origin image</span><br><span class="line"></span><br><span class="line"><span class="comment"># fatal: The current branch image has no upstream branch.</span></span><br><span class="line"><span class="comment"># To push the current branch and set the remote as upstream, use</span></span><br><span class="line"><span class="comment"># git push --set-upstream origin image</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="切換分支"><a href="#切換分支" class="headerlink" title="切換分支"></a>切換分支</h3><p>如果要將本地分支切換到遠程分支<code>remotes/origin/image</code>，可通過如下命令實現</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;</span></span><br><span class="line"><span class="comment"># -b &lt;new_branch&gt;    Create a new branch named &lt;new_branch&gt; and start it at &lt;start_point&gt;;</span></span><br><span class="line"><span class="comment"># -t, --track     When creating a new branch, set up "upstream" configuration.</span></span><br><span class="line"></span><br><span class="line">git checkout -t remotes/origin/image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地分支，從其它分支切換到本地分支code</span></span><br><span class="line">git checkout code</span><br></pre></td></tr></table></figure>
+
+<p>演示過程如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">* code</span><br><span class="line"></span><br><span class="line">$ git branch -a</span><br><span class="line">* code</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/code</span><br><span class="line">  remotes/origin/code</span><br><span class="line">  remotes/origin/image</span><br><span class="line">  remotes/origin/master</span><br><span class="line"></span><br><span class="line">$ git checkout -t remotes/origin/image</span><br><span class="line">Branch <span class="string">'image'</span> <span class="built_in">set</span> up to track remote branch <span class="string">'image'</span> from <span class="string">'origin'</span>.</span><br><span class="line">  Switched to a new branch <span class="string">'image'</span></span><br><span class="line"></span><br><span class="line">$ git branch</span><br><span class="line">  code</span><br><span class="line">* image</span><br><span class="line"></span><br><span class="line">$ git branch -a</span><br><span class="line">  code</span><br><span class="line">* image</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/code</span><br><span class="line">  remotes/origin/code</span><br><span class="line">  remotes/origin/image</span><br><span class="line">  remotes/origin/master</span><br></pre></td></tr></table></figure>
+
+<p>此處遠程默認分支爲<code>code</code>，如果需要更改爲<code>master</code>，執行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># change HEAD from origin/code to origin/master</span></span><br><span class="line">git remote <span class="built_in">set</span>-head origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除分支"><a href="#刪除分支" class="headerlink" title="刪除分支"></a>刪除分支</h3><p>可分爲刪除遠程分支、本地分支、追蹤分支三種情況，具體見<a href="https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely#answer-23961231" target="_blank" rel="noopener">How do I delete a Git branch both locally and remotely?</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1 - 刪除遠程分支</span></span><br><span class="line">$ git push origin --delete &lt;branch&gt; <span class="comment"># Git version 1.7.0 or newer</span></span><br><span class="line">$ git push origin :&lt;branch&gt; <span class="comment"># Git versions older than 1.7.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 - 刪除本地分支</span></span><br><span class="line">$ git branch --delete &lt;branch&gt;</span><br><span class="line">$ git branch -d &lt;branch&gt; <span class="comment"># Shorter version</span></span><br><span class="line"></span><br><span class="line">$ git branch -D &lt;branch&gt; <span class="comment"># Force delete un-merged branches</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># error: The branch 'image' is not fully merged.</span></span><br><span class="line"><span class="comment"># If you are sure you want to delete it, run 'git branch -D image'.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 - 刪除本地追蹤分支</span></span><br><span class="line">$ git branch --delete --remotes &lt;remote&gt;/&lt;branch&gt;</span><br><span class="line">$ git branch -dr &lt;remote&gt;/&lt;branch&gt; <span class="comment"># Shorter</span></span><br><span class="line"></span><br><span class="line">$ git fetch &lt;remote&gt; --prune <span class="comment"># Delete multiple obsolete tracking branches</span></span><br><span class="line">$ git fetch &lt;remote&gt; -p <span class="comment"># Shorter</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Travis-CI-配置"><a href="#Travis-CI-配置" class="headerlink" title="Travis CI 配置"></a>Travis CI 配置</h2><p>[Travis CI][travisci]官方說明文檔 [GitHub Pages Deployment][travisci-github-page]。</p>
+<h3 id="生成-Github-訪問-Token"><a href="#生成-Github-訪問-Token" class="headerlink" title="生成 Github 訪問 Token"></a>生成 Github 訪問 Token</h3><blockquote>
+<p>You’ll need to generate a <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/" target="_blank" rel="noopener">personal access token</a> with the public_repo or repo scope (repo is required for private repositories). Since the token should be private, you’ll want to pass it to Travis securely in your <a href="https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings" target="_blank" rel="noopener">repository settings</a> or via <a href="https://docs.travis-ci.com/user/environment-variables#Defining-encrypted-variables-in-.travis.yml" target="_blank" rel="noopener">encrypted variables</a> in .travis.yml.</p>
+</blockquote>
+<p>在Github的<a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Developer settings</a>頁面中生成<code>personal access tokens</code>，若是私有倉庫，勾選<code>repo</code>；若是公開倉庫，勾選<code>public_repo</code>。此處本人選擇了 <code>public_repo</code>, <code>repo:status</code>, <code>repo_deployment</code>三項。</p>
+<p>生成的是長度爲<code>40</code>的隨機字符串，注意請勿泄漏。</p>
+<p><img src="/images/github-access-token.png" alt></p>
+<h3 id="設置環境變量"><a href="#設置環境變量" class="headerlink" title="設置環境變量"></a>設置環境變量</h3><p>生成的<code>token</code>須在[Travis CI][travisci]的目標Repo中設置，頁面地址爲 <a href="https://travis-ci.org/MaxdSre/maxdsre.github.io/settings" target="_blank" rel="noopener">https://travis-ci.org/MaxdSre/maxdsre.github.io/settings</a>。</p>
+<p><img src="/images/travisci-system-var-setting.png" alt></p>
+<p>確保<code>General</code>中的<code>Build only if .travis.yml is present</code>, <code>Build pushed branches</code>, <code>Build pushed pull requests</code>已啓用。</p>
+<p><img src="/images/travisci-general-setting.png" alt></p>
+<p>官方文檔[GitHub Pages Deployment][travisci-github-page]定義的默認<code>token</code>名爲<code>GITHUB_TOKEN</code>，其它指令詳見文檔。</p>
+<blockquote>
+<p>Notice that the values are not escaped when your builds are executed. Special characters (for bash) should be escaped accordingly.</p>
+</blockquote>
+<p>此處定義相關變量，稍後會寫入<code>.travis.yml</code>文件。</p>
+<table>
+<thead>
+<tr>
+<th>Environment Variables</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CNAME_URL</td>
+<td>axdlog.com</td>
+</tr>
+<tr>
+<td>GITHUB_USERNAME</td>
+<td>MaxdSre</td>
+</tr>
+<tr>
+<td>GITHUB_EMAIL</td>
+<td><a href="mailto:admin@axdlog.com" target="_blank" rel="noopener">admin@axdlog.com</a> (假設值)</td>
+</tr>
+<tr>
+<td>GITHUB_TOKEN</td>
+<td>75e8b72618ebf48df0b235cp4affd79e167b2489 (假設值)</td>
+</tr>
+</tbody></table>
+<h3 id="travis-yml-指令"><a href="#travis-yml-指令" class="headerlink" title=".travis.yml 指令"></a>.travis.yml 指令</h3><p>[Hugo][hugo]是用Golang構建的，如果在<code>.travis.yml</code>中使用<code>language: go</code>，[Travis CI][travisci]構建Golang環境耗時太長(數分鐘)。</p>
+<p><del>看到他人教程中有用Python的，恰巧最近在學習Python，便選擇Python做爲構建環境。因[Travis CI][travisci]的容器環境是基於Ubuntu的，故可以使用<code>dpkg</code>、<code>apt-get</code>等命令，但需要添加<code>sudo</code></del>。</p>
+<p>使用Python經常出現構建失敗的情況，原因是GitHub禁止Travis容器的HTTP請求，通過<code>tor</code>代理解決。</p>
+<p>最終指令如下</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://docs.travis-ci.com/user/deployment/pages/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/reference/xenial/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/languages/python/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/customizing-the-build/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dist:</span> <span class="string">xenial</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">python</span></span><br><span class="line"><span class="attr">python:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">"3.7"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">update</span> <span class="bullet">-qq</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="bullet">-yq</span> <span class="string">install</span> <span class="string">apt-transport-https</span> <span class="string">tor</span> <span class="string">curl</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># install - install any dependencies required</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">    <span class="comment"># install latest release version</span></span><br><span class="line">    <span class="comment"># Github may forbid request from travis container, so use tor proxy</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">sudo</span> <span class="string">systemctl</span> <span class="string">start</span> <span class="string">tor</span></span><br><span class="line">    <span class="comment"># - curl -fsL --socks5-hostname 127.0.0.1:9050 https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/&#123;/Linux-64bit.deb/&#123;s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p;q&#125;&#125;' | xargs wget</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">download_command='curl</span> <span class="bullet">-fsSL</span> <span class="bullet">-x</span> <span class="attr">socks5h://127.0.0.1:9050'</span> <span class="comment"># --socks5-hostname</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">$download_command</span> <span class="bullet">-O</span> <span class="string">$($download_command</span> <span class="attr">https://api.github.com/repos/gohugoio/hugo/releases/latest</span> <span class="string">| sed -r -n '/browser_download_url/&#123;/Linux-64bit.deb/&#123;s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p;q&#125;&#125;')</span></span><br><span class="line"><span class="string">    - sudo dpkg -i hugo*.deb</span></span><br><span class="line"><span class="string">    - rm -rf public 2&gt; /dev/null</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># script - run the build script</span></span><br><span class="line"><span class="string"></span><span class="attr">script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hugo</span> <span class="number">2</span><span class="string">&gt; /dev/null</span></span><br><span class="line"><span class="string">    - echo "$CNAME_URL" &gt; public/CNAME</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  provider:</span> <span class="string">pages</span></span><br><span class="line"><span class="attr">  skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  github-token:</span> <span class="string">$GITHUB_TOKEN</span>  <span class="comment"># Set in travis-ci.org dashboard, marked secure</span></span><br><span class="line"><span class="attr">  email:</span> <span class="string">$GITHUB_EMAIL</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">$GITHUB_USERNAME</span></span><br><span class="line"><span class="attr">  verbose:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  keep-history:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  local-dir:</span> <span class="string">public</span></span><br><span class="line"><span class="attr">  target_branch:</span> <span class="string">master</span>  <span class="comment"># branch contains blog content</span></span><br><span class="line"><span class="attr">  on:</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">code</span>  <span class="comment"># branch contains Hugo generator code</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Golang-deprecated"><a href="#Golang-deprecated" class="headerlink" title="Golang (deprecated)"></a>Golang (deprecated)</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://docs.travis-ci.com/user/deployment/pages/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/reference/xenial/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/languages/go/</span></span><br><span class="line"><span class="comment"># https://docs.travis-ci.com/user/customizing-the-build/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dist:</span> <span class="string">xenial</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">go</span></span><br><span class="line"><span class="attr">go:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># before_install</span></span><br><span class="line"><span class="comment"># install - install any dependencies required</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">go</span> <span class="string">get</span> <span class="string">github.com/gohugoio/hugo</span>    <span class="comment"># consume time 70.85s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">rm</span> <span class="bullet">-rf</span> <span class="string">public</span> <span class="number">2</span><span class="string">&gt; /dev/null</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># script - run the build script</span></span><br><span class="line"><span class="string"></span><span class="attr">script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hugo</span> <span class="number">2</span><span class="string">&gt; /dev/null</span></span><br><span class="line"><span class="string">    - echo "$CNAME_URL" &gt; public/CNAME</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  provider:</span> <span class="string">pages</span></span><br><span class="line"><span class="attr">  skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  github-token:</span> <span class="string">$GITHUB_TOKEN</span>  <span class="comment"># Set in travis-ci.org dashboard, marked secure</span></span><br><span class="line"><span class="attr">  email:</span> <span class="string">$GITHUB_EMAIL</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">$GITHUB_USERNAME</span></span><br><span class="line"><span class="attr">  verbose:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  keep-history:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  local-dir:</span> <span class="string">public</span></span><br><span class="line"><span class="attr">  target_branch:</span> <span class="string">master</span>  <span class="comment"># branch contains blog content</span></span><br><span class="line"><span class="attr">  on:</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">code</span>  <span class="comment"># branch contains Hugo generator code</span></span><br></pre></td></tr></table></figure>
+
+<p>將指令寫入到文件<code>.travis.yml</code>中，並將該<code>.travis.yml</code>上傳至repo的<code>code</code>分支中。</p>
+<h2 id="持續集成"><a href="#持續集成" class="headerlink" title="持續集成"></a>持續集成</h2><p>所有操作完成後，只需將需要發佈的Blog上傳到repo的<code>code</code>分支中，[Travis CI][travisci]會自動進行部署操作，將更新的Blog內容更新到repo的<code>master</code>分支中，實現Blog的持續集成，自動部署。</p>
+<p><img src="/images/travisci-deploy-status.png" alt></p>
+<p>部署過程日誌</p>
+<p><img src="/images/travisci-deploy-log-1.png" alt></p>
+<p><img src="/images/travisci-deploy-log-2.png" alt></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://jellis18.github.io/post/2017-12-03-continuous-integration-hugo/" target="_blank" rel="noopener">Continuous Integration of Hugo Website using Travis CI and Github</a></li>
+<li><a href="https://github.com/ldez/travis-continuous-delivery-hugo-deploy" target="_blank" rel="noopener">Travis continuous delivery</a></li>
+<li><a href="https://medium.com/zendesk-engineering/how-to-create-a-website-like-freshswift-net-using-hugo-travis-ci-and-github-pages-67be6f480298" target="_blank" rel="noopener">How to create a website like freshswift.net using Hugo, Travis CI, and GitHub Pages</a></li>
+<li><a href="https://www.leowkahman.com/2017/09/10/gitlab-ci-remove-priority-zero-from-hugo-sitemap/" target="_blank" rel="noopener">GitLab CI remove priority zero from Hugo sitemap</a></li>
+<li><a href="https://leonidboykov.com/post/hugo-github-travis/" target="_blank" rel="noopener">Deploy Hugo site to Github Pages with Travis CI</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Hugo/" rel="tag"><i class="fa fa-tag"></i> Hugo</a>
+            
+              <a href="/tags/Travis-CI/" rel="tag"><i class="fa fa-tag"></i> Travis-CI</a>
+            
+              <a href="/tags/GitHub-Pages/" rel="tag"><i class="fa fa-tag"></i> GitHub-Pages</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/hexo-next-install.html" rel="next" title="简要安装hexo和next主题">
+                  <i class="fa fa-chevron-left"></i> 简要安装hexo和next主题
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/Lycamobile-activation-Recharge-Close-Voice-mail.html" rel="prev" title="美国SIM实体电话卡Lycamobile激活充值关闭语音信箱">
+                  美国SIM实体电话卡Lycamobile激活充值关闭语音信箱 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文檔"><span class="nav-number">1.</span> <span class="nav-text">官方文檔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Pages-限制"><span class="nav-number">1.1.</span> <span class="nav-text">GitHub Pages 限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#準備工作"><span class="nav-number">2.</span> <span class="nav-text">準備工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝-Hugo"><span class="nav-number">3.</span> <span class="nav-text">安裝 Hugo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-Script"><span class="nav-number">3.1.</span> <span class="nav-text">Python Script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#創建新項目"><span class="nav-number">3.2.</span> <span class="nav-text">創建新項目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Github-倉庫"><span class="nav-number">4.</span> <span class="nav-text">配置 Github 倉庫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#創建空倉庫"><span class="nav-number">4.1.</span> <span class="nav-text">創建空倉庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支操作"><span class="nav-number">4.2.</span> <span class="nav-text">分支操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#code-分支"><span class="nav-number">4.2.1.</span> <span class="nav-text">code 分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#master-分支"><span class="nav-number">4.2.2.</span> <span class="nav-text">master 分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#image-分支"><span class="nav-number">4.2.3.</span> <span class="nav-text">image 分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切換分支"><span class="nav-number">4.3.</span> <span class="nav-text">切換分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刪除分支"><span class="nav-number">4.4.</span> <span class="nav-text">刪除分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Travis-CI-配置"><span class="nav-number">5.</span> <span class="nav-text">Travis CI 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成-Github-訪問-Token"><span class="nav-number">5.1.</span> <span class="nav-text">生成 Github 訪問 Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設置環境變量"><span class="nav-number">5.2.</span> <span class="nav-text">設置環境變量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#travis-yml-指令"><span class="nav-number">5.3.</span> <span class="nav-text">.travis.yml 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python"><span class="nav-number">5.3.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Golang-deprecated"><span class="nav-number">5.3.2.</span> <span class="nav-text">Golang (deprecated)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持續集成"><span class="nav-number">6.</span> <span class="nav-text">持續集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ojbk8</p>
+  <div class="site-description" itemprop="description">网络记事本</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/ojbk8/ojbk8.github.io" title="GitHub &rarr; https://github.com/ojbk8/ojbk8.github.io" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ojbk8</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
