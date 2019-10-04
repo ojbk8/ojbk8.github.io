@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-keywords:
-author: John Doe
+title: Ojbk8's BLOG
+subtitle: 网站副标题
+description: 网络记事本
+keywords: 关键字1,关键字2,关键字3
+author: ojbk8
 language: zh-CN
 timezone:
 
@@ -84,5 +84,8 @@ deploy:
 
 # Local Search
 search:
-  path: search.xml
+  path: search.json
   field: all
+  format: raw
+  limit: 20000
+  content: true
