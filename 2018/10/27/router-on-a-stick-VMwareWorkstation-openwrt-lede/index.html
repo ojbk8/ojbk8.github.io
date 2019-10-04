@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="为什么要配置虚拟机环境出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。所需要的软件 VMware Workstation 15 Pro 注册码SN:ZY1MK-4UD80-M81VY-RZYNX-Z22X2 StarWind V2V Converter  KoolShare 固件  选择普通的就行，不一定非要虚拟机转盘或PE下写盘专用">
+<meta name="keywords" content="openwrt,VMwareWorkstation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMwareWorkstation单臂路由配置安装openwrt(LEDE)单网卡国际互联网">
+<meta property="og:url" content="https://ojbk8.github.io/2018/10/27/router-on-a-stick-VMwareWorkstation-openwrt-lede/index.html">
+<meta property="og:site_name" content="Ojbk8&#39;s BLOG">
+<meta property="og:description" content="为什么要配置虚拟机环境出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。所需要的软件 VMware Workstation 15 Pro 注册码SN:ZY1MK-4UD80-M81VY-RZYNX-Z22X2 StarWind V2V Converter  KoolShare 固件  选择普通的就行，不一定非要虚拟机转盘或PE下写盘专用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-1.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-2.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-3.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-4.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-5.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-6.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-7.png">
+<meta property="og:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-8.png">
+<meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VMwareWorkstation单臂路由配置安装openwrt(LEDE)单网卡国际互联网">
+<meta name="twitter:description" content="为什么要配置虚拟机环境出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。所需要的软件 VMware Workstation 15 Pro 注册码SN:ZY1MK-4UD80-M81VY-RZYNX-Z22X2 StarWind V2V Converter  KoolShare 固件  选择普通的就行，不一定非要虚拟机转盘或PE下写盘专用">
+<meta name="twitter:image" content="https://ojbk8.github.io/images/openwrt-lede-VMware-Workstation-1.png">
+  <link rel="canonical" href="https://ojbk8.github.io/2018/10/27/router-on-a-stick-VMwareWorkstation-openwrt-lede/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>VMwareWorkstation单臂路由配置安装openwrt(LEDE)单网卡国际互联网 | Ojbk8's BLOG</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ojbk8's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">网站副标题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/2018/10/27/router-on-a-stick-VMwareWorkstation-openwrt-lede/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ojbk8">
+      <meta itemprop="description" content="网络记事本">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ojbk8's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">VMwareWorkstation单臂路由配置安装openwrt(LEDE)单网卡国际互联网
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-27 16:00:00" itemprop="dateCreated datePublished" datetime="2018-10-27T16:00:00+03:00">2018-10-27</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>为什么要配置虚拟机环境<br>出差时，比如udp2raw等个别软件只能在LINUX环境才能使用，而在WIN环境下就没法例用它。</p><h3 id="所需要的软件"><a href="#所需要的软件" class="headerlink" title="所需要的软件"></a>所需要的软件</h3><ul>
+<li><a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html" target="_blank" rel="noopener">VMware Workstation 15 Pro</a> 注册码SN:<code>ZY1MK-4UD80-M81VY-RZYNX-Z22X2</code></li>
+<li><a href="https://www.starwindsoftware.com/starwind-v2v-converter" target="_blank" rel="noopener">StarWind V2V Converter</a> </li>
+<li><a href="http://firmware.koolshare.cn/LEDE_X64_fw867" target="_blank" rel="noopener">KoolShare 固件</a>  <em>选择普通的就行，不一定非要虚拟机转盘或PE下写盘专用</em></li>
+</ul><a id="more"></a>
+
+<h3 id="使用StarWind-V2V-Image-Converter转换格式"><a href="#使用StarWind-V2V-Image-Converter转换格式" class="headerlink" title="使用StarWind V2V-Image Converter转换格式"></a>使用StarWind V2V-Image Converter转换格式</h3><p><code>Image format</code>选择<code>Vmware growable image</code></p>
+<p>![](/images/StarWind V2V-Image Converter-1.png)</p>
+<p>![](/images/StarWind V2V-Image Converter-2.png)</p>
+<h3 id="配置VMware-Workstation"><a href="#配置VMware-Workstation" class="headerlink" title="配置VMware Workstation"></a>配置VMware Workstation</h3><p>开始新建虚拟机，选择<code>稍后安装操作系统</code></p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-1.png" alt></p>
+<p>客户机操作系统选择<code>Linx</code>版本<code>其它Linx 4.X或更高版本内核64位</code> </p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-2.png" alt></p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-3.png" alt></p>
+<p>一路默认完成创建,<code>编辑虚拟机设置</code><br>删除打印机(可选)，删除原有的硬盘，然后添加硬盘<code>使用现有虚拟磁盘</code> 找到刚才转换好的后缀为.vmdk格式的并使用它。</p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-4.png" alt></p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-5.png" alt></p>
+<p><code>网络适配器</code>中的<code>网络连接</code>选择<code>桥接模式(B):直接连接物理网络</code></p>
+<p><img src="/images/openwrt-lede-VMware-Workstation-6.png" alt></p>
+<h3 id="配置LEDE软路由"><a href="#配置LEDE软路由" class="headerlink" title="配置LEDE软路由"></a>配置LEDE软路由</h3><p>配置网络 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/config/network</span><br></pre></td></tr></table></figure>
+
+<p>这里有2种联网方式</p>
+<h4 id="通过上级路由器拨号上网"><a href="#通过上级路由器拨号上网" class="headerlink" title="通过上级路由器拨号上网"></a>通过上级路由器拨号上网</h4><p>上级路由器已经设置好了拨号上网。<br>假设宿主机路由器的网关为10.10.10.1<br><img src="/images/openwrt-lede-VMware-Workstation-7.png" alt><br>此时可以删除WAN口(可选)，也可以保留。<br><img src="/images/openwrt-lede-VMware-Workstation-8.png" alt><br>上图中上级拨号路由器的IP地址为<code>10.10.10.1</code>虚拟机软路由器的IP地址为<code>10.10.10.11</code> 按实际IP修改</p>
+<ol>
+<li><code>IPV4 网关</code>务必一定要设置成上级路由器的IP地址</li>
+<li><code>IPV4 地址</code>必须要跟上级路由器在同一个网段内</li>
+<li><code>DNS</code>可以设置成公共DNS，也可以使用运营商的。</li>
+</ol>
+<p>联网后去<code>酪软中心</code>安装<code>科学上网</code>插件并配置好以后<br>其它设置，包括本机电脑的只要网关设置成<code>10.10.10.11</code>就能享受国际互联网了。</p>
+<h4 id="在虚拟机路由器里拨号上网"><a href="#在虚拟机路由器里拨号上网" class="headerlink" title="在虚拟机路由器里拨号上网"></a>在虚拟机路由器里拨号上网</h4><p>待完善中… …</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/openwrt/" rel="tag"><i class="fa fa-tag"></i> openwrt</a>
+            
+              <a href="/tags/VMwareWorkstation/" rel="tag"><i class="fa fa-tag"></i> VMwareWorkstation</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2018/10/11/koolshare-shield-tencent-360/" rel="next" title="Koolshare-openwrt-lede屏蔽360腾讯的方法">
+                  <i class="fa fa-chevron-left"></i> Koolshare-openwrt-lede屏蔽360腾讯的方法
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2018/11/20/ToyoDAdoubi-ssh/" rel="prev" title="一个逗比写的逗比脚本">
+                  一个逗比写的逗比脚本 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#所需要的软件"><span class="nav-number">1.</span> <span class="nav-text">所需要的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用StarWind-V2V-Image-Converter转换格式"><span class="nav-number">2.</span> <span class="nav-text">使用StarWind V2V-Image Converter转换格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置VMware-Workstation"><span class="nav-number">3.</span> <span class="nav-text">配置VMware Workstation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置LEDE软路由"><span class="nav-number">4.</span> <span class="nav-text">配置LEDE软路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过上级路由器拨号上网"><span class="nav-number">4.1.</span> <span class="nav-text">通过上级路由器拨号上网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在虚拟机路由器里拨号上网"><span class="nav-number">4.2.</span> <span class="nav-text">在虚拟机路由器里拨号上网</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ojbk8</p>
+  <div class="site-description" itemprop="description">网络记事本</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ojbk8</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+// 社会主义核心价值观
+var a_idx = 0;
+ 
+    $("body").click(function(e) {
+        var a = new Array(
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+            );
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 144469,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#f00"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove()
+        })
+    });
+ 
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
