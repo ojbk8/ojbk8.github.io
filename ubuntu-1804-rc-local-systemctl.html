@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -56,10 +56,11 @@
 </script>
 
   <meta name="description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemdubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。 systemd is now used for user sessions. System sessions had a">
+<meta name="keywords" content="关键字1,关键字2,关键字3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu-18.04设置systemctl开机启动脚本rc.local">
 <meta property="og:url" content="https://ojbk8.github.io/ubuntu-1804-rc-local-systemctl.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Ojbk8&#39;s BLOG">
 <meta property="og:description" content="使用update-rc.d以及rc.local等方法就是不生效。后来在ubuntu的官方论坛ubuntu-16.10开始不再使用initd管理系统改用systemdubuntu-18.04 LTS版本用的是systemctl命令来替换了service和chkconfig的功能。 systemd is now used for user sessions. System sessions had a">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
@@ -80,7 +81,7 @@
   };
 </script>
 
-  <title>ubuntu-18.04设置systemctl开机启动脚本rc.local | Hexo</title>
+  <title>ubuntu-18.04设置systemctl开机启动脚本rc.local | Ojbk8's BLOG</title>
   
 
 
@@ -127,10 +128,12 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Ojbk8's BLOG</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">网站副标题</p>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -255,13 +258,13 @@
     <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/ubuntu-1804-rc-local-systemctl.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="ojbk8">
+      <meta itemprop="description" content="网络记事本">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Ojbk8's BLOG">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">ubuntu-18.04设置systemctl开机启动脚本rc.local
@@ -432,8 +435,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">ojbk8</p>
+  <div class="site-description" itemprop="description">网络记事本</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -498,7 +501,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">ojbk8</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>

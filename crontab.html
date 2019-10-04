@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -60,7 +60,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crontab定时执行计划任务">
 <meta property="og:url" content="https://ojbk8.github.io/crontab.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Ojbk8&#39;s BLOG">
 <meta property="og:description" content="crond简介crond是linux定时执行计划任务Linux下的任务调度分为两类，系统任务调度和用户任务调度。系统任务配置文件/etc/crontab1nano /etc/crontab用户任务1crontab -ecrontab文件的含义用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ojbk8.github.io/images/crontab.png">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>Crontab定时执行计划任务 | Hexo</title>
+  <title>Crontab定时执行计划任务 | Ojbk8's BLOG</title>
   
 
 
@@ -130,10 +130,12 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Ojbk8's BLOG</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">网站副标题</p>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -258,13 +260,13 @@
     <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/crontab.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="ojbk8">
+      <meta itemprop="description" content="网络记事本">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Ojbk8's BLOG">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Crontab定时执行计划任务
@@ -449,8 +451,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">ojbk8</p>
+  <div class="site-description" itemprop="description">网络记事本</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -515,7 +517,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">ojbk8</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>

@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -60,7 +60,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Aira2下载文件后自动上传到Google Drive网盘 onedrive">
 <meta property="og:url" content="https://ojbk8.github.io/Aira2-uploads-GoogleDrive-onedrive.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Ojbk8&#39;s BLOG">
 <meta property="og:description" content="更新1234567【2018.10.30】这里分享下萌咖大佬的Aira2上传脚本，不过是精简版，全能版暂不分享，精简版包含以下功能：1、脚本适用于Rclone挂载的网盘，比如Onedrive/Google Drive等。2、判断上传文件的文件大小区间。限制最低上传大小：可防止产生的.aria2后缀文件一起上传到网盘。限制最高文件大小：适用于Onedrive等，官方限制上传不能超过15G，其它可自行">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-02T05:19:08.000Z">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>使用Aira2下载文件后自动上传到Google Drive网盘 onedrive | Hexo</title>
+  <title>使用Aira2下载文件后自动上传到Google Drive网盘 onedrive | Ojbk8's BLOG</title>
   
 
 
@@ -128,10 +128,12 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Ojbk8's BLOG</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">网站副标题</p>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -256,13 +258,13 @@
     <link itemprop="mainEntityOfPage" href="https://ojbk8.github.io/Aira2-uploads-GoogleDrive-onedrive.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="ojbk8">
+      <meta itemprop="description" content="网络记事本">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Ojbk8's BLOG">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">使用Aira2下载文件后自动上传到Google Drive网盘 onedrive
@@ -347,8 +349,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/Debian-Ubuntu-Nginx-Certbot-Let’s-Encrypt-SSL.html" rel="next" title="Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程">
-                  <i class="fa fa-chevron-left"></i> Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程
+                <a href="/Debian-Ubuntu-install-New-Nginx.html" rel="next" title="Debian9安装最新版Nginx">
+                  <i class="fa fa-chevron-left"></i> Debian9安装最新版Nginx
                 </a>
               
             </div>
@@ -413,8 +415,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">ojbk8</p>
+  <div class="site-description" itemprop="description">网络记事本</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -479,7 +481,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">ojbk8</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
