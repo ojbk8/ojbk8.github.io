@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Ojbk8&#39;s BLOG">
 <meta property="og:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；一、添加Nginx源新建一个nginx.list文件1vi /etc/apt/sources.list.d/nginx.list加入以下内容：12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http://ngin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-04T02:52:09.177Z">
+<meta property="og:updated_time" content="2019-10-05T10:50:41.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Debian9安装最新版Nginx">
 <meta name="twitter:description" content="apt-get默认安装的nginx为1.10，如果嫌太老了可以修改安装源的方式来获得更新的版本；一、添加Nginx源新建一个nginx.list文件1vi /etc/apt/sources.list.d/nginx.list加入以下内容：12deb http://nginx.org/packages/mainline/debian/ stretch nginxdeb-src http://ngin">
@@ -328,16 +328,12 @@
 <p>更新一下让源生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
 
-
-
 <p>二、安装更新版本nginx</p>
 <p>如果之前用apt命令安装了旧版本nginx,需要卸载掉才行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt remove nginx-common</span><br></pre></td></tr></table></figure>
 
 <p>正式开始安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nginx</span><br></pre></td></tr></table></figure>
-
-
 
 <p>安装完成查看版本:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
@@ -355,7 +351,7 @@
 <h1 id="增加-Nginx-虚拟主机"><a href="#增加-Nginx-虚拟主机" class="headerlink" title="增加 Nginx 虚拟主机"></a>增加 Nginx 虚拟主机</h1><p>检查<code>/etc/nginx/nginx.conf</code>配置文件，确保文件中有：<code>include /etc/nginx/conf.d/*.conf;</code> 默认已经有了的。</p>
 <p>然后在目录<code>/etc/nginx/conf.d/</code>下面新建文件<code>site1.conf</code>，<code>site2.conf</code>…文件名任意写，自己看明白就OK  </p>
 <p>Nginx配置支持PHP</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">	&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">	location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">fastcgi_index index.php;</span><br><span class="line">fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">include fastcgi_params;</span><br><span class="line">&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">fastcgi_index index.php;</span><br><span class="line">fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">include fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>又或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">include snippets/fastcgi-php.conf;</span><br><span class="line">fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -440,8 +436,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/Debian-Ubuntu-Nginx-Certbot-Let’s-Encrypt-SSL.html" rel="next" title="Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程">
-                  <i class="fa fa-chevron-left"></i> Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程
+                <a href="/ToyoDAdoubi-ssh.html" rel="next" title="一个逗比写的逗比脚本">
+                  <i class="fa fa-chevron-left"></i> 一个逗比写的逗比脚本
                 </a>
               
             </div>
@@ -450,8 +446,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/Aira2-uploads-GoogleDrive-onedrive.html" rel="prev" title="使用Aira2下载文件后自动上传到Google Drive网盘 onedrive">
-                  使用Aira2下载文件后自动上传到Google Drive网盘 onedrive <i class="fa fa-chevron-right"></i>
+                <a href="/Debian-Ubuntu-Nginx-Certbot-Let’s-Encrypt-SSL.html" rel="prev" title="Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程">
+                  Nginx使用官方工具 Certbot 配置申请 Let’s Encrypt SSL 安全证书详细教程 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
