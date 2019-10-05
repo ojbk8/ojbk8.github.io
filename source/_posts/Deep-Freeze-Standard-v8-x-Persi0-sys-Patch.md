@@ -17,7 +17,7 @@ tags:
 
 #### 获取安装序列号
 
-![](Deep-Freeze-Standard.v8.x_SN.png)
+![](/images/Deep-Freeze-Standard.v8.x_SN.png)
 
 #### 安装冰点还原
 
@@ -27,22 +27,22 @@ tags:
 
 安装完成后先按住键盘Shift键双击冰点还原的图标，选择启动后解冻，重启电脑，退出守护状态。
 
-![](Deep-Freeze-Standard-exit.png)
+![](/images/Deep-Freeze-Standard-exit.png)
 
 使用PCHunter解锁C盘下的Persi0.sys文件。或者使用360之类的解锁这个文件锁定。
 
-![](Deep-Freeze-Standard1.png)
+![](/images/Deep-Freeze-Standard1.png)
 
-![](Deep-Freeze-Standard2.png)
+![](/images/Deep-Freeze-Standard2.png)
 
 运行`dfs.v8.53.020.5458-patch.exe`对C盘下的`Persi0.sys`文件进行补丁。
 
-![](Deep-Freeze-Standard-Patch.png)
+![](/images/Deep-Freeze-Standard-Patch.png)
 
 重启电脑，此时冰点还原Deep-Freeze-Standard应该已经激活成功了
 
 按住键盘Shift键双击冰点还原的图标，查看激活状态并开启它
 
-![](Deep-Freeze-Standard-status.png)
+![](/images/Deep-Freeze-Standard-status.png)
 
 温情提醒：如果用PCHunter无法解锁进程可以在WINPE来补丁Persi0.sys文件！
