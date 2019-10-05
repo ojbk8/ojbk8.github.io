@@ -58,14 +58,14 @@
   <meta name="description" content="Node.js是一个基于Chrome V8 JavaScript引擎构建的平台.Nodejs可用于轻松构建快速，可扩展的网络应用程序。最新版本node.js ppa由其官方网站维护。我们可以将这个PPA添加到Debian 9（Stretch） Debian 8（Jessie）和Debian 7（Wheezy）系统中。这篇我抄来的文章可以帮助你在Debian 9/8/7系统上安装最新的Nodejs和">
 <meta name="keywords" content="Node.js,NPM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Debian9安装最新版Node.js和NPM">
+<meta property="og:title" content="linux-ununtu-Debian9安装最新版Node.js和NPM">
 <meta property="og:url" content="https://ojbk8.github.io/Debian-Nodejs-NPM.html">
 <meta property="og:site_name" content="Ojbk8&#39;s BLOG">
 <meta property="og:description" content="Node.js是一个基于Chrome V8 JavaScript引擎构建的平台.Nodejs可用于轻松构建快速，可扩展的网络应用程序。最新版本node.js ppa由其官方网站维护。我们可以将这个PPA添加到Debian 9（Stretch） Debian 8（Jessie）和Debian 7（Wheezy）系统中。这篇我抄来的文章可以帮助你在Debian 9/8/7系统上安装最新的Nodejs和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-04T02:53:04.947Z">
+<meta property="og:updated_time" content="2019-10-05T02:34:32.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Debian9安装最新版Node.js和NPM">
+<meta name="twitter:title" content="linux-ununtu-Debian9安装最新版Node.js和NPM">
 <meta name="twitter:description" content="Node.js是一个基于Chrome V8 JavaScript引擎构建的平台.Nodejs可用于轻松构建快速，可扩展的网络应用程序。最新版本node.js ppa由其官方网站维护。我们可以将这个PPA添加到Debian 9（Stretch） Debian 8（Jessie）和Debian 7（Wheezy）系统中。这篇我抄来的文章可以帮助你在Debian 9/8/7系统上安装最新的Nodejs和">
   <link rel="canonical" href="https://ojbk8.github.io/Debian-Nodejs-NPM">
 
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Debian9安装最新版Node.js和NPM | Ojbk8's BLOG</title>
+  <title>linux-ununtu-Debian9安装最新版Node.js和NPM | Ojbk8's BLOG</title>
   
 
 
@@ -271,7 +271,7 @@
       <meta itemprop="name" content="Ojbk8's BLOG">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Debian9安装最新版Node.js和NPM
+        <h1 class="post-title" itemprop="name headline">linux-ununtu-Debian9安装最新版Node.js和NPM
 
           
         </h1>
@@ -332,6 +332,13 @@
 
 <p>检查npm版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>下载 Node.js 源码或预编译安装包 Latest Current Version: 12.11.1 (includes npm 6.11.3)。</p>
+<p>从官网 <a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="noopener">下载 | Node.js</a> 的编译好的二进制文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v12.11.1/node-v12.11.1-linux-x64.tar.xz</span><br><span class="line">tar xf node-v12.11.1-linux-x64.tar.xz</span><br><span class="line">cp node-v12.11.1-linux-x64/bin/node /usr/<span class="built_in">local</span>/bin/node</span><br><span class="line">cp node-v12.11.1-linux-x64/bin/npm /usr/<span class="built_in">local</span>/bin/npm</span><br><span class="line">cp node-v12.11.1-linux-x64/bin/npx /usr/<span class="built_in">local</span>/bin/npx</span><br><span class="line">rm -rf node-v12.11.1-linux-x64</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p><del>删除卸载</del></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node-v12.11.1-linux-x64</span><br><span class="line">rm node-v12.11.1-linux-x64.tar.xz</span><br><span class="line">rm /usr/<span class="built_in">local</span>/bin/node</span><br><span class="line">rm /usr/<span class="built_in">local</span>/bin/npm</span><br><span class="line">rm /usr/<span class="built_in">local</span>/bin/npx</span><br></pre></td></tr></table></figure>
 
 
     </div>
