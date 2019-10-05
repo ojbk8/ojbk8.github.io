@@ -10,7 +10,7 @@ tags:
 
 ### 下载
 
-[下载冰点还原Deep-Freeze-Standard.v8.5.3](/uploads/Deep.Freeze.Standard.v8.5.3.rar) 并解压
+[下载冰点还原Deep-Freeze-Standard.v8.5.3](/uploads/Deep.Freeze.Standard.v8.5.3(password123456).rar) **并解压密码123456**
 
 
 ### 安装
