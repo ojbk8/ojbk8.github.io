@@ -19,6 +19,21 @@ tags:
 
 ![](/images/Deep-Freeze-Standard.v8.x_SN.png)
 
+
+提供一组安装序列号SN
+
+`Serial`:
+
+``` bash
+H62YN98M-B1F0K2ED-83YQ9B5C-C195W257-7MYZ3996
+```
+
+`Activation`:
+
+``` bash
+G8T1GQNDP36EPVWGJP3EEQ5G
+```
+
 #### 安装冰点还原
 
 打开Faronics_DFS\Faronics_DFS\DFStd.exe安装
