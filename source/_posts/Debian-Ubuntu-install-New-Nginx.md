@@ -37,8 +37,6 @@ wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
 apt update
 ```
 
- 
-
 二、安装更新版本nginx
 
 如果之前用apt命令安装了旧版本nginx,需要卸载掉才行
@@ -53,10 +51,7 @@ apt remove nginx-common
 apt install nginx
 ```
 
- 
-
 安装完成查看版本:
-
 
 ``` bash
 nginx -v
@@ -106,32 +101,32 @@ systemctl stop nginx
 Nginx配置支持PHP
 
 ``` bash
-	location ~ \.php$ {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-	}
+location ~ \.php$ {
+fastcgi_pass 127.0.0.1:9000;
+fastcgi_index index.php;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+include fastcgi_params;
+}
 ```    
 
 或者
 
 ``` bash
-	location ~ \.php$ {
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-	}
+location ~ \.php$ {
+fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+fastcgi_index index.php;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+include fastcgi_params;
+}
 ```
 
 又或者
 
 ``` bash
-	location ~ \.php$ {
-	include snippets/fastcgi-php.conf;
-	fastcgi_pass unix:/run/php/php7.2-fpm.sock;
-	}
+location ~ \.php$ {
+include snippets/fastcgi-php.conf;
+fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+}
 ```
 
 
