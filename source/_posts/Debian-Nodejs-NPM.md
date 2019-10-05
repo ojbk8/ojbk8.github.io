@@ -1,5 +1,5 @@
 ---
-title: "Debian9安装最新版Node.js和NPM"
+title: "linux-ununtu-Debian9安装最新版Node.js和NPM"
 date: 2019-01-15T00:00:00+08:00
 lastmod: 2019-01-15T00:00:00+08:00
 draft: false
@@ -46,4 +46,31 @@ node -v
 
 ``` bash
 npm -v 
+```
+
+
+
+下载 Node.js 源码或预编译安装包 Latest Current Version: 12.11.1 (includes npm 6.11.3)。
+
+从官网 [下载 | Node.js](https://nodejs.org/zh-cn/download/) 的编译好的二进制文件
+
+``` bash
+wget https://nodejs.org/dist/v12.11.1/node-v12.11.1-linux-x64.tar.xz
+tar xf node-v12.11.1-linux-x64.tar.xz
+cp node-v12.11.1-linux-x64/bin/node /usr/local/bin/node
+cp node-v12.11.1-linux-x64/bin/npm /usr/local/bin/npm
+cp node-v12.11.1-linux-x64/bin/npx /usr/local/bin/npx
+rm -rf node-v12.11.1-linux-x64
+node -v
+npm -v
+```
+
+~~删除卸载~~
+
+``` bash
+rm -rf node-v12.11.1-linux-x64
+rm node-v12.11.1-linux-x64.tar.xz
+rm /usr/local/bin/node
+rm /usr/local/bin/npm
+rm /usr/local/bin/npx
 ```
